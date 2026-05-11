@@ -1,0 +1,1020 @@
+#workskin .image {
+    width: 35em;
+    max-width: 80%;
+    border-color: #8b4513;
+    border-style: double;
+    border-width: 0.5vw;
+}
+
+#workskin .font-serif {
+    font-family: Cambria, Constantia, Palatino, Georgia, serif;
+}
+
+#workskin .font-monospace {
+    font-family: consolas, courier, monospace;
+}
+
+#workskin hr {
+    opacity: 0;
+}
+
+/*Title change - work title, subtitle, chapter titles*/
+
+#workskin .title {
+    font-family: Cambria, Constantia, Palatino, Georgia, serif;
+}
+
+#workskin .preface.group h2.title.heading {
+    visibility: visible;
+    line-height: 0;
+}
+
+#workskin .preface.group h2.title.heading::before {
+    content: "Sonata for Piano No. 1 in E-flat Major, Op. 2";
+    visibility: hidden;
+    line-height: 1em;
+    font-family: Cambria, Constantia, Palatino, Georgia, serif;
+    font-weight: bold;
+    display: block;
+}
+
+#workskin .preface.group h2.title.heading::after {
+    content: "to home, and to those who never found it.";
+    visibility: hidden;
+    line-height: 2em;
+    font-family: Cambria, Constantia, Palatino, Georgia, serif;
+    font-size: 0.5em;
+    display: block;
+}
+
+#workskin #chapter-15 .chapter.preface.group .title {
+    visibility: hidden;
+    line-height: 0;
+}
+
+#workskin #chapter-15 .chapter.preface.group .title::before {
+    content: "petite reprise";
+    visibility: visible;
+    line-height: 1em;
+    font-family: Cambria, Constantia, Palatino, Georgia, serif;
+    color: #ff8ab3;
+    display: block;
+}
+
+/*Author change*/
+
+#workskin .byline {
+    visibility: visible;
+    line-height: 0;
+}
+
+#workskin .byline::after {
+    content: "Ryoji Mochizuki";
+    visibility: hidden;
+    line-height: 1em;
+    display: block;
+}
+
+/*Gradient background by pressuredrightnow, light mode/dark mode variants with @media (prefers-color-scheme:[])?*/
+
+#workskin .letter_front {
+    height: 200px;
+    background: linear-gradient(to bottom,
+            rgba(38, 8, 115, 0),
+            rgba(38, 8, 115, 1));
+    width: 97%;
+    padding: 10px 15px;
+}
+
+#workskin .letter_mid {
+    background: #260873;
+    width: 97%;
+    padding: 10px 15px;
+}
+
+#workskin .letter_end {
+    height: 200px;
+    background: linear-gradient(to top, rgba(38, 8, 115, 0), rgba(38, 8, 115, 1));
+    width: 97%;
+    padding: 10px 15px;
+}
+
+#workskin .innerletter {
+    color: white;
+    padding: 50px 15px;
+}
+
+/*Name selector code by deathbymistletoe*/
+
+#workskin .namelist,
+#workskin li {
+    list-style: none;
+    padding-top: 0.3em;
+}
+
+#workskin .name,
+#workskin span {
+    display: inline-block;
+    width: fit-content;
+}
+
+#workskin .checkbox summary {
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+#workskin .first .checkbox summary::before {
+    background-color: hsl(221, 56%, 42%);
+    border-color: hsl(221, 56%, 42%);
+    border: 1.5px solid;
+    content: "";
+    display: inline-block;
+    height: 1em;
+    margin: auto 0.5em auto -1.5em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1em;
+}
+
+#workskin .second .checkbox summary::before,
+#workskin .third .checkbox summary::before {
+    background-color: transparent;
+    border: 1.5px solid;
+    content: "";
+    display: inline-block;
+    height: 1em;
+    margin: auto 0.5em auto -1.5em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1em;
+}
+
+#workskin .first .checkbox[open] summary::before {
+    background-color: transparent;
+}
+
+#workskin .second .checkbox[open] summary::before,
+#workskin .third .checkbox[open] summary::before {
+    background-color: hsl(221, 56%, 42%);
+}
+
+#workskin:has(.A-1[open]):has(.A-default[open]) .correctgrammara::before {
+    content: "is ";
+}
+
+#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]) .name-A .fallback {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+}
+
+#workskin:has(.B-1[open]):has(.B-default[open]) .correctgrammarb::before,
+#workskin:has(.B-2[open]):has(.B-default[open]) .correctgrammarb::before {
+    content: "is ";
+}
+
+#workskin:has(.checkboxb:not(.B-default)[open]):has(.B-default[open]) .name-B .fallback {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+}
+
+#workskin:has(.checkboxa:not(.A-default)[open]) .name-L .fallback {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+}
+
+/*If in namelist A, Minato (and only Minato) is selected, the surname name-L is changed to Arisato. In all other cases, it defaults to Yuuki.*/
+
+#workskin:has(.A-1[open]):has(.A-default[open]) .name-A::after {
+    content: "Minato";
+}
+
+#workskin:has(.A-1[open]):has(.A-default[open]) .name-L::after {
+    content: "Arisato";
+}
+
+#workskin:has(.B-1[open]):has(.B-default[open]) .name-B::after {
+    content: "Minako";
+}
+
+#workskin:has(.B-2[open]):has(.B-default[open]) .name-B::after {
+    content: "Hamuko";
+}
+
+/*faux text animation*/
+
+#workskin .typeit span {
+    visibility: hidden;
+}
+
+#workskin [open]+.typeit span {
+    visibility: visible;
+}
+
+#workskin .typeit :nth-child(1) {
+    transition-delay: 0.01;
+}
+
+#workskin .typeit :nth-child(2) {
+    transition-delay: 0.02;
+}
+
+#workskin .typeit :nth-child(3) {
+    transition-delay: 0.03;
+}
+
+#workskin .typeit :nth-child(4) {
+    transition-delay: 0.04;
+}
+
+#workskin .typeit :nth-child(5) {
+    transition-delay: 0.05;
+}
+
+#workskin .typeit :nth-child(6) {
+    transition-delay: 0.06;
+}
+
+#workskin .typeit :nth-child(7) {
+    transition-delay: 0.07;
+}
+
+#workskin .typeit :nth-child(8) {
+    transition-delay: 0.08;
+}
+
+#workskin .typeit :nth-child(9) {
+    transition-delay: 0.09;
+}
+
+#workskin .typeit :nth-child(10) {
+    transition-delay: 0.1;
+}
+
+#workskin .typeit :nth-child(11) {
+    transition-delay: 0.11;
+}
+
+#workskin .typeit :nth-child(12) {
+    transition-delay: 0.12;
+}
+
+#workskin .typeit :nth-child(13) {
+    transition-delay: 0.13;
+}
+
+#workskin .typeit :nth-child(14) {
+    transition-delay: 0.14;
+}
+
+#workskin .typeit :nth-child(15) {
+    transition-delay: 0.15;
+}
+
+#workskin .typeit :nth-child(16) {
+    transition-delay: 0.16;
+}
+
+#workskin .typeit :nth-child(17) {
+    transition-delay: 0.17;
+}
+
+#workskin .typeit :nth-child(18) {
+    transition-delay: 0.18;
+}
+
+#workskin .typeit :nth-child(19) {
+    transition-delay: 0.19;
+}
+
+#workskin .typeit :nth-child(20) {
+    transition-delay: 0.2;
+}
+
+#workskin .typeit :nth-child(21) {
+    transition-delay: 0.21;
+}
+
+#workskin .typeit :nth-child(22) {
+    transition-delay: 0.22;
+}
+
+#workskin .typeit :nth-child(23) {
+    transition-delay: 0.23;
+}
+
+#workskin .typeit :nth-child(24) {
+    transition-delay: 0.24;
+}
+
+#workskin .typeit :nth-child(25) {
+    transition-delay: 0.25;
+}
+
+#workskin .typeit :nth-child(26) {
+    transition-delay: 0.26;
+}
+
+#workskin .typeit :nth-child(27) {
+    transition-delay: 0.27;
+}
+
+#workskin .typeit :nth-child(28) {
+    transition-delay: 0.28;
+}
+
+#workskin .typeit :nth-child(29) {
+    transition-delay: 0.29;
+}
+
+#workskin .typeit :nth-child(30) {
+    transition-delay: 0.3;
+}
+
+#workskin .typeit :nth-child(31) {
+    transition-delay: 0.31;
+}
+
+#workskin .typeit :nth-child(32) {
+    transition-delay: 0.32;
+}
+
+#workskin .typeit :nth-child(33) {
+    transition-delay: 0.33;
+}
+
+#workskin .typeit :nth-child(34) {
+    transition-delay: 0.34;
+}
+
+#workskin .typeit :nth-child(35) {
+    transition-delay: 0.35;
+}
+
+#workskin .typeit :nth-child(36) {
+    transition-delay: 0.36;
+}
+
+#workskin .typeit :nth-child(37) {
+    transition-delay: 0.37;
+}
+
+#workskin .typeit :nth-child(38) {
+    transition-delay: 0.38;
+}
+
+#workskin .typeit :nth-child(39) {
+    transition-delay: 0.39;
+}
+
+#workskin .typeit :nth-child(40) {
+    transition-delay: 0.4;
+}
+
+#workskin .typeit :nth-child(41) {
+    transition-delay: 0.41;
+}
+
+#workskin .typeit :nth-child(42) {
+    transition-delay: 0.42;
+}
+
+#workskin .typeit :nth-child(43) {
+    transition-delay: 0.43;
+}
+
+#workskin .typeit :nth-child(44) {
+    transition-delay: 0.44;
+}
+
+#workskin .typeit :nth-child(45) {
+    transition-delay: 0.45;
+}
+
+#workskin .typeit :nth-child(46) {
+    transition-delay: 0.46;
+}
+
+#workskin .typeit :nth-child(47) {
+    transition-delay: 0.47;
+}
+
+#workskin .typeit :nth-child(48) {
+    transition-delay: 0.48;
+}
+
+#workskin .typeit :nth-child(49) {
+    transition-delay: 0.49;
+}
+
+#workskin .typeit :nth-child(50) {
+    transition-delay: 0.5;
+}
+
+#workskin .typeit :nth-child(51) {
+    transition-delay: 0.51;
+}
+
+#workskin .typeit :nth-child(52) {
+    transition-delay: 0.52;
+}
+
+#workskin .typeit :nth-child(53) {
+    transition-delay: 0.53;
+}
+
+#workskin .typeit :nth-child(54) {
+    transition-delay: 0.54;
+}
+
+#workskin .typeit :nth-child(55) {
+    transition-delay: 0.55;
+}
+
+#workskin .typeit :nth-child(56) {
+    transition-delay: 0.56;
+}
+
+#workskin .typeit :nth-child(57) {
+    transition-delay: 0.57;
+}
+
+#workskin .typeit :nth-child(58) {
+    transition-delay: 0.58;
+}
+
+#workskin .typeit :nth-child(59) {
+    transition-delay: 0.59;
+}
+
+#workskin .typeit :nth-child(60) {
+    transition-delay: 0.6;
+}
+
+#workskin .typeit :nth-child(61) {
+    transition-delay: 0.61;
+}
+
+#workskin .typeit :nth-child(62) {
+    transition-delay: 0.62;
+}
+
+#workskin .typeit :nth-child(63) {
+    transition-delay: 0.63;
+}
+
+#workskin .typeit :nth-child(64) {
+    transition-delay: 0.64;
+}
+
+#workskin .typeit :nth-child(65) {
+    transition-delay: 0.65;
+}
+
+#workskin .typeit :nth-child(66) {
+    transition-delay: 0.66;
+}
+
+#workskin .typeit :nth-child(67) {
+    transition-delay: 0.67;
+}
+
+#workskin .typeit :nth-child(68) {
+    transition-delay: 0.68;
+}
+
+#workskin .typeit :nth-child(69) {
+    transition-delay: 0.69;
+}
+
+#workskin .typeit :nth-child(70) {
+    transition-delay: 0.7;
+}
+
+#workskin .typeit :nth-child(71) {
+    transition-delay: 0.71;
+}
+
+#workskin .typeit :nth-child(72) {
+    transition-delay: 0.72;
+}
+
+#workskin .typeit :nth-child(73) {
+    transition-delay: 0.73;
+}
+
+#workskin .typeit :nth-child(74) {
+    transition-delay: 0.74;
+}
+
+#workskin .typeit :nth-child(75) {
+    transition-delay: 0.75;
+}
+
+#workskin .typeit :nth-child(76) {
+    transition-delay: 0.76;
+}
+
+#workskin .typeit :nth-child(77) {
+    transition-delay: 0.77;
+}
+
+#workskin .typeit :nth-child(78) {
+    transition-delay: 0.78;
+}
+
+#workskin .typeit :nth-child(79) {
+    transition-delay: 0.79;
+}
+
+#workskin .typeit :nth-child(80) {
+    transition-delay: 0.8;
+}
+
+#workskin .typeit :nth-child(81) {
+    transition-delay: 0.81;
+}
+
+#workskin .typeit :nth-child(82) {
+    transition-delay: 0.82;
+}
+
+#workskin .typeit :nth-child(83) {
+    transition-delay: 0.83;
+}
+
+#workskin .typeit :nth-child(84) {
+    transition-delay: 0.84;
+}
+
+#workskin .typeit :nth-child(85) {
+    transition-delay: 0.85;
+}
+
+#workskin .typeit :nth-child(86) {
+    transition-delay: 0.86;
+}
+
+#workskin .typeit :nth-child(87) {
+    transition-delay: 0.87;
+}
+
+#workskin .typeit :nth-child(88) {
+    transition-delay: 0.88;
+}
+
+#workskin .typeit :nth-child(89) {
+    transition-delay: 0.89;
+}
+
+#workskin .typeit :nth-child(90) {
+    transition-delay: 0.9;
+}
+
+#workskin .typeit :nth-child(91) {
+    transition-delay: 0.91;
+}
+
+#workskin .typeit :nth-child(92) {
+    transition-delay: 0.92;
+}
+
+#workskin .typeit :nth-child(93) {
+    transition-delay: 0.93;
+}
+
+#workskin .typeit :nth-child(94) {
+    transition-delay: 0.94;
+}
+
+#workskin .typeit :nth-child(95) {
+    transition-delay: 0.95;
+}
+
+#workskin .typeit :nth-child(96) {
+    transition-delay: 0.96;
+}
+
+#workskin .typeit :nth-child(97) {
+    transition-delay: 0.97;
+}
+
+#workskin .typeit :nth-child(98) {
+    transition-delay: 0.98;
+}
+
+#workskin .typeit :nth-child(99) {
+    transition-delay: 0.99;
+}
+
+#workskin .typeit :nth-child(100) {
+    transition-delay: 1;
+}
+
+#workskin .typeit :nth-child(101) {
+    transition-delay: 1.01;
+}
+
+#workskin .typeit :nth-child(102) {
+    transition-delay: 1.02;
+}
+
+#workskin .typeit :nth-child(103) {
+    transition-delay: 1.03;
+}
+
+#workskin .typeit :nth-child(104) {
+    transition-delay: 1.04;
+}
+
+#workskin .typeit :nth-child(105) {
+    transition-delay: 1.05;
+}
+
+#workskin .typeit :nth-child(106) {
+    transition-delay: 1.06;
+}
+
+#workskin .typeit :nth-child(107) {
+    transition-delay: 1.07;
+}
+
+#workskin .typeit :nth-child(108) {
+    transition-delay: 1.08;
+}
+
+#workskin .typeit :nth-child(109) {
+    transition-delay: 1.09;
+}
+
+#workskin .typeit :nth-child(110) {
+    transition-delay: 1.1;
+}
+
+#workskin .typeit :nth-child(111) {
+    transition-delay: 1.11;
+}
+
+#workskin .typeit :nth-child(112) {
+    transition-delay: 1.12;
+}
+
+#workskin .typeit :nth-child(113) {
+    transition-delay: 1.13;
+}
+
+#workskin .typeit :nth-child(114) {
+    transition-delay: 1.14;
+}
+
+#workskin .typeit :nth-child(115) {
+    transition-delay: 1.15;
+}
+
+#workskin .typeit :nth-child(116) {
+    transition-delay: 1.16;
+}
+
+#workskin .typeit :nth-child(117) {
+    transition-delay: 1.17;
+}
+
+#workskin .typeit :nth-child(118) {
+    transition-delay: 1.18;
+}
+
+#workskin .typeit :nth-child(119) {
+    transition-delay: 1.19;
+}
+
+#workskin .typeit :nth-child(120) {
+    transition-delay: 1.2;
+}
+
+#workskin .typeit :nth-child(121) {
+    transition-delay: 1.21;
+}
+
+#workskin .typeit :nth-child(122) {
+    transition-delay: 1.22;
+}
+
+#workskin .typeit :nth-child(123) {
+    transition-delay: 1.23;
+}
+
+#workskin .typeit :nth-child(124) {
+    transition-delay: 1.24;
+}
+
+#workskin .typeit :nth-child(125) {
+    transition-delay: 1.25;
+}
+
+#workskin .typeit :nth-child(126) {
+    transition-delay: 1.26;
+}
+
+#workskin .typeit :nth-child(127) {
+    transition-delay: 1.27;
+}
+
+#workskin .typeit :nth-child(128) {
+    transition-delay: 1.28;
+}
+
+#workskin .typeit :nth-child(129) {
+    transition-delay: 1.29;
+}
+
+#workskin .typeit :nth-child(130) {
+    transition-delay: 1.3;
+}
+
+#workskin .typeit :nth-child(131) {
+    transition-delay: 1.31;
+}
+
+#workskin .typeit :nth-child(132) {
+    transition-delay: 1.32;
+}
+
+#workskin .typeit :nth-child(133) {
+    transition-delay: 1.33;
+}
+
+#workskin .typeit :nth-child(134) {
+    transition-delay: 1.34;
+}
+
+#workskin .typeit :nth-child(135) {
+    transition-delay: 1.35;
+}
+
+#workskin .typeit :nth-child(136) {
+    transition-delay: 1.36;
+}
+
+#workskin .typeit :nth-child(137) {
+    transition-delay: 1.37;
+}
+
+#workskin .typeit :nth-child(138) {
+    transition-delay: 1.38;
+}
+
+#workskin .typeit :nth-child(139) {
+    transition-delay: 1.39;
+}
+
+#workskin .typeit :nth-child(140) {
+    transition-delay: 1.4;
+}
+
+#workskin .typeit :nth-child(141) {
+    transition-delay: 1.41;
+}
+
+#workskin .typeit :nth-child(142) {
+    transition-delay: 1.42;
+}
+
+#workskin .typeit :nth-child(143) {
+    transition-delay: 1.43;
+}
+
+#workskin .typeit :nth-child(144) {
+    transition-delay: 1.44;
+}
+
+#workskin .typeit :nth-child(145) {
+    transition-delay: 1.45;
+}
+
+#workskin .typeit :nth-child(146) {
+    transition-delay: 1.46;
+}
+
+#workskin .typeit :nth-child(147) {
+    transition-delay: 1.47;
+}
+
+#workskin .typeit :nth-child(148) {
+    transition-delay: 1.48;
+}
+
+#workskin .typeit :nth-child(149) {
+    transition-delay: 1.49;
+}
+
+#workskin .typeit :nth-child(150) {
+    transition-delay: 1.5;
+}
+
+#workskin .typeit :nth-child(151) {
+    transition-delay: 1.51;
+}
+
+#workskin .typeit :nth-child(152) {
+    transition-delay: 1.52;
+}
+
+#workskin .typeit :nth-child(153) {
+    transition-delay: 1.53;
+}
+
+#workskin .typeit :nth-child(154) {
+    transition-delay: 1.54;
+}
+
+#workskin .typeit :nth-child(155) {
+    transition-delay: 1.55;
+}
+
+#workskin .typeit :nth-child(156) {
+    transition-delay: 1.56;
+}
+
+#workskin .typeit :nth-child(157) {
+    transition-delay: 1.57;
+}
+
+#workskin .typeit :nth-child(158) {
+    transition-delay: 1.58;
+}
+
+#workskin .typeit :nth-child(159) {
+    transition-delay: 1.59;
+}
+
+#workskin .typeit :nth-child(160) {
+    transition-delay: 1.6;
+}
+
+#workskin .typeit :nth-child(161) {
+    transition-delay: 1.61;
+}
+
+#workskin .typeit :nth-child(162) {
+    transition-delay: 1.62;
+}
+
+#workskin .typeit :nth-child(163) {
+    transition-delay: 1.63;
+}
+
+#workskin .typeit :nth-child(164) {
+    transition-delay: 1.64;
+}
+
+#workskin .typeit :nth-child(165) {
+    transition-delay: 1.65;
+}
+
+#workskin .typeit :nth-child(166) {
+    transition-delay: 1.66;
+}
+
+#workskin .typeit :nth-child(167) {
+    transition-delay: 1.67;
+}
+
+#workskin .typeit :nth-child(168) {
+    transition-delay: 1.68;
+}
+
+#workskin .typeit :nth-child(169) {
+    transition-delay: 1.69;
+}
+
+#workskin .typeit :nth-child(170) {
+    transition-delay: 1.7;
+}
+
+#workskin .typeit :nth-child(171) {
+    transition-delay: 1.71;
+}
+
+#workskin .typeit :nth-child(172) {
+    transition-delay: 1.72;
+}
+
+#workskin .typeit :nth-child(173) {
+    transition-delay: 1.73;
+}
+
+#workskin .typeit :nth-child(174) {
+    transition-delay: 1.74;
+}
+
+#workskin .typeit :nth-child(175) {
+    transition-delay: 1.75;
+}
+
+#workskin .typeit :nth-child(176) {
+    transition-delay: 1.76;
+}
+
+#workskin .typeit :nth-child(177) {
+    transition-delay: 1.77;
+}
+
+#workskin .typeit :nth-child(178) {
+    transition-delay: 1.78;
+}
+
+#workskin .typeit :nth-child(179) {
+    transition-delay: 1.79;
+}
+
+#workskin .typeit :nth-child(180) {
+    transition-delay: 1.8;
+}
+
+#workskin .typeit :nth-child(181) {
+    transition-delay: 1.81;
+}
+
+#workskin .typeit :nth-child(182) {
+    transition-delay: 1.82;
+}
+
+#workskin .typeit :nth-child(183) {
+    transition-delay: 1.83;
+}
+
+#workskin .typeit :nth-child(184) {
+    transition-delay: 1.84;
+}
+
+#workskin .typeit :nth-child(185) {
+    transition-delay: 1.85;
+}
+
+#workskin .typeit :nth-child(186) {
+    transition-delay: 1.86;
+}
+
+#workskin .typeit :nth-child(187) {
+    transition-delay: 1.87;
+}
+
+#workskin .typeit :nth-child(188) {
+    transition-delay: 1.88;
+}
+
+#workskin .typeit :nth-child(189) {
+    transition-delay: 1.89;
+}
+
+#workskin .typeit :nth-child(190) {
+    transition-delay: 1.9;
+}
+
+#workskin .typeit :nth-child(191) {
+    transition-delay: 1.91;
+}
+
+#workskin .typeit :nth-child(192) {
+    transition-delay: 1.92;
+}
+
+#workskin .typeit :nth-child(193) {
+    transition-delay: 1.93;
+}
+
+#workskin .typeit :nth-child(194) {
+    transition-delay: 1.94;
+}
+
+#workskin .typeit :nth-child(195) {
+    transition-delay: 1.95;
+}
+
+#workskin .typeit :nth-child(196) {
+    transition-delay: 1.96;
+}
+
+#workskin .typeit :nth-child(197) {
+    transition-delay: 1.97;
+}
+
+#workskin .typeit :nth-child(198) {
+    transition-delay: 1.98;
+}
+
+#workskin .typeit :nth-child(199) {
+    transition-delay: 1.99;
+}
+
+#workskin .typeit :nth-child(200) {
+    transition-delay: 2;
+}

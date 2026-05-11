@@ -1,0 +1,50 @@
+/*$charNum: 8;*/
+
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    color: light-dark(#000000, #EEEEEE);
+}
+
+body>.breakfirst {
+    font-size: 3em;
+    width: 8ch;
+    overflow: hidden;
+    font-family: monospace !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.break {
+    animation: linebreak 40s steps(23) infinite;
+    white-space: preserve nowrap;
+}
+
+@keyframes linebreak {
+    100% {
+        transform: translateX(calc(-23 / 8 * 100%));
+    }
+}
+
+hr {
+    opacity: 0;
+}
+
+.lower {
+    vertical-align: sub
+}
+
+.higher {
+    vertical-align: super
+}
+
+.smaller {
+    display: inline-block;
+    transform: scaleX(95%);
+}
