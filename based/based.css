@@ -18,6 +18,10 @@
     opacity: 0;
 }
 
+#workskin .scrpause {
+    opacity: 0;
+}
+
 /*Title change - work title, subtitle, chapter titles*/
 
 #workskin .title {
@@ -75,7 +79,7 @@
     display: block;
 }
 
-/*Gradient background by pressuredrightnow, light mode/dark mode variants with @media (prefers-color-scheme:[])?*/
+/*Gradient background by pressuredrightnow, light mode/dark mode variants with @media (prefers-color-scheme:)?*/
 
 #workskin .letter_front {
     height: 200px;
@@ -116,6 +120,15 @@
 #workskin span {
     display: inline-block;
     width: fit-content;
+}
+
+/*to highlight what changes*/
+#workskin .name,
+#workskin .fallback,
+#workskin .ts,
+#workskin .chad {
+    color: light-dark(#690909, #e66c6c);
+    text-shadow: light-dark(rgb(255 255 255), rgb(0 0 0)) 0 0 4px;
 }
 
 #workskin .checkbox summary {
@@ -165,11 +178,15 @@
     content: "is ";
 }
 
-#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]) .name-A .fallback {
+#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):not(:has(.chadreader)[open]) .name-A .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
+}
+
+#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):has(.chadreader[open]) .name-A .fallback {
+    display: none;
 }
 
 #workskin:has(.B-1[open]):has(.B-default[open]) .correctgrammarb::before,
@@ -177,18 +194,34 @@
     content: "is ";
 }
 
-#workskin:has(.checkboxb:not(.B-default)[open]):has(.B-default[open]) .name-B .fallback {
+#workskin:has(.checkboxb:not(.B-default)[open]):has(.B-default[open]):not(:has(.chadreader)[open]) .name-B .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
 }
 
-#workskin:has(.checkboxa:not(.A-default)[open]) .name-L .fallback {
+#workskin:has(.checkboxb:not(.B-default)[open]):has(.B-default[open]):has(.chadreader[open]) .name-B .fallback {
+    display: none;
+}
+
+#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):not(:has(.chadreader)[open]) .name-L .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
+}
+
+#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):has(.chadreader[open]) .name-L .fallback {
+    display: none;
+}
+
+#workskin:has(.chadreader[open]) .chad .fallback {
+    display: none;
+}
+
+#workskin:has(.chadreader[open]) .chad::after {
+    content: "Yes! It works! Keep the box checked to have it continue working for the rest of the fic.";
 }
 
 /*If in namelist A, Minato (and only Minato) is selected, the surname name-L is changed to Arisato. In all other cases, it defaults to Yuuki.*/
@@ -207,6 +240,23 @@
 
 #workskin:has(.B-2[open]):has(.B-default[open]) .name-B::after {
     content: "Hamuko";
+}
+
+/*Choosing regular text or text-speak*/
+
+#workskin:has(.textspeak[open]) .ts .fallback {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+}
+
+#workskin:has(.textspeak[open]) .tsone::after {
+    content: "Ur going 2 b l8. Pick up duty!! Fuuka ordered frm cfood shop";
+}
+
+#workskin:has(.textspeak[open]) .tstwo::after {
+    content: "omw";
 }
 
 /*faux text animation*/
@@ -1017,4 +1067,56 @@
 
 #workskin .typeit :nth-child(200) {
     transition-delay: 2;
+}
+
+/*The following doesn't function on ao3, but I want it here as a memorial to how long I spent trying to make this damn line*/
+
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    text-color: light-dark(#000000, #eeeeee);
+}
+
+body .breakfirst {
+    font-size: 3em;
+    width: 8ch;
+    overflow: hidden;
+    font-family: monospace !important;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.break {
+    animation: linebreak 40s steps(23) infinite;
+    white-space: preserve nowrap;
+}
+
+@keyframes linebreak {
+    100% {
+        transform: translateX(calc(-23 / 8 * 100%));
+    }
+}
+
+hr {
+    opacity: 0;
+}
+
+.lower {
+    vertical-align: sub;
+}
+
+.higher {
+    vertical-align: super;
+}
+
+.smaller {
+    display: inline-block;
+    transform: scaleX(95%);
 }
