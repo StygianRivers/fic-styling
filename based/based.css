@@ -1,24 +1,29 @@
+/*general*/
+
 #workskin .image {
     width: 35em;
     max-width: 80%;
     border-color: #8b4513;
     border-style: double;
     border-width: 0.5vw;
+    margin: 2em;
 }
 
-#workskin .font-serif {
-    font-family: Cambria, Constantia, Palatino, Georgia, serif;
-}
-
-#workskin .font-monospace {
-    font-family: consolas, courier, monospace;
-}
-
-#workskin hr {
+.transparent {
     opacity: 0;
 }
 
+.down {
+    vertical-align: bottom;
+}
+
 #workskin .scrpause {
+    opacity: 0;
+}
+
+#workskin .screxclusive {
+    height: 0;
+    font-size: 0;
     opacity: 0;
 }
 
@@ -116,8 +121,7 @@
     padding-top: 0.3em;
 }
 
-#workskin .name,
-#workskin span {
+#workskin .name {
     display: inline-block;
     width: fit-content;
 }
@@ -126,7 +130,8 @@
 #workskin .name,
 #workskin .fallback,
 #workskin .ts,
-#workskin .chad {
+#workskin .chad,
+#workskin .gr {
     color: light-dark(#690909, #e66c6c);
     text-shadow: light-dark(rgb(255 255 255), rgb(0 0 0)) 0 0 4px;
 }
@@ -137,22 +142,7 @@
     position: relative;
 }
 
-#workskin .first .checkbox summary::before {
-    background-color: hsl(221, 56%, 42%);
-    border-color: hsl(221, 56%, 42%);
-    border: 1.5px solid;
-    content: "";
-    display: inline-block;
-    height: 1em;
-    margin: auto 0.5em auto -1.5em;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1em;
-}
-
-#workskin .second .checkbox summary::before,
-#workskin .third .checkbox summary::before {
+#workskin .checkbox summary::before {
     background-color: transparent;
     border: 1.5px solid;
     content: "";
@@ -165,54 +155,48 @@
     width: 1em;
 }
 
-#workskin .first .checkbox[open] summary::before {
-    background-color: transparent;
-}
-
-#workskin .second .checkbox[open] summary::before,
-#workskin .third .checkbox[open] summary::before {
+#workskin .checkbox[open] summary::before {
     background-color: hsl(221, 56%, 42%);
 }
 
-#workskin:has(.A-1[open]):has(.A-default[open]) .correctgrammara::before {
+#workskin:has(.checkboxa[open]) .correctgrammara::before {
     content: "is ";
 }
 
-#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):not(:has(.chadreader)[open]) .name-A .fallback {
+#workskin:has(.checkboxa[open]):not(:has(.chadreader)[open]) .name-A .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
 }
 
-#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):has(.chadreader[open]) .name-A .fallback {
+#workskin:has(.checkboxa[open]):has(.chadreader[open]) .name-A .fallback {
     display: none;
 }
 
-#workskin:has(.B-1[open]):has(.B-default[open]) .correctgrammarb::before,
-#workskin:has(.B-2[open]):has(.B-default[open]) .correctgrammarb::before {
+#workskin:has(.checkboxb[open]) .correctgrammarb::before {
     content: "is ";
 }
 
-#workskin:has(.checkboxb:not(.B-default)[open]):has(.B-default[open]):not(:has(.chadreader)[open]) .name-B .fallback {
+#workskin:has(.checkboxb[open]):not(:has(.chadreader[open])) .name-B .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
 }
 
-#workskin:has(.checkboxb:not(.B-default)[open]):has(.B-default[open]):has(.chadreader[open]) .name-B .fallback {
+#workskin:has(.checkboxb[open]):has(.chadreader[open]) .name-B .fallback {
     display: none;
 }
 
-#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):not(:has(.chadreader)[open]) .name-L .fallback {
+#workskin:has(.checkboxa[open]):not(:has(.chadreader)[open]) .name-L .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
 }
 
-#workskin:has(.checkboxa:not(.A-default)[open]):has(.A-default[open]):has(.chadreader[open]) .name-L .fallback {
+#workskin:has(.checkboxa[open]):has(.chadreader[open]) .name-L .fallback {
     display: none;
 }
 
@@ -221,42 +205,156 @@
 }
 
 #workskin:has(.chadreader[open]) .chad::after {
-    content: "Yes! It works! Keep the box checked to have it continue working for the rest of the fic.";
+    content: "Yes! It works! Keep the box checked/the button expanded to have it continue working for the rest of the fic.";
 }
 
 /*If in namelist A, Minato (and only Minato) is selected, the surname name-L is changed to Arisato. In all other cases, it defaults to Yuuki.*/
 
-#workskin:has(.A-1[open]):has(.A-default[open]) .name-A::after {
+#workskin:has(.A-default[open]) .name-A::after {
+    content: "Makoto";
+}
+
+#workskin:has(.A-1[open]) .name-A::after {
     content: "Minato";
 }
 
-#workskin:has(.A-1[open]):has(.A-default[open]) .name-L::after {
+#workskin:has(.A-default[open]) .name-L::after {
+    content: "Yuuki";
+}
+
+#workskin:has(.A-1[open]) .name-L::after {
     content: "Arisato";
 }
 
-#workskin:has(.B-1[open]):has(.B-default[open]) .name-B::after {
+#workskin:has(.B-default[open]) .name-B::after {
+    content: "Kotone";
+}
+
+#workskin:has(.B-1[open]) .name-B::after {
     content: "Minako";
 }
 
-#workskin:has(.B-2[open]):has(.B-default[open]) .name-B::after {
+#workskin:has(.B-2[open]) .name-B::after {
     content: "Hamuko";
 }
 
 /*Choosing regular text or text-speak*/
 
-#workskin:has(.textspeak[open]) .ts .fallback {
+#workskin:not(:has(.textspeak[open])) .tszero {
+    display: none;
+}
+
+#workskin:has(.chadreader[open]) .ts {
+    display: none;
+}
+
+#workskin:has(.textspeak[open]):not(:has(.chadreader[open])) .ts .fallback {
     height: 0;
     font-size: 0;
     opacity: 0;
     width: 0;
 }
 
-#workskin:has(.textspeak[open]) .tsone::after {
+#workskin:has(.textspeak[open]):not(:has(.chadreader[open])) .tszero {
+    display: none;
+}
+
+#workskin:has(.textspeak[open]):not(:has(.chadreader[open])) .tsone::after {
     content: "Ur going 2 b l8. Pick up duty!! Fuuka ordered frm cfood shop";
 }
 
-#workskin:has(.textspeak[open]) .tstwo::after {
+#workskin:has(.textspeak[open]):not(:has(.chadreader[open])) .tstwo::after {
     content: "omw";
+}
+
+/*Content warning*/
+
+#workskin .grcont>summary,
+#workskin .action>summary {
+    list-style: none;
+}
+
+#workskin:has(.grcont[open]) .grcont {
+    display: none;
+}
+
+#workskin:has(.grcont[open]) .grreveal {
+    display: flow;
+}
+
+#workskin:has(.grcheckbox[open]) .original-gr {
+    display: none;
+}
+
+#workskin:has(.grcheckbox[open]) .replaced-gr {
+    display: flow;
+}
+
+/*ao3 style button*/
+
+#workskin .action {
+    background: #333;
+    border-radius: 0.25em;
+}
+
+#workskin .action a:active {
+    background: #000;
+    border-color: #555;
+    box-shadow: -1px -1px 3px #000;
+}
+
+#workskin .action:hover,
+#workskin .action:focus {
+    color: #fff;
+    box-shadow: inset 2px 2px 2px #000;
+}
+
+#workskin .action a:link,
+#workskin .action a:visited {
+    color: #999;
+}
+
+#workskin a,
+#workskin a:link,
+#workskin a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+#workskin .action,
+#workskin .action:link,
+#workskin .action a:link,
+#workskin .action a {
+    background: #555;
+    border-color: #222;
+    color: #eee;
+    box-shadow: inset 0 -8px 4px #232323, inset 0 8px 7px #555;
+    text-shadow: none;
+    padding: 0.25em 0.75em;
+}
+
+#workskin .action:hover {
+    color: #999;
+    border-color: #000;
+    box-shadow: inset 2px 2px 2px #000;
+}
+
+/*fic pitch*/
+
+#workskin .smol {
+    width: 50%;
+}
+
+#workskin .ficdeets {
+    margin: 2em;
+}
+
+#workskin:has(.ficdeets[open]) .ficdeets {
+    display: none;
+}
+
+#workskin:has(.ficdeets[open]) .ficpitch {
+    display: flow;
 }
 
 /*faux text animation*/
@@ -1104,7 +1202,7 @@ body .breakfirst {
     }
 }
 
-hr {
+.transparent {
     opacity: 0;
 }
 
