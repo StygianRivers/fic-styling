@@ -9,11 +9,16 @@
     margin: 2em;
 }
 
-.transparent {
+#workskin .transparent {
     opacity: 0;
 }
 
-.down {
+#workskin .sans {
+    font-family: 1em "Lucida Grande", "Lucida Sans Unicode", Verdana, Helvetica,
+        sans-serif;
+}
+
+#workskin .down {
     vertical-align: bottom;
 }
 
@@ -25,6 +30,12 @@
     height: 0;
     font-size: 0;
     opacity: 0;
+}
+
+#workskin .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 /*Title change - work title, subtitle, chapter titles*/
@@ -122,7 +133,7 @@
 }
 
 #workskin .name {
-    display: inline-block;
+    display: inline flow;
     width: fit-content;
 }
 
@@ -295,6 +306,7 @@
 #workskin .action {
     background: #333;
     border-radius: 0.25em;
+    display: inline block;
 }
 
 #workskin .action a:active {
@@ -1174,7 +1186,7 @@
 }
 
 body {
-    text-color: light-dark(#000000, #eeeeee);
+    color: light-dark(#000000, #eeeeee);
 }
 
 body .breakfirst {
@@ -1215,6 +1227,6 @@ body .breakfirst {
 }
 
 .smaller {
-    display: inline-block;
+    display: inline flow;
     transform: scaleX(95%);
 }
