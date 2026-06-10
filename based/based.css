@@ -116,7 +116,9 @@
 
 /*style details tags*/
 #workskin .grcont>summary,
-#workskin .action>summary {
+#workskin .action>summary,
+#workskin .loading>summary,
+#workskin .loaded>summary {
     list-style: none;
 }
 
@@ -943,21 +945,73 @@
 
 /*faux text animation*/
 
-#workskin .typeit span {
+#workskin .typeit span,
+#workskin .loaded,
+#workskin .deskswitch,
+#workskin:has(.typeit[open]) .confirmfile,
+#workskin:has(.close[open]) .close {
     visibility: hidden;
 }
 
-#workskin:has(.typeit[open]) .typeit>summary,
-#workskin:has(.typeit[open]) .confirmfile {
+/*hide close button and ok button*/
+#workskin:has(.typeit[open]) .typeit>summary {
     display: none;
 }
 
+/*make loading text appear and disappear and button text change in sync*/
+#workskin .loading,
+#workskin .close,
+#workskin .desktext {
+    visibility: visible;
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#workskin:has(.typeit[open]) .loading {
+    position: absolute;
+    left: auto;
+    width: auto;
+    height: auto;
+    visibility: hidden;
+    transition-delay: 2s;
+}
+
+#workskin:has(.typeit[open]) .loaded {
+    position: absolute;
+    visibility: visible;
+    transition-delay: 2.5s;
+}
+
+#workskin:has(.typeit[open]) .close,
+#workskin :has(.typeit[open]) .desktext {
+    position: static;
+    left: auto;
+    width: auto;
+    height: auto;
+}
+
+#workskin:has(.typeit[open]) .desktext {
+    visibility: hidden;
+    transition-delay: 2s;
+}
+
+#workskin:has(.typeit[open]) .deskswitch {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: 45%;
+    visibility: visible;
+    transition-delay: 2s;
+}
+
+/*body text animation*/
 #workskin .typeit[open] span {
     visibility: visible;
-}
-
-#workskin:has(.close[open]) .close {
-    display: none;
 }
 
 #workskin .typeit :nth-child(1) {
