@@ -18,14 +18,18 @@
 
 #workskin .workskincheck,
 #workskin:has(#chapter-1):has(#chapter-2) .entire_work_check,
-#workskin:has(.checkboxa[open]) .checkboxa,
-#workskin:has(.checkboxb[open]) .checkboxb,
-#workskin:has(.checkboxa[open]):has(.checkboxb[open]) .changename,
-#workskin:has(.chadreader[open]) .so_no_chad {
-    display: none;
+#workskin:has(.chadreader[open]) .so_no_chad,
+#workskin:has(.checkboxa[open]):not(:has(.ch2name[open])) .prevchecka2,
+#workskin:has(.checkboxb[open]):not(:has(.ch2name[open])) .prevcheckb2,
+#workskin:has(.checkboxa[open]):has(.checkboxb[open]):not(:has(.ch2name[open])) .changename,
+#workskin:has(.checkboxa[open]):not(:has(.ch3name[open])) .prevchecka3,
+#workskin:has(.checkboxb[open]):not(:has(.ch3name[open])) .prevcheckb3,
+#workskin:has(.checkboxa[open]):has(.checkboxb[open]):not(:has(.ch3name[open])) .ch3name,
+{
+display: none;
 }
 
-#workskin .marked_later_check {
+#workskin:is(*:has(.mark [action$='mark_as_read']) *) .marked_later_check {
     display: inline;
 }
 
@@ -122,7 +126,7 @@
 }
 
 #workskin .staticbreak {
-    font-size: 4em;
+    font-size: 2.5em;
     margin: 0;
     line-height: 0;
     font-family: monospace;
