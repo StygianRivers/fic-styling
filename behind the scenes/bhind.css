@@ -1,0 +1,260 @@
+#workskin body {
+    position: relative;
+    background: #333;
+    color: #fff;
+}
+
+#workskin .flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#workskin .phone {
+    width: 500px;
+    max-width: 95%;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 1em auto;
+    border: 2px ridge #aaa;
+    padding: .5em 0;
+    display: table;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+#workskin .phone h3 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#workskin .phoneheader {
+    border-bottom: 2px ridge #b2b2b2;
+    font-weight: bold;
+    padding-bottom: .5em;
+    padding-top: .5em;
+    margin: 0;
+    text-align: center;
+    display: block;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+#workskin .fadedetails>summary {
+    list-style: none;
+    padding: 0.5em;
+    cursor: pointer;
+    width: fit-content;
+    margin: 0 100em;
+    white-space: nowrap;
+    border: 2px solid red;
+    border-radius: 0.3em;
+}
+
+#workskin .fadedetails>summary::hover {
+    border: 3px solid red;
+    border-radius: 0.3em;
+    box-shadow: inset -4px -4px 1px orange;
+}
+
+#workskin .fadedetails[open]>summary {
+    border: 3px solid red;
+    border-radius: 0.3em;
+    box-shadow: 0px 0px 3px orange;
+}
+
+
+#workskin .fadedetails summary::hover .overlay {
+    position: absolute;
+    top: 3em;
+    left: 39em;
+    width: 13em;
+    height: 2.5em;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    border-radius: 0.3em;
+}
+
+#workskin .fadedetails[open] summary .overlay {
+    position: absolute;
+    top: 3em;
+    left: 39em;
+    width: 13em;
+    height: 2.5em;
+    background: rgba(0, 0, 0, 0.15);
+    border: 2px solid transparent;
+    border-radius: 0.3em;
+}
+
+#workskin .text {
+    margin: .5em .5em .5em 1em;
+    margin-top: 0;
+    border-radius: 1em;
+    padding: .5em 1em;
+    max-width: 90%;
+    clear: both;
+    position: relative;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    float: left;
+    border-bottom-left-radius: .1em;
+    outline: 2px ridge #c5c5ca;
+}
+
+#workskin .grouptext {
+    padding: .75em 0;
+    font-size: .75em;
+    line-height: .75em;
+    width: fit-content;
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    margin-left: 0.9em;
+    padding-bottom: .5em;
+    text-align: left;
+    border-bottom: 0.15em solid #c5c5ca;
+    border-left: 0.8em solid transparent;
+}
+
+#workskin .grouptext>strong {
+    font-weight: normal;
+}
+
+#workskin .fade-typing strong {
+    font-size: 1.1em;
+}
+
+#workskin .text+.text {
+    border-top-left-radius: 0.1em;
+}
+
+#workskin .tail.text::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 0.6em;
+    height: 1em;
+    z-index: -1;
+    left: -0.725em;
+    border-right: 0.1em solid #c5c5ca;
+    border-top-right-radius: 1.25em 0.625em;
+}
+
+#workskin .hiddeninfo {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#workskin .visibly {
+    visibility: hidden;
+}
+
+#workskin:has(.fadedetails[open]) .fade-typing {
+    visibility: visible;
+    transition: visibility 0s 9999999s;
+}
+
+#workskin .relatyping {
+    position: relative;
+}
+
+#workskin:has(.fadedetails[open]) .is-typing {
+    position: absolute;
+    top: 6em;
+    left: -1em;
+}
+
+#workskin:has(.fadedetails[open]) .m1 {
+    visibility: visible;
+    transition: all 2s linear 2s;
+}
+
+#workskin:has(.fadedetails[open]) .m2 {
+    visibility: visible;
+    transition: all 2s linear 4s;
+}
+
+#workskin:has(.fadedetails[open]) .t1 {
+    transition: all 5s linear 5s;
+}
+
+#workskin:has(.fadedetails[open]) .t2 {
+    transition: all 2s linear 11s;
+}
+
+#workskin:has(.fadedetails[open]) .m3 {
+    visibility: visible;
+    transition: all 2s linear 14s;
+}
+
+#workskin:has(.fadedetails[open]) .m4 {
+    visibility: visible;
+    transition: all 2s linear 17s;
+}
+
+/*Text-speak replacement*/
+/*checkboxes*/
+#workskin .namelist,
+#workskin li {
+    list-style: none;
+    padding-top: 0.3em;
+}
+
+#workskin li.regular_list {
+    margin: initial;
+    padding: initial;
+}
+
+#workskin .name {
+    display: inline flow;
+    width: fit-content;
+}
+
+#workskin .checkbox summary {
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+#workskin .checkbox summary::before {
+    background-color: transparent;
+    border: 1.5px solid;
+    content: "";
+    display: block;
+    height: 1em;
+    margin: auto 0.5em auto -1.5em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1em;
+}
+
+#workskin .checkbox[open] summary::before {
+    background-color: #289af7;
+}
+
+/*Hide default for everyone except screen reader users*/
+#workskin:not(:has(.notextspeak[open])) .fallback {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*Replace default*/
+#workskin:not(:has(.notextspeak[open])) .text.m1::after {
+    content: "this is a txt msage";
+}
+
+#workskin:not(:has(.notextspeak[open])) .text.m3::after {
+    content: "this is a txt msage";
+}
+
+#workskin:not(:has(.notextspeak[open])) .text.m4::after {
+    content: "this is anothr txt msage";
+}
