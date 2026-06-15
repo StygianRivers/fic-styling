@@ -9,6 +9,7 @@ def rembrackets(onemessage):
     matchthree = regmatch[3]
     return matchone, matchtwo, matchthree
 
+
 with open("example.md", "r") as f:
     contents = f.read()
 
@@ -18,8 +19,8 @@ newlist = [rembrackets(x) for x in messages]
 
 def tryhtml(htime, huser, hmessage):
     return f"""
-<p class="username visibly m3"><strong>{huser}</p></strong></p>
-<p class="text visibly m3"><span class="fallback">{hmessage}</span></p>
+<p class="username visibly m"><strong>{huser}</p></strong></p>
+<p class="text visibly m"><span class="fallback">{hmessage}</span></p>
 """
 
 thirdlist = [tryhtml(bracks, username, messtring) for bracks, username, messtring in newlist]
@@ -28,5 +29,7 @@ print(finalformat)
 
 def trycss(cmessage, ctyping):
     return f"""
-
 """
+
+with open ("output.html", "w") as fo:
+    print(finalformat, file=fo) 
