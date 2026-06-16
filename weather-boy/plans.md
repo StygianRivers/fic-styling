@@ -16,10 +16,10 @@ sticky pop-up **menu**
 - calendar: I could totally make this work with up to 31 <details> per month. I wouldn't need to figure out a way to switch month screens if I make sure the month shown on screen is always the current one (which I should do either way). :focus should have the same effect as [open], which is displaying that <details>' assigned information to the right of the calendar.
 
 Any non-Makoto interlude chapter(make them chapters not just sections): menu does not appear in that chapter (unless reading in full work mode)(full work mode readers will have to just deal with the menu not matching canon if they're too lazy to press any of the buttons)(what if they refresh the page though?) 
-- put an update-menu button of some kind at the very start of the fic and put the update it causes as a default in every chapter after one. Then if it's *not* active, which indicates a reader in full work mode who either hasn't been pressing buttons or refreshed the page, throw up an ERROR in the menu rather than any data. Still same font as the details list
+- put an update-menu button of some kind at the very start of the fic and put the update it causes as a default in every chapter after one. Then if it's *not* active, which indicates a reader in full work mode who either hasn't been pressing buttons or refreshed the page, throw up an ERROR in the menu rather than any data. Still same font as the details list.
 
 Epilogue:
 - menu is there (more indication that POV is still (partially) Makoto's)
-- when opening the menu, all you get is an ERROR (selector: #chapter-[epiloguenumber] AND #chapter-1 .last-stat-change (The Universe added? Full work readers would not get the chance to see the other cards disappear before they see the error, but chapter-by-chapter readers would))
+- when opening the menu, all you get is an ERROR (selector: :has(#chapter-[epiloguenumber]) AND :has(#chapter-1) .last-stat-change (The Universe added? Full work readers would not get the chance to see the other cards disappear before they see the error, but chapter-by-chapter readers would))
 
 Known issue to figure out: ao3 broke sticky a few days ago?

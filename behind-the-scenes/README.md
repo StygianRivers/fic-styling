@@ -6,7 +6,6 @@
 - fancy button to open chat
 - message tails
 
-
 **To do:**
 
 - figure out whether screen readers will read text after transition-delay (if not, warn screen reader users to turn off the workskin)
@@ -14,38 +13,20 @@
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
 - test on ao3
 
-**Python generator**
+
+**To do: Python generator**
 - auto-bold tags ( @.* )
-- if preceding message is by the same user, remove username
-- add output file (one css, one html)
-- iterate each message to add m# class
+- if preceding message is by the same user, remove username for current message
 - insert typing indications if message is long, automatic length based on user ID and message length, wrap in relatyping divs
-- insert custom typing indicators for each [#min] indicating hesitation, option multiple per
-  - wrap multiple sibling indicators in relatyping div 
-- iterate each typing indication to add t# class
+  - if user = minato, count message characters and produce a set typing length based on that (but only for anything over 5 characters)
+  - if user != minato, count message words(separated by spaces) and produce a set typing length based on that (but only for anything over 4 words)
+- insert custom typing indicators for each [#*] indicating hesitation, option of multiple typing indicators per [#*]
+  - leave out [string] indicators without a number at the start
+  - wrap multiple sibling indicators in a single relatyping div 
+- iterate each typing indication to add .t# class
 - per hmessage, input alt text that will become the default
-- per message, input number to output transition delay (add to last message's delay number)
+  - ideally the messages would appear one by one and let me type alt text for each, without having to format it manually at all, then immediately move on to the next message when I hit enter
+    - replacing the hmessage text with the alt text at that point
+- per message, input number to output transition delay (add to last message's or indicator's delay number)
 - per typing indication, input two numbers to output transition delay and blink duration
-- generate the css of those classes (using hmessage for content)
-- relatyping divs
-
-**Optional makes-my-life-easier**
-- type messages without markdown to have them immediately added to the output file with the same html formatting 
-
-
-**Optional Fancy GUI Generator**
-
-**would need**
-- add alt text to each message
-- transition delay in seconds input (or in seconds since last message's input? may be more workable)
-- 'character is typing' indicator add buttons
-  - pick how long it stays visible
-**Super optional**
-- add option to remove all tails
-- add option to switch between workskin styling
-- add the option for more chatters
-- add the option for POV chatter
-- make 'character is typing' text customizable
-- add the option to pick colored usernames and borders for each chatter
-- option to change message order
 

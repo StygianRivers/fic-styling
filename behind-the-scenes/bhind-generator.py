@@ -9,27 +9,47 @@ def rembrackets(onemessage):
     matchthree = regmatch[3]
     return matchone, matchtwo, matchthree
 
-
 with open("example.md", "r") as f:
     contents = f.read()
 
 messages = contents.strip().split("\n\n")
 
-newlist = [rembrackets(x) for x in messages]
-
-def tryhtml(htime, huser, hmessage):
+def trycss(cclass, cmessage):
     return f"""
-<p class="username visibly m"><strong>{huser}</p></strong></p>
-<p class="text visibly m"><span class="fallback">{hmessage}</span></p>
+#workskin:has(.fadedetails[open]) .m{cclass} {{
+visibility: visible;
+transition: all 2s linear 2s;
+}}
+#workskin:not(:has(.notextspeak[open])) .text.m{cclass}::after {{
+    content: "{cmessage}";
+}}
 """
 
-thirdlist = [tryhtml(bracks, username, messtring) for bracks, username, messtring in newlist]
-finalformat = "\n".join(thirdlist)
-print(finalformat)
-
-def trycss(cmessage, ctyping):
+def tryhtml(huser, hmessage, hclass):
     return f"""
+<p class="username visibly m{hclass}"><strong>{huser}</p></strong></p>
+<p class="text visibly m{hclass}"><span class="fallback">{hmessage}</span></p>
 """
 
-with open ("output.html", "w") as fo:
-    print(finalformat, file=fo) 
+html = []
+css = []
+for i, msg in enumerate(messages):
+  (time, user, message) = rembrackets(msg)
+  msg_html = tryhtml(user, message, i)
+  msg_css = trycss(i, message)
+  html.append(msg_html)
+  css.append(msg_css)
+
+print(css)
+
+finalhtml = "\n".join(html)
+print(finalhtml)
+
+finalcss = "\n".join(css)
+print(finalcss)
+
+with open ("output.html", "w") as fohtml:
+    print(finalhtml, file=fohtml) 
+
+with open ("output.css", "w") as focss:
+    print(finalcss, file=focss)

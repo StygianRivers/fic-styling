@@ -182,34 +182,6 @@
     left: -1em;
 }
 
-#workskin:has(.fadedetails[open]) .m1 {
-    visibility: visible;
-    transition: all 2s linear 2s;
-}
-
-#workskin:has(.fadedetails[open]) .m2 {
-    visibility: visible;
-    transition: all 2s linear 4s;
-}
-
-#workskin:has(.fadedetails[open]) .t1 {
-    transition: all 5s linear 5s;
-}
-
-#workskin:has(.fadedetails[open]) .t2 {
-    transition: all 2s linear 11s;
-}
-
-#workskin:has(.fadedetails[open]) .m3 {
-    visibility: visible;
-    transition: all 2s linear 14s;
-}
-
-#workskin:has(.fadedetails[open]) .m4 {
-    visibility: visible;
-    transition: all 2s linear 17s;
-}
-
 /*Text-speak replacement*/
 /*checkboxes (by deathbymistletoe)*/
 #workskin .namelist,
@@ -261,13 +233,42 @@
     overflow: hidden;
 }
 
-/*Replace default*/
+/*code that should be generated (unique per message)*/
+
+#workskin:has(.fadedetails[open]) .m1 {
+    visibility: visible;
+    transition: all 2s linear 2s;
+}
+
 #workskin:not(:has(.notextspeak[open])) .text.m1::after {
     content: "this is a txt msage";
 }
 
+#workskin:has(.fadedetails[open]) .m2 {
+    visibility: visible;
+    transition: all 2s linear 4s;
+}
+
+#workskin:has(.fadedetails[open]) .t1 {
+    transition: all 5s linear 5s;
+}
+
+#workskin:has(.fadedetails[open]) .t2 {
+    transition: all 2s linear 11s;
+}
+
+#workskin:has(.fadedetails[open]) .m3 {
+    visibility: visible;
+    transition: all 2s linear 14s;
+}
+
 #workskin:not(:has(.notextspeak[open])) .text.m3::after {
     content: "this is a txt msage";
+}
+
+#workskin:has(.fadedetails[open]) .m4 {
+    visibility: visible;
+    transition: all 2s linear 17s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m4::after {
