@@ -1,72 +1,130 @@
 
-#workskin:has(.fadedetails[open]) .m0 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m0::after {
-    content: "why???";
-}
+            #workskin:has(.fadedetails[open]) .m0 {
+            visibility: visible;
+            transition: all 1s linear 3s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m0::after {
+                content: "sore subject";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m1 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m1::after {
-    content: "i have my suspicions";
-}
+            #workskin:has(.fadedetails[open]) .m1 {
+            visibility: visible;
+            transition: all 1s linear 6s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m1::after {
+                content: "my bad";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m2 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m2::after {
-    content: "but she's basically unconscious like i was.";
-}
+            #workskin:has(.fadedetails[open]) .m2 {
+            visibility: visible;
+            transition: all 1s linear 9s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m2::after {
+                content: "!!!???????";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m3 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m3::after {
-    content: "Wait Akira weren't you dead";
-}
+            #workskin:has(.fadedetails[open]) .m3 {
+            visibility: visible;
+            transition: all 1s linear 12s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m3::after {
+                content: "be so fr with me guys am i haunted forever";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m4 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m4::after {
-    content: "sore subject";
-}
+            #workskin:has(.fadedetails[open]) .m4 {
+            visibility: visible;
+            transition: all 1s linear 15s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m4::after {
+                content: "";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m5 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m5::after {
-    content: "my bad";
-}
+            #workskin:has(.fadedetails[open]) .m0 {
+            visibility: visible;
+            transition: all 1s linear 0s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m0::after {
+                content: "why???";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m6 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m6::after {
-    content: "!!!???????";
-}
+            #workskin:has(.fadedetails[open]) .m1 {
+            visibility: visible;
+            transition: all 1s linear 5s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m1::after {
+                content: "i have my suspicions";
+            }
+            
 
-#workskin:has(.fadedetails[open]) .m7 {
-visibility: visible;
-transition: all 2s linear 2s;
-}
-#workskin:not(:has(.notextspeak[open])) .text.m7::after {
-    content: "be so fr with me guys am i haunted forever";
-}
+            #workskin:has(.fadedetails[open]) .m2 {
+            visibility: visible;
+            transition: all 1s linear 11s;
+            }
 
+            #workskin:not(:has(.notextspeak[open])) .text.m2::after {
+                content: "but she's basically unconscious like i was.";
+            }
+            
+
+            #workskin:has(.fadedetails[open]) .m3 {
+            visibility: visible;
+            transition: all 1s linear 16s;
+            }
+
+            #workskin:not(:has(.notextspeak[open])) .text.m3::after {
+                content: "Wait Akira weren't you dead";
+            }
+            
+
+            #workskin:has(.fadedetails[open]) .m4 {
+            visibility: visible;
+            transition: all 1s linear 66s;
+            }
+
+            #workskin:not(:has(.notextspeak[open])) .text.m4::after {
+                content: "sore subject";
+            }
+            
+
+            #workskin:has(.fadedetails[open]) .m5 {
+            visibility: visible;
+            transition: all 1s linear 72s;
+            }
+
+            #workskin:not(:has(.notextspeak[open])) .text.m5::after {
+                content: "my bad";
+            }
+            
+
+            #workskin:has(.fadedetails[open]) .m6 {
+            visibility: visible;
+            transition: all 1s linear 82s;
+            }
+
+            #workskin:not(:has(.notextspeak[open])) .text.m6::after {
+                content: "!!!???????";
+            }
+            
+
+            #workskin:has(.fadedetails[open]) .m7 {
+            visibility: visible;
+            transition: all 1s linear 89s;
+            }
+
+            #workskin:not(:has(.notextspeak[open])) .text.m7::after {
+                content: "be so fr with me guys am i haunted forever";
+            }
+            
