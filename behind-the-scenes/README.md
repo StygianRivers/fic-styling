@@ -15,8 +15,8 @@
 
 
 **To do: Python generator**
-- auto-bold tags ( @.* )
-- insert typing indications if message is long, automatic length based on user ID and message length, wrap in relatyping divs
-  - if user = minato, count message characters and produce a set typing length based on that (but only for anything over 5 characters)
-  - if user != minato, count message words(separated by spaces) and produce a set typing length based on that (but only for anything over 4 words)
 - make sure time indicators on their own line aren't counted as messages
+- if [#min] stands on its own, # * 60 and append to delay-list. If it stands in front of a message, ask for user input on typing indication
+  - don't ask for typing indication input if no [#min] in front of message
+- wrap autotyping in relatyping divs with optional user input
+- when fatal error occurs, save before exiting program
