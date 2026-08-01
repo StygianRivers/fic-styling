@@ -13,8 +13,8 @@
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
 - test on ao3
 
-
 **To do: Python generator**
+- fix typing_iteration not saving
 - make sure time indicators on their own line aren't counted as messages
 - if [#min] stands on its own, # * 60 and append to delay-list. If it stands in front of a message, ask for user input on typing indication
   - don't ask for typing indication input if no [#min] in front of message
