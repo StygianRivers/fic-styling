@@ -14,7 +14,11 @@
 - test on ao3
 
 **To do: Python generator**
-- fix typing_iteration not saving
+- either autotyping or typingdots function per message, not both
+  - typingdots and autotyping distinction is a mess, typingdots is called from multiple different places?? 
+    - possibly need to initiate autotyping from main, then within autotyping after doing the calculations give the choice to continue autotyping or to switch to manual input (typingdots)
+- auto split big doc into scenes for input
+- fix typing_iteration not saving (tried, now test it)
 - make sure time indicators on their own line aren't counted as messages
 - if [#min] stands on its own, # * 60 and append to delay-list. If it stands in front of a message, ask for user input on typing indication
   - don't ask for typing indication input if no [#min] in front of message

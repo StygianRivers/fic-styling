@@ -1,0 +1,48 @@
+
+TITLE: Notification Sounds /home/drift/custom-scripts/fic/behind-the-scenes/testing - TRACK 5
+FCM: NON-DROP FRAME
+
+
+001  AX       A     C        00:00:00:00 00:00:1:02 00:00:3:180 00:00:5:82
+* FROM CLIP NAME: mixkit-message-pop-alert-2354.mp3
+* SOURCE FILE: ../../Videos/Openshot/mixkit-message-pop-alert-2354.mp3
+* VIDEO LEVEL AT 00:00:00:00 IS 100% BEZIER (REEL AX V)
+* AUDIO LEVEL AT 00:00:00:00 IS 0.00 DB BEZIER (REEL AX A1)
+
+
+
+
+002  AX       A     C        00:00:00:00 00:00:1:02 00:00:5:300 00:00:7:202
+* FROM CLIP NAME: mixkit-message-pop-alert-2354.mp3
+* SOURCE FILE: ../../Videos/Openshot/mixkit-message-pop-alert-2354.mp3
+* VIDEO LEVEL AT 00:00:00:00 IS 100% BEZIER (REEL AX V)
+* AUDIO LEVEL AT 00:00:00:00 IS 0.00 DB BEZIER (REEL AX A1)
+
+
+
+
+003  AX       A     C        00:00:00:00 00:00:1:02 00:00:18:1080 00:00:20:982
+* FROM CLIP NAME: mixkit-message-pop-alert-2354.mp3
+* SOURCE FILE: ../../Videos/Openshot/mixkit-message-pop-alert-2354.mp3
+* VIDEO LEVEL AT 00:00:00:00 IS 100% BEZIER (REEL AX V)
+* AUDIO LEVEL AT 00:00:00:00 IS 0.00 DB BEZIER (REEL AX A1)
+
+
+
+
+004  AX       A     C        00:00:00:00 00:00:1:02 00:00:28:1680 00:00:30:1582
+* FROM CLIP NAME: mixkit-message-pop-alert-2354.mp3
+* SOURCE FILE: ../../Videos/Openshot/mixkit-message-pop-alert-2354.mp3
+* VIDEO LEVEL AT 00:00:00:00 IS 100% BEZIER (REEL AX V)
+* AUDIO LEVEL AT 00:00:00:00 IS 0.00 DB BEZIER (REEL AX A1)
+
+
+
+
+005  AX       A     C        00:00:00:00 00:00:1:02 00:00:33:1980 00:00:35:1882
+* FROM CLIP NAME: mixkit-message-pop-alert-2354.mp3
+* SOURCE FILE: ../../Videos/Openshot/mixkit-message-pop-alert-2354.mp3
+* VIDEO LEVEL AT 00:00:00:00 IS 100% BEZIER (REEL AX V)
+* AUDIO LEVEL AT 00:00:00:00 IS 0.00 DB BEZIER (REEL AX A1)
+
+

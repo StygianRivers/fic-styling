@@ -4,7 +4,7 @@
 
 **Minato:** but she's basically unconscious like i was.
 
-**Minato:** Wait Akira weren't you dead
+**Minato:** Wait @Akira weren't you dead
 
 [1min]**Akira:** sore subject
 
