@@ -5,6 +5,7 @@ import os
 
 html = []
 css = []
+delay_sound_list = []
 character_count = 0
 word_count = 0
 groupchatname = "Wild Card Support Group"
@@ -31,8 +32,15 @@ html_end = """
     """
 
 try:
+    import audio_generation
+except ImportError:
+    print("Audio generator could not be found.")
+
+try:
+    # check for save data
     from olddata import *
 except ImportError:
+    # no save data, start fresh
     print("No previous data found.")
     input_file = input("Which file to generate for?\n")
     output_file = re.match(r"(?:.*\/)?(.+)\..*", input_file).group()
@@ -42,23 +50,32 @@ except ImportError:
     userpersist = "None"
     html.append(html_intro)
 
-with open(input_file, "r") as f:
-    contents = f.read()
+with open(input_file, "r") as fin:
+    contents = fin.read()
+# divide into individual messages
 messages = contents.strip().split("\n\n")
 
+# divide a single message into parts
 def rmbrackets(onemessage): 
     regmatch = re.match(r"(\[(\d*)?\s?.*\])?(\*\*(.*):\*\*)? ?(.*)?", onemessage)
-    matchone = regmatch[2]
-    matchtwo = regmatch[4]
-    matchthree = regmatch[5]
-    return matchone, matchtwo, matchthree
+    time_indication = regmatch[2]
+    username = regmatch[4]
+    message_body = regmatch[5]
+    return time_indication, username, message_body
 
+# for each message there's an inherent delay added automatically. this is the function run when the message is long enough to justify a typing indicator
+# requires no user input
 def autoTyping(count, user_typing, typing_iteration):
+    # advance class iteration
     typing_iter = typing_iteration + 1
     time_spent_typing = count * 0.25
+    # one second break between previous message and typing indicator appearing - this number should be user input determined, figure that out
     delaylist.append(1)
+    # delay so far
     totaldelay = sum(delaylist)
+    # account for typing div in future transition-delay
     delaylist.append(time_spent_typing)
+    # generate code for typing indicator
     autoty_html = f"""
     <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><span class="texthide"><strong><small>{user_typing} is typing...</small></strong></span></span></span></p>
         """
@@ -66,10 +83,13 @@ def autoTyping(count, user_typing, typing_iteration):
 visibility: visible;
 transition: all {time_spent_typing}s linear {totaldelay}s;
 }}"""
+    # add code to message code lists
     html.append(autoty_html)
     css.append(autoty_css)
+    # return class number and the calculation of how long it would reasonably take to type
     return typing_iter, time_spent_typing
 
+# auto-bold username tags
 def boldtags(boldmessage):
     try:
         nametag = re.sub(r"(@(Minato|Makoto|Yu|Akira))", r"<strong>\1</strong>", boldmessage) # can't figure out how to make regex read variables like usrone
@@ -81,17 +101,21 @@ def boldtags(boldmessage):
 def typingdots(upcoming_message):
     # open div in case of multiple blinks
     html.append("<div class=\"relatyping\">")
+    # typing indicator may not always result in the immediate next message, so:
     print("Who is typing?\nNext message is:\n" + upcoming_message)
     user_typing = input()
+    # class iteration
     global typing_iteration
     typing_iter = typing_iteration + 1
     while True:
+        # user input
         typing_length = input("How long is the indicator visible?\n")
         ty_start = input("How long is the pause before the indicator appears?\n")
         delaylist.append(int(ty_start))
         totaldelay = int(sum(delaylist))
         # account for typing div in future transition-delay
-        delaylist.append(int(typing_length) + 1)
+        delaylist.append(int(typing_length))
+        # generate code for typing indicator
         ty_html = f"""
 <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><span class="texthide"><strong><small>{user_typing} is typing...</small></strong></span></span></span></p>
     """
@@ -101,32 +125,40 @@ visibility: visible;
 transition: all {typing_length}s linear {totaldelay}s;
 }}"""
         css.append(ty_css)
+        html.append(ty_html)
         more_typing = input("Another blink?\n").lower()
         if more_typing in ['y', 'yes', 'ok']:
+             # don't forget to iterate the class
              typing_iter = typing_iter + 1
              continue
         else:
             break
-    html.append(ty_html)
     # close div
     html.append("</div>")
+    # communicate final class iteration
     return typing_iter
 
 def trycss(cclass, cuser, cmessage, chesitation, typing_iteration):
+    # characters who are on flip phones and thus slower
     if cuser in [usrone, usrone_alt]:
         for character in cmessage:
             global character_count
             character_count = character_count + 1
         if character_count > 5:
             (typing_iteration, base_typing_length) = autoTyping(character_count, cuser, typing_iteration)
+    # characters who are on smartphones and thus faster
     elif cuser in [usrtwo, usrthree]:
         for word in re.finditer(r"\b\w+?\b", cmessage):
             global word_count 
             word_count = word_count + 1
         if word_count > 4:
             (typing_iteration, base_typing_length) = autoTyping(word_count, cuser, typing_iteration)
+            # base_typing_length is supposed to be a guideline to communicate when inputting custom timing, but then that needs to be returned without autoTyping adding anything to html or css, itself
+    # if there is no custom user-input timing to the message
     if chesitation == 0:
         totaldelay = int(sum(delaylist))
+        # exact time at which message is sent (to later add notification sounds)
+        delay_sound_list.append(totaldelay)
         css_result = f"""
 #workskin:has(.fadedetails[open]) .m{cclass} {{
 visibility: visible;
@@ -137,12 +169,12 @@ transition: all 1s linear {totaldelay}s;
 content: "{cmessage}";
 }}
 """
-        return css_result, base_typing_length
-    else:
+        return css_result
+    else: # if there is indication that there should be custom timing
         typing_indicator = input("Hesitation? \n").lower()
         if typing_indicator in ['y', 'yes', 'ok']:
-            (typing_iteration, css_result) = typingdots(chesitation)
-        return typing_iteration, css_result, base_typing_length
+            (typing_iteration, css_result) = typingdots(chesitation, base_typing_length)
+        return typing_iteration, css_result
 
 def tryhtml(huser, hmessage, hclass):
     print('\033[96m' + "Enter alt text:" + '\x1b[0m')
@@ -161,7 +193,7 @@ def tryhtml(huser, hmessage, hclass):
 
 def saveProgress(typing_iteration):
     save_progress = input("'Y' to save and quit \n").lower()
-    if save_progress in ['y', 'yes', 'ok', 'save', 'q']:
+    if save_progress in ['y', 'yes', 'ok', 'save', 'q', 'exit']:
         global i
         i = i + 1
         with open("olddata.py", "w") as old_data:
@@ -193,6 +225,7 @@ for i, msg in enumerate(messages[start:]):
         if typing_indicator in ['y', 'yes', 'ok']:
             typing_iteration = typingdots(summMessage)
         (typing_iteration, msg_css, base_length) = trycss(i, user, message, hesitation, typing_iteration)
+    # if no time noted
     except TypeError:
         hesitation = 0
         print('\033[31m' + user + ": " + message + '\x1b[0m')
@@ -226,13 +259,16 @@ for i, msg in enumerate(messages[start:]):
 
 html.append(html_end)
 
+audio_generation(delay_sound_list, output_file)
+
 finalhtml = "\n".join(html)
 finalcss = "\n".join(css)
 
-with open ("{output_file}.html", "a") as fohtml:
+# append final code to relevant files
+with open("{output_file}.html", "w") as fohtml:
     print(finalhtml, file=fohtml) 
 
-with open ("output.css", "a") as focss:
+with open("output.css", "a") as focss:
     print(finalcss, file=focss)
 
 try: 
