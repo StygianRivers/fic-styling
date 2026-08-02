@@ -5,22 +5,18 @@
 - readable without Creator's Style on
 - fancy button to open chat
 - message tails
+- notification sound effects
 
 **To do:**
 
 - figure out whether screen readers will read text after transition-delay (if not, warn screen reader users to turn off the workskin)
+- fix fancy `details` button appearance
 - test hover outside of codepen
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
-- test on ao3
+- test all on ao3
 
 **To do: Python generator**
-- either autotyping or typingdots function per message, not both
-  - typingdots and autotyping distinction is a mess, typingdots is called from multiple different places?? 
-    - possibly need to initiate autotyping from main, then within autotyping after doing the calculations give the choice to continue autotyping or to switch to manual input (typingdots)
+- fix `it` resetting after saving (despite `start` saving)
+- fix program repeating itself (importing then calling audio_generation.py causes it to repeat)
+- add up think-time and read-time and round to the nearest integer before adding them to delay-list
 - auto split big doc into scenes for input
-- fix typing_iteration not saving (tried, now test it)
-- make sure time indicators on their own line aren't counted as messages
-- if [#min] stands on its own, # * 60 and append to delay-list. If it stands in front of a message, ask for user input on typing indication
-  - don't ask for typing indication input if no [#min] in front of message
-- wrap autotyping in relatyping divs with optional user input
-- when fatal error occurs, save before exiting program
