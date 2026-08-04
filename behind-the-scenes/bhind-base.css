@@ -55,19 +55,19 @@
     border-radius: 0.3em;
 }
 
-#workskin .fadedetails>summary::hover {
+#workskin .fadedetails>summary:hover {
     border: 3px solid red;
     border-radius: 0.3em;
-    box-shadow: inset -4px -4px 1px orange;
+    box-shadow: inset -4px -4px 1px red;
 }
 
 #workskin .fadedetails[open]>summary {
     border: 3px solid red;
     border-radius: 0.3em;
-    box-shadow: 0px 0px 3px orange;
+    box-shadow: 0px 0px 3px red;
 }
 
-#workskin .fadedetails summary::hover .overlay {
+#workskin .fadedetails summary:hover .overlay {
     position: absolute;
     top: 0;
     left: 39em;
