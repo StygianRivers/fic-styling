@@ -144,8 +144,7 @@
     top: 0;
     width: 0.6em;
     height: 1em;
-    z-index: -1;
-    left: -0.725em;
+    left: -0.7245em;
     border-right: 0.1em solid #c5c5ca;
     border-top-right-radius: 1.25em 0.625em;
 }
@@ -171,7 +170,7 @@
     transition: visibility 0s 9999999s;
 }
 
-/*is-typing messages need to be absolute position in order to be replaced, so they're put in a div that's relative to the adjacent messages*/
+/*is-typing messages need to be absolute position in order to be replaced, so they're put in a div that's position: relative*/
 #workskin .relatyping {
     position: relative;
 }
@@ -233,11 +232,16 @@
     overflow: hidden;
 }
 
+#workskin .workskin_shown {
+    visibility: visible;
+    display: block;
+}
+
 /*code that should be generated (unique per message)*/
 
 #workskin:has(.fadedetails[open]) .m1 {
     visibility: visible;
-    transition: all 2s linear 2s;
+    transition: all 0s linear 2s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m1::after {
@@ -246,7 +250,7 @@
 
 #workskin:has(.fadedetails[open]) .m2 {
     visibility: visible;
-    transition: all 2s linear 4s;
+    transition: all 0s linear 4s;
 }
 
 #workskin:has(.fadedetails[open]) .t1 {
@@ -259,7 +263,7 @@
 
 #workskin:has(.fadedetails[open]) .m3 {
     visibility: visible;
-    transition: all 2s linear 14s;
+    transition: all 0s linear 14s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m3::after {
@@ -268,7 +272,7 @@
 
 #workskin:has(.fadedetails[open]) .m4 {
     visibility: visible;
-    transition: all 2s linear 17s;
+    transition: all 0s linear 17s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m4::after {

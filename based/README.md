@@ -35,7 +35,6 @@ Tested on ao3. Fixes to make:
   - remove link underline unless hovered
 - add regular link underlines back
 - ao3 deleting `&nbsp;` ???
-- why is the Close text so tiny?? The Cancel text looks fine??
 - awkward breaks in top notes (hidden text)
 
 Mobile fixes:
@@ -44,9 +43,11 @@ Mobile fixes:
 - word wrap is still a problem????? Just the one word on the smallest screen I have, but if it's possible, it's an issue. All the rest of the white space positioning is perfect, though? How
 - can I make the ficpitch exceed the notes boundaries...? Or at least fill them? They're readable, but so squished
 - the credits look squished too
+- why is the Close text so tiny?? The Cancel text looks fine??
 
 Workskinless fixes:
-- (action) links once visited should have greyish text, not black text. Put in .actions container?
+- (action) links once visited should have greyish text, not black text. Put in `.actions` container?
+- hide all the stuff that only works with the workskin on with ao3's `hidden` class, and show with custom css class, so you won't be bothered by it with the workskin off
 
 Default site skin fixes:
 - why fic showcase links black?? those should be white
