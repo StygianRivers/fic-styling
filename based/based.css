@@ -1050,6 +1050,7 @@
     left: 45%;
     visibility: visible;
     transition-delay: 2s;
+    font-size: initial;
 }
 
 #workskin .NOTE_re_animation {
