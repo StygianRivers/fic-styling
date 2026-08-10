@@ -237,8 +237,8 @@
 #workskin .flex {
     position: relative;
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    flex-flow: row wrap;
 }
 
 #workskin div.fadedetails {
@@ -282,15 +282,20 @@
 }
 
 #workskin .midnight,
+#workskin .midnight-revert,
 #workskin .orange,
 #workskin .yellow,
 #workskin .green,
-#workskin .blue,
-#workskin .purple {
+#workskin .starry,
+#workskin .starry-revert,
+#workskin .purple,
+#workskin .default-revert,
+#workskin .reversi-revert {
     margin: 1em 3vw;
     padding: 0 1.7em;
     cursor: pointer;
     border: 2px ridge;
+    user-select: none;
 }
 
 #workskin .backstuff {
@@ -299,12 +304,24 @@
     right: 0;
     bottom: 0;
     left: 0;
+    opacity: 100%;
+    background-repeat: repeat;
+}
+
+#workskin .midnight-back {
     background-image: url("https://stygianrivers.github.io/fic-styling/based/Saturn_20260601153446.jpg");
     background-attachment: fixed;
-    background-repeat: repeat;
-    width: 100%;
-    height: 30em;
+    background-repeat: round no-repeat;
     opacity: 0;
+    transition: opacity 0s 9999999s;
+}
+
+#workskin .starry-back {
+    opacity: 0;
+    background: rgba(1, 53, 89, 1);
+    filter: brightness(140%) blur(3px);
+    background-attachment: fixed;
+    background-image: url("https://stygianrivers.github.io/fic-styling/based/Untitled71_20260601192514.png");
     transition: opacity 0s 9999999s;
 }
 
@@ -312,15 +329,41 @@
     min-height: 100%;
     position: relative;
     transition: color 0s 9999999s,
-        background 0s 9999999s;
+        background 0s 9999999s,
+        text-shadow 0s 9999999s, filter 0s 9999999s;
+}
+
+#workskin:has(.default-revert:active) .backstuff {
+    opacity: 0.1% !important;
+    transition: opacity 1s;
+}
+
+#workskin:has(.default-revert:active) .userstuff {
+    color: black;
+    transition: color 1s;
+}
+
+#workskin:has(.reversi-revert:active) .backstuff {
+    opacity: 0.1% !important;
+    transition: opacity 1s;
+}
+
+#workskin:has(.reversi-revert:active) .userstuff {
+    color: white;
+    transition: color 1s;
 }
 
 #workskin:has(.midnight:active) .userstuff,
-#workskin:has(.midnight:active) .backstuff {
+#workskin:has(.midnight:active) .midnight-back {
     color: white;
     opacity: 100%;
     transition: color 3s,
         opacity 3s;
+}
+
+#workskin:has(.midnight-revert:active) .midnight-back {
+    opacity: 0.1%;
+    transition: opacity 1s;
 }
 
 #workskin:has(.orange:active) .userstuff {
@@ -338,9 +381,17 @@
     transition: color 3s;
 }
 
-#workskin:has(.blue:active) .userstuff {
-    color: blue;
-    transition: color 3s;
+#workskin:has(.starry:active) .userstuff,
+#workskin:has(.starry:active) .starry-back {
+    color: white;
+    opacity: 100%;
+    text-shadow: 0 0 0.4em #000000;
+    transition: color 3s, text-shadow 3s, opacity 3s;
+}
+
+#workskin:has(.starry-revert:active) .starry-back {
+    opacity: 0.1%;
+    transition: opacity 1s;
 }
 
 #workskin:has(.purple:active) .userstuff {
