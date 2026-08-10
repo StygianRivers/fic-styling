@@ -84,7 +84,7 @@
     float: left;
     border-top-left-radius: 0.1em;
     border-bottom-left-radius: 0.1em;
-    outline: 2px ridge #c5c5ca;
+    outline: 2px ridge;
 }
 
 #workskin .username {
@@ -98,7 +98,7 @@
     margin-left: 0.9em;
     padding-bottom: .5em;
     text-align: left;
-    border-bottom: 0.15em solid #c5c5ca;
+    border-bottom: 0.15em solid;
     border-left: 0.8em solid transparent;
 }
 
@@ -121,7 +121,7 @@
     width: 0.6em;
     height: 1em;
     left: -0.7245em;
-    border-right: 0.1em solid #c5c5ca;
+    border-right: 0.1em solid;
     border-top-right-radius: 1.25em 0.625em;
 }
 
@@ -196,7 +196,7 @@
 
 #workskin:has(.fadedetails[open]) .m1 {
     visibility: visible;
-    transition: all 0s linear 2s;
+    transition: visibility 0s linear 2s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m1::after {
@@ -205,20 +205,20 @@
 
 #workskin:has(.fadedetails[open]) .m2 {
     visibility: visible;
-    transition: all 0s linear 4s;
+    transition: visibility 0s linear 4s;
 }
 
 #workskin:has(.fadedetails[open]) .t1 {
-    transition: all 5s linear 5s;
+    transition: visibility 5s linear 5s;
 }
 
 #workskin:has(.fadedetails[open]) .t2 {
-    transition: all 2s linear 11s;
+    transition: visibility 2s linear 11s;
 }
 
 #workskin:has(.fadedetails[open]) .m3 {
     visibility: visible;
-    transition: all 0s linear 14s;
+    transition: visibility 0s linear 14s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m3::after {
@@ -227,7 +227,7 @@
 
 #workskin:has(.fadedetails[open]) .m4 {
     visibility: visible;
-    transition: all 0s linear 17s;
+    transition: visibility 0s linear 17s;
 }
 
 #workskin:not(:has(.notextspeak[open])) .text.m4::after {
@@ -279,6 +279,67 @@
 #workskin .mybase.phone {
     transition: transform 0s 9999999s,
         visibility 0s;
+}
+
+#workskin .midnight,
+#workskin .orange,
+#workskin .yellow,
+#workskin .green,
+#workskin .blue,
+#workskin .purple {
+    margin: 1em 3vw;
+    padding: 0 1.7em;
+    cursor: pointer;
+    border: 2px ridge;
+}
+
+#workskin .backstuff {
+    position: absolute;
+    background-image: url("https://stygianrivers.github.io/fic-styling/based/Saturn_20260601153446.jpg");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    width: 100%;
+    height: 30em;
+    opacity: 0;
+    transition: opacity 0s 9999999s;
+}
+
+#workskin .userstuff {
+    transition: color 0s 9999999s,
+        background 0s 9999999s;
+}
+
+#workskin:has(.midnight:active) .userstuff,
+#workskin:has(.midnight:active) .backstuff {
+    color: white;
+    opacity: 100%;
+    transition: color 3s,
+        opacity 3s;
+}
+
+#workskin:has(.orange:active) .userstuff {
+    color: orange;
+    transition: color 3s;
+}
+
+#workskin:has(.yellow:active) .userstuff {
+    color: yellow;
+    transition: color 3s;
+}
+
+#workskin:has(.green:active) .userstuff {
+    color: green;
+    transition: color 3s;
+}
+
+#workskin:has(.blue:active) .userstuff {
+    color: blue;
+    transition: color 3s;
+}
+
+#workskin:has(.purple:active) .userstuff {
+    color: purple;
+    transition: color 3s;
 }
 
 #workskin:has(.notif:active) .mybase {
