@@ -1,38 +1,30 @@
-/*for coder comfort, remove when using workskin*/
-#workskin body {
-    background: #333;
-    color: #fff;
-}
-
-/*keep the buttons from stretching to fit the screen*/
-#workskin .flex {
-    position: relative;
+#workskin details.fadedetails {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position: relative;
+    margin-top: 5em;
 }
 
-/*phone container*/
 #workskin .phone {
     width: 500px;
-    max-width: 95%;
+    max-width: 90vw;
     position: relative;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 1em auto;
-    border: 2px ridge #aaa;
+    border: 2px ridge;
     padding: .5em 0;
     display: table;
     overflow-wrap: break-word;
     hyphens: auto;
 }
 
-/*Chat name*/
 #workskin .phone h3 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #workskin .phoneheader {
-    border-bottom: 2px ridge #b2b2b2;
+    border-bottom: 2px ridge;
     font-weight: bold;
     padding-bottom: .5em;
     padding-top: .5em;
@@ -43,53 +35,42 @@
     hyphens: auto;
 }
 
-/*button graphic - width, margin, and white-space are all necessary to keep button from stretching when the chat opens*/
 #workskin .fadedetails>summary {
     list-style: none;
     padding: 0.5em;
     cursor: pointer;
-    width: fit-content;
-    margin: 0 100vw;
-    white-space: nowrap;
     border: 2px solid red;
     border-radius: 0.3em;
+    position: absolute;
+    top: -3em;
 }
 
-#workskin .fadedetails>summary:hover {
-    border: 3px solid red;
+#workskin .overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid transparent;
     border-radius: 0.3em;
-    box-shadow: inset -4px -4px 1px red;
+    height: 100%;
+    width: 100%;
+    top: -0.1em;
+    left: -0.1em;
+}
+
+#workskin:has(.overlay:hover) .fadedetails summary {
+    background: rgba(0, 0, 0, 0.1);
+    border: 3px solid red;
 }
 
 #workskin .fadedetails[open]>summary {
     border: 3px solid red;
-    border-radius: 0.3em;
     box-shadow: 0px 0px 3px red;
+    filter: hue-rotate(180deg);
 }
 
-#workskin .fadedetails summary:hover .overlay {
-    position: absolute;
-    top: 0;
-    left: 39em;
-    width: 13em;
-    height: 2.5em;
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid transparent;
-    border-radius: 0.3em;
+#workskin .fadedetails[open] .overlay {
+    background: rgba(0, 0, 0, 0.2);
 }
 
-#workskin .fadedetails[open] summary .overlay {
-    position: absolute;
-    top: 0;
-    left: 39em;
-    width: 13em;
-    height: 2.5em;
-    background: rgba(0, 0, 0, 0.15);
-    border: 2px solid transparent;
-    border-radius: 0.3em;
-}
-
-/*Base incoming text*/
 #workskin .text {
     margin: .5em .5em .5em 1em;
     margin-top: 0;
@@ -106,7 +87,6 @@
     outline: 2px ridge #c5c5ca;
 }
 
-/*Name of texter*/
 #workskin .username {
     padding: .75em 0;
     font-size: .75em;
@@ -122,22 +102,18 @@
     border-left: 0.8em solid transparent;
 }
 
-/*to distinguish the name without workskin enabled*/
 #workskin .username>strong {
     font-weight: normal;
 }
 
-/*is-typing message is bigger than the name itself*/
-#workskin .fade-typing strong {
+#workskin .is-typing strong {
     font-size: 1.1em;
 }
 
-/*texts with a tail have the corner edited to match*/
 #workskin .username+.text {
     border-top-left-radius: 1em;
 }
 
-/*tail graphic (apply to first message after a chat name)*/
 #workskin .username+.text::before {
     content: "";
     position: absolute;
@@ -149,7 +125,6 @@
     border-top-right-radius: 1.25em 0.625em;
 }
 
-/*More wordy info for workskinless readers or screen reader users*/
 #workskin .hiddeninfo {
     position: absolute;
     left: -10000px;
@@ -159,44 +134,9 @@
     overflow: hidden;
 }
 
-/*messages need to start hidden for them to transition into appearing*/
-#workskin .visibly {
-    visibility: hidden;
-}
-
-/*This keeps the is-typing messages hidden for 10 million seconds - the t# classes then make their respective message temporarily visible*/
-#workskin:has(.fadedetails[open]) .fade-typing {
-    visibility: visible;
-    transition: visibility 0s 9999999s;
-}
-
-/*is-typing messages need to be absolute position in order to be replaced, so they're put in a div that's position: relative*/
-#workskin .relatyping {
-    position: relative;
-}
-
-#workskin:has(.fadedetails[open]) .is-typing {
-    position: absolute;
-    top: 6em;
-    left: -1em;
-}
-
-/*Text-speak replacement*/
-/*checkboxes (by deathbymistletoe)*/
 #workskin .namelist,
 #workskin li {
     list-style: none;
-    padding-top: 0.3em;
-}
-
-#workskin li.regular_list {
-    margin: initial;
-    padding: initial;
-}
-
-#workskin .name {
-    display: inline flow;
-    width: fit-content;
 }
 
 #workskin .checkbox summary {
@@ -222,7 +162,6 @@
     background-color: #289af7;
 }
 
-/*Hide default for everyone except screen reader users*/
 #workskin:not(:has(.notextspeak[open])) .fallback {
     position: absolute;
     left: -10000px;
@@ -232,12 +171,28 @@
     overflow: hidden;
 }
 
-#workskin .workskin_shown {
-    visibility: visible;
+#workskin .workskin-shown {
     display: block;
 }
 
-/*code that should be generated (unique per message)*/
+#workskin .visibly {
+    visibility: hidden;
+}
+
+#workskin:has(.fadedetails[open]) .fade-typing {
+    visibility: visible;
+    transition: visibility 0s 9999999s;
+}
+
+#workskin .relatyping {
+    position: relative;
+}
+
+#workskin .is-typing {
+    position: absolute;
+    top: 6em;
+    left: -1em;
+}
 
 #workskin:has(.fadedetails[open]) .m1 {
     visibility: visible;
@@ -277,4 +232,104 @@
 
 #workskin:not(:has(.notextspeak[open])) .text.m4::after {
     content: "this is anothr txt msage";
+}
+
+#workskin .flex {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#workskin div.fadedetails {
+    margin: 0;
+    padding: 0 0.5em;
+    cursor: pointer;
+    border: 2px solid red;
+    border-radius: 0.3em;
+}
+
+#workskin:has(.notif:hover) div.fadedetails {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 3px solid red;
+}
+
+#workskin .audiocontainer {
+    position: relative;
+    overflow: hidden;
+    width: inherit;
+    max-width: inherit;
+    height: inherit;
+}
+
+#workskin .mybase.is-typing {
+    outline: 0;
+}
+
+#workskin .notif {
+    position: absolute;
+    transform: scale(22, 14);
+    transform-origin: top left;
+    left: -500px;
+    top: -150px;
+    z-index: 31;
+    opacity: 0;
+}
+
+#workskin .mybase.phone {
+    transition: transform 0s 9999999s,
+        visibility 0s;
+}
+
+#workskin:has(.notif:active) .mybase {
+    visibility: hidden;
+    transform: translateX(10000px);
+    transition: visibility 0s,
+        transform 0s;
+}
+
+#workskin .cont {
+    transform: translateX(-10000px);
+}
+
+#workskin .my1 {
+    transition: transform 0s 9999999s,
+        visibility 0s 2s;
+}
+
+#workskin .my2 {
+    transition: transform 0s 9999999s,
+        visibility 0s 4s;
+}
+
+#workskin .ty1 {
+    transition: transform 0s 10s,
+        visibility 0s 5s;
+}
+
+#workskin .ty2 {
+    transition: transform 0s 13s,
+        visibility 0s 11s;
+}
+
+#workskin .my3 {
+    transition: transform 0s 9999999s,
+        visibility 0s 14s;
+}
+
+#workskin .my4 {
+    transition: transform 0s 9999999s,
+        visibility 0s 17s;
+}
+
+#workskin:not(:has(.notextspeak[open])) .text.my1::after {
+    content: "this is a txt msg";
+}
+
+#workskin:not(:has(.notextspeak[open])) .text.my3::after {
+    content: "this is a txt msg";
+}
+
+#workskin:not(:has(.notextspeak[open])) .text.my4::after {
+    content: "this is anothr txt msg";
 }
