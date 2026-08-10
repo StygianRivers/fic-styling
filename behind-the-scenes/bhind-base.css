@@ -186,11 +186,11 @@
 
 #workskin .relatyping {
     position: relative;
+    clear: both;
 }
 
 #workskin .is-typing {
     position: absolute;
-    top: 6em;
     left: -1em;
 }
 
