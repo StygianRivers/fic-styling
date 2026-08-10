@@ -151,7 +151,7 @@
     content: "";
     display: block;
     height: 1em;
-    margin: auto 0.5em auto -1.5em;
+    margin: auto auto auto -2em;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

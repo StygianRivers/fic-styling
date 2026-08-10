@@ -74,11 +74,6 @@ except ImportError:
     userpersist = "None"
     html.append(html_intro)
 
-try:
-    import audio_generation
-except ImportError:
-    print("Audio generator could not be found.")
-
 with open(input_file, "r") as fin:
     contents = fin.read()
 # divide into individual messages
@@ -154,7 +149,7 @@ def countCalc(user, message):
 # custom indicators
 def typingdots(user, typing_iteration):
     # open div without closing in case of multiple blinks
-    html.append("<div class=\"relatyping\">")
+    html.append("<div class=\"relatyping hidden workskin-shown\">")
     user_typing = input(syscolor_start + "Who is typing? (Default: " + user + ")\n" + color_end)
     if user_typing == "":
         user_typing = user
@@ -382,7 +377,11 @@ try:
             else:
                 print(errcolor_start + "Type 'skip' to skip this message, or 'retry' to change the input." + color_end)
     html.append(html_end)
-    audio_generation
+    try:
+        import audio_generation
+        audio_generation
+    except ImportError:
+        print("Audio generator could not be found.")
     finalhtml = "\n".join(html)
     finalcss = "\n".join(css)
 except KeyboardInterrupt:
