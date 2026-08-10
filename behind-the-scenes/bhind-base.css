@@ -295,6 +295,10 @@
 
 #workskin .backstuff {
     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-image: url("https://stygianrivers.github.io/fic-styling/based/Saturn_20260601153446.jpg");
     background-attachment: fixed;
     background-repeat: repeat;
@@ -305,6 +309,8 @@
 }
 
 #workskin .userstuff {
+    min-height: 100%;
+    position: relative;
     transition: color 0s 9999999s,
         background 0s 9999999s;
 }

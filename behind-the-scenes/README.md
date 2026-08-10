@@ -13,7 +13,6 @@
 - actually design color schemes
   - also a revert button
   - also make the color buttons look nicer
-  - also figure out how to extend background to 100% of the fic height (inherit?)
 - figure out whether screen readers will read text after transition-delay (if not, warn screen reader users to turn off the workskin)
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
 
