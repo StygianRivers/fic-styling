@@ -8,8 +8,6 @@
 - optional toggle for color scheme
 
 **To do:**
-- transition to using details or audio elements for click
-- messages transparent background same color as the border but lower opacity
 - try to figure out sound effects frfr
 - close-chat button at the end of the chat that then reveals the next open-chat button
 - figure out whether screen readers will read text after transition-delay (if not, warn screen reader users to turn off the workskin)
@@ -32,3 +30,4 @@
   - eternal mystery of why border properties I apply to userstuff refuse to work
   - transition properties refuse to transition back to original value, even if properly defined. how crazy is that
   - transition property is magic, if someone can explain this code to me I would be so grateful
+- method 2: you can override the visibility transition with something else (like color) to make the previously invisible element disappear again
