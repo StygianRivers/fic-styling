@@ -25,6 +25,7 @@
 
 #workskin .phoneheader {
     border-bottom: 2px ridge;
+    border-color: inherit;
     font-weight: bold;
     padding-bottom: .5em;
     padding-top: .5em;
@@ -39,7 +40,7 @@
     list-style: none;
     padding: 0.5em;
     cursor: pointer;
-    border: 2px solid red;
+    border: 2px solid;
     border-radius: 0.3em;
     position: absolute;
     top: -3em;
@@ -58,13 +59,12 @@
 
 #workskin:has(.overlay:hover) .fadedetails summary {
     background: rgba(0, 0, 0, 0.1);
-    border: 3px solid red;
+    border: 3px solid;
 }
 
 #workskin .fadedetails[open]>summary {
-    border: 3px solid red;
-    box-shadow: 0px 0px 3px red;
-    filter: hue-rotate(180deg);
+    border: 3px solid;
+    box-shadow: 0px 0px 3px;
 }
 
 #workskin .fadedetails[open] .overlay {
@@ -85,6 +85,8 @@
     border-top-left-radius: 0.1em;
     border-bottom-left-radius: 0.1em;
     outline: 2px ridge;
+    border-color: inherit;
+    outline-color: inherit;
 }
 
 #workskin .username {
@@ -100,6 +102,7 @@
     text-align: left;
     border-bottom: 0.15em solid;
     border-left: 0.8em solid transparent;
+    border-bottom-color: inherit;
 }
 
 #workskin .username>strong {
@@ -122,6 +125,7 @@
     height: 1em;
     left: -0.7245em;
     border-right: 0.1em solid;
+    border-color: inherit;
     border-top-right-radius: 1.25em 0.625em;
 }
 
@@ -243,7 +247,7 @@
 }
 
 #workskin .colour p,
-#workskin .fadedetails p {
+#workskin div.fadedetails p {
     margin: 0;
 }
 
@@ -333,6 +337,7 @@
     color: #2a2a2a;
     background: #eee;
     text-shadow: 0 0 0 #000000;
+    height: 1.5em;
 }
 
 #workskin .reversi-revert {
@@ -340,6 +345,7 @@
     background: #333;
     border-color: #222;
     outline: #111;
+    height: 1.5em;
 }
 
 #workskin .backstuff {
@@ -352,7 +358,7 @@
 }
 
 #workskin .midnight-back {
-    background-image: url("https://stygianrivers.github.io/fic-styling/based/Saturn_20260601153446.jpg");
+    background: url("https://stygianrivers.github.io/fic-styling/based/Saturn_20260601153446.jpg");
     background-attachment: fixed;
     background-repeat: round no-repeat;
     opacity: 0;
@@ -361,25 +367,40 @@
 
 #workskin .starry-back {
     opacity: 0;
-    background: rgba(1, 53, 89, 1);
+    background: url("https://stygianrivers.github.io/fic-styling/based/Untitled71_20260601192514.png"), rgba(1, 53, 89, 1);
+    transition: opacity 0s 9999999s;
     filter: brightness(140%) blur(3px);
     background-attachment: fixed;
-    background-image: url("https://stygianrivers.github.io/fic-styling/based/Untitled71_20260601192514.png");
-    transition: opacity 0s 9999999s;
 }
 
 #workskin .userstuff {
     min-height: 100%;
     position: relative;
-    transition: color 0s 9999999s,
-        background 0s 9999999s,
-        text-shadow 0s 9999999s, filter 0s 9999999s;
+    transition: color 0s 9999999s, background 0s 9999999s, text-shadow 0s 9999999s, filter 0s 9999999s;
 }
 
 #workskin:has(.default-revert:active) .backstuff,
-#workskin:has(.reversi-revert:active) .backstuff {
-    opacity: 0.1% !important;
+#workskin:has(.reversi-revert:active) .backstuff,
+#workskin:has(.midnight-revert:active) .midnight-back,
+#workskin:has(.starry-revert:active) .starry-back {
+    opacity: 0.1%;
     transition: opacity 1s;
+}
+
+#workskin:has(.starry-revert:active) .bordoor,
+#workskin:has(.starry-revert:active) .bordoor>div,
+#workskin:has(.midnight-revert:active) .bordoor,
+#workskin:has(.midnight-revert:active) .bordoor>div {
+    outline-color: white;
+    border-color: white;
+    transition: border-color 1s, outline-color 1s;
+}
+
+#workskin:has(.default-revert:active) .bordoor,
+#workskin:has(.default-revert:active) .bordoor>div {
+    outline-color: black;
+    border-color: black;
+    transition: border-color 1s, outline-color 1s;
 }
 
 #workskin:has(.default-revert:active) .userstuff {
@@ -388,12 +409,14 @@
     transition: color 1s, background 1s;
 }
 
-#workskin:has(.reversi-revert:active) .userstuff {
+#workskin:has(.reversi-revert:active) .userstuff,
+#workskin:has(.reversi-revert:active) .bordoor,
+#workskin:has(.reversi-revert:active) .bordoor>div {
     color: white;
     background: #333;
-    border-color: #222;
-    outline: #111;
-    transition: color 1s, background 1s, border-color 1s, outline 1s;
+    border-color: white;
+    outline-color: white;
+    transition: color 1s, background 1s, border-color 1s, outline-color 1s;
 }
 
 #workskin:has(.midnight:active) .userstuff,
@@ -401,13 +424,8 @@
     color: white;
     opacity: 100%;
     text-shadow: 0 0 0.4em #000000;
-    transition: color 3s,
-        opacity 3s;
-}
-
-#workskin:has(.midnight-revert:active) .midnight-back {
-    opacity: 0.1%;
-    transition: opacity 1s;
+    background-color: rgba(0, 0, 0, 0.01);
+    transition: color 3s, opacity 3s, background-color 2s;
 }
 
 #workskin:has(.starry:active) .userstuff,
@@ -415,12 +433,19 @@
     color: white;
     opacity: 100%;
     text-shadow: 0 0 0.4em #000000;
-    transition: color 3s, text-shadow 3s, opacity 3s;
+    transition: color 3s, text-shadow 3s, opacity 3s, border-color 3s, outline-color 3s, background-color 2s;
 }
 
-#workskin:has(.starry-revert:active) .starry-back {
-    opacity: 0.1%;
-    transition: opacity 1s;
+#workskin .bordoor,
+#workskin .bordoor>div {
+    transition: border-color 0s 9999999s, outline-color 0s 9999999s;
+}
+
+#workskin:has(.starry:active) .bordoor,
+#workskin:has(.starry:active) .bordoor>div {
+    border-color: #05104D;
+    outline-color: #05104D;
+    transition: border-color 3s, outline-color 3s;
 }
 
 #workskin:has(.notif:active) .mybase {
