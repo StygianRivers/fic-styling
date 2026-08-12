@@ -23,11 +23,4 @@
 
 **To do: Tutorial**
 - explain generator (separate chapter)(when generator is fully functional)
-- explain: got too excited and forgot elements need to be focusable. So in practice if you're using the `:active` method you should still only use focusable elements (since ao3 doesn't allow adding tabindex to elements)
-- color schemes
-  - oh cool color schemes. why is this in the chatfic tutorial you ask? Absolute Nightmare
-    - this is half a tutorial and half my own attempt to understand my spaghetti code that somehow works
-  - eternal mystery of why border properties I apply to userstuff refuse to work
-  - transition properties refuse to transition back to original value, even if properly defined. how crazy is that
-  - transition property is magic, if someone can explain this code to me I would be so grateful
-- method 2: you can override the visibility transition with something else (like color) to make the previously invisible element disappear again
+  
