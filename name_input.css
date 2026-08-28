@@ -9,7 +9,7 @@
     user-select: none;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid;
 }
 
 #workskin details.btn>summary:hover,
@@ -60,16 +60,16 @@
 #workskin .user-input-one,
 #workskin .user-input-two,
 #workskin .disp-one {
-    background-color: blue;
+    background-color: #0B19B5;
     color: white;
     border: 2px ridge white;
 }
 
 #workskin .user-input-three,
 #workskin .disp-two {
-    background-color: pink;
+    background-color: #FD8CDB;
     color: black;
-    border: 2px ridge black;
+    border: 2px solid black;
 }
 
 #workskin .keyboard .row {
@@ -271,15 +271,40 @@
     color: red;
 }
 
+#workskin .workskin-shown {
+    display: block;
+}
+
 #workskin:has(.user-input-one .confirm[open]) .fallback.name-one,
 #workskin:has(.user-input-two .confirm[open]) .fallback.name-two,
-#workskin:has(.user-input-three .confirm[open]) .fallback.name-three {
+#workskin:has(.user-input-three .confirm[open]) .fallback.name-three,
+#workskin .hiddeninfo {
     position: absolute;
     left: -10000px;
     top: auto;
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+#workskin .hiddeninfo:focus-within {
+    position: relative;
+    left: auto;
+    width: auto;
+    height: auto;
+}
+
+#workskin .chad_reader_check::after {
+    content: "If, however, your screen reader is now reading this out loud, please check the box for full user input functionality.";
+}
+
+#workskin .chad_reader_info::after {
+    content: "I'm sorry in advance for how clunky the coded keyboard is to navigate. It has all alphabetical letters and a backspace DEL button, you only need to find them.";
+}
+
+#workskin:has(.chadreader[open]) .fallback,
+#workskin:not(:has(.chadreader[open])) .chad_hidden {
+    display: none;
 }
 
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="A"][open]) .name-one .first-character::after {
