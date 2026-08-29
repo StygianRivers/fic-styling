@@ -1,0 +1,21 @@
+<!-- easy way to hide graphic content on toggle in ao3 -->
+<div class="undefined">
+    <!-- the following elements can be nested as deeply as you want and don't have to be near each other in the DOM -->
+    <details>
+        <summary class="expand_all">Hide graphic content</summary>
+    </details>
+    <details open="open">
+        <summary class="expand hidden"></summary>This is the regular graphic content.
+    </details>
+    <details>
+        <summary class="expand hidden"></summary>This is the censored content.
+    </details>
+</div>
+
+<!-- You might also want to add the CSS
+
+#workskin .undefined details {
+  margin: 0;
+}
+  
+to avoid odd gaps with the closed details, though note that this applies to every single details in the .undefined div. If you only want it to apply to details toggled by this method, you'll need to make a separate class for them and select that instead. -->
