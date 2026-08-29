@@ -307,10 +307,11 @@
     display: none;
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="A"][open]) .name-one .first-character::after {
-    content: "A";
+#workskin .first-character::after {
+    text-transform: uppercase;
 }
 
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="A"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="A"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="A"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="A"][open]) .name-one .fourth-character::after,
@@ -323,10 +324,7 @@
     content: "a";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="B"][open]) .name-one .first-character::after {
-    content: "B";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="B"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="B"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="B"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="B"][open]) .name-one .fourth-character::after,
@@ -339,10 +337,7 @@
     content: "b";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="C"][open]) .name-one .first-character::after {
-    content: "C";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="C"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="C"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="C"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="C"][open]) .name-one .fourth-character::after,
@@ -355,10 +350,7 @@
     content: "c";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="D"][open]) .name-one .first-character::after {
-    content: "D";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="D"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="D"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="D"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="D"][open]) .name-one .fourth-character::after,
@@ -371,10 +363,7 @@
     content: "d";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="E"][open]) .name-one .first-character::after {
-    content: "E";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="E"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="E"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="E"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="E"][open]) .name-one .fourth-character::after,
@@ -387,10 +376,7 @@
     content: "e";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="F"][open]) .name-one .first-character::after {
-    content: "F";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="F"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="F"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="F"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="F"][open]) .name-one .fourth-character::after,
@@ -403,10 +389,7 @@
     content: "f";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="G"][open]) .name-one .first-character::after {
-    content: "G";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="G"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="G"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="G"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="G"][open]) .name-one .fourth-character::after,
@@ -419,10 +402,7 @@
     content: "g";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="H"][open]) .name-one .first-character::after {
-    content: "H";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="H"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="H"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="H"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="H"][open]) .name-one .fourth-character::after,
@@ -435,10 +415,7 @@
     content: "h";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="I"][open]) .name-one .first-character::after {
-    content: "I";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="I"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="I"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="I"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="I"][open]) .name-one .fourth-character::after,
@@ -451,10 +428,7 @@
     content: "i";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="J"][open]) .name-one .first-character::after {
-    content: "J";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="J"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="J"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="J"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="J"][open]) .name-one .fourth-character::after,
@@ -467,10 +441,7 @@
     content: "j";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="K"][open]) .name-one .first-character::after {
-    content: "K";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="K"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="K"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="K"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="K"][open]) .name-one .fourth-character::after,
@@ -483,10 +454,7 @@
     content: "k";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="L"][open]) .name-one .first-character::after {
-    content: "L";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="L"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="L"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="L"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="L"][open]) .name-one .fourth-character::after,
@@ -499,10 +467,7 @@
     content: "l";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="M"][open]) .name-one .first-character::after {
-    content: "M";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="M"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="M"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="M"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="M"][open]) .name-one .fourth-character::after,
@@ -515,10 +480,7 @@
     content: "m";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="N"][open]) .name-one .first-character::after {
-    content: "N";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="N"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="N"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="N"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="N"][open]) .name-one .fourth-character::after,
@@ -531,10 +493,7 @@
     content: "n";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="O"][open]) .name-one .first-character::after {
-    content: "O";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="O"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="O"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="O"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="O"][open]) .name-one .fourth-character::after,
@@ -547,10 +506,7 @@
     content: "o";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="P"][open]) .name-one .first-character::after {
-    content: "P";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="P"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="P"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="P"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="P"][open]) .name-one .fourth-character::after,
@@ -563,10 +519,7 @@
     content: "p";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="Q"][open]) .name-one .first-character::after {
-    content: "Q";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="Q"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="Q"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="Q"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="Q"][open]) .name-one .fourth-character::after,
@@ -579,10 +532,7 @@
     content: "q";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="R"][open]) .name-one .first-character::after {
-    content: "R";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="R"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="R"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="R"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="R"][open]) .name-one .fourth-character::after,
@@ -595,10 +545,7 @@
     content: "r";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="S"][open]) .name-one .first-character::after {
-    content: "S";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="S"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="S"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="S"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="S"][open]) .name-one .fourth-character::after,
@@ -611,10 +558,7 @@
     content: "s";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="T"][open]) .name-one .first-character::after {
-    content: "T";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="T"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="T"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="T"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="T"][open]) .name-one .fourth-character::after,
@@ -627,10 +571,7 @@
     content: "t";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="U"][open]) .name-one .first-character::after {
-    content: "U";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="U"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="U"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="U"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="U"][open]) .name-one .fourth-character::after,
@@ -643,10 +584,7 @@
     content: "u";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="V"][open]) .name-one .first-character::after {
-    content: "V";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="V"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="V"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="V"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="V"][open]) .name-one .fourth-character::after,
@@ -659,10 +597,7 @@
     content: "v";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="W"][open]) .name-one .first-character::after {
-    content: "W";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="W"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="W"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="W"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="W"][open]) .name-one .fourth-character::after,
@@ -675,10 +610,7 @@
     content: "w";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="X"][open]) .name-one .first-character::after {
-    content: "X";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="X"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="X"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="X"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="X"][open]) .name-one .fourth-character::after,
@@ -691,10 +623,7 @@
     content: "x";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="Y"][open]) .name-one .first-character::after {
-    content: "Y";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="Y"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="Y"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="Y"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="Y"][open]) .name-one .fourth-character::after,
@@ -707,10 +636,7 @@
     content: "y";
 }
 
-#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="Z"][open]) .name-one .first-character::after {
-    content: "Z";
-}
-
+#workskin:has(.user-input-one .confirm[open]):has(.user-input-one .first.keyboard [title="Z"][open]) .name-one .first-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .second.keyboard [title="Z"][open]) .name-one .second-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .third.keyboard [title="Z"][open]) .name-one .third-character::after,
 #workskin:has(.user-input-one .confirm[open]):has(.user-input-one .fourth.keyboard [title="Z"][open]) .name-one .fourth-character::after,
@@ -723,10 +649,7 @@
     content: "z";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="A"][open]) .name-two .first-character::after {
-    content: "A";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="A"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="A"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="A"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="A"][open]) .name-two .fourth-character::after,
@@ -739,10 +662,7 @@
     content: "a";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="B"][open]) .name-two .first-character::after {
-    content: "B";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="B"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="B"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="B"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="B"][open]) .name-two .fourth-character::after,
@@ -755,10 +675,7 @@
     content: "b";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="C"][open]) .name-two .first-character::after {
-    content: "C";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="C"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="C"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="C"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="C"][open]) .name-two .fourth-character::after,
@@ -771,10 +688,7 @@
     content: "c";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="D"][open]) .name-two .first-character::after {
-    content: "D";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="D"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="D"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="D"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="D"][open]) .name-two .fourth-character::after,
@@ -787,10 +701,7 @@
     content: "d";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="E"][open]) .name-two .first-character::after {
-    content: "E";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="E"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="E"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="E"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="E"][open]) .name-two .fourth-character::after,
@@ -803,10 +714,7 @@
     content: "e";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="F"][open]) .name-two .first-character::after {
-    content: "F";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="F"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="F"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="F"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="F"][open]) .name-two .fourth-character::after,
@@ -819,10 +727,7 @@
     content: "f";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="G"][open]) .name-two .first-character::after {
-    content: "G";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="G"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="G"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="G"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="G"][open]) .name-two .fourth-character::after,
@@ -835,10 +740,7 @@
     content: "g";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="H"][open]) .name-two .first-character::after {
-    content: "H";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="H"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="H"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="H"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="H"][open]) .name-two .fourth-character::after,
@@ -851,10 +753,7 @@
     content: "h";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="I"][open]) .name-two .first-character::after {
-    content: "I";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="I"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="I"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="I"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="I"][open]) .name-two .fourth-character::after,
@@ -867,10 +766,7 @@
     content: "i";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="J"][open]) .name-two .first-character::after {
-    content: "J";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="J"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="J"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="J"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="J"][open]) .name-two .fourth-character::after,
@@ -883,10 +779,7 @@
     content: "j";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="K"][open]) .name-two .first-character::after {
-    content: "K";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="K"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="K"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="K"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="K"][open]) .name-two .fourth-character::after,
@@ -899,10 +792,7 @@
     content: "k";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="L"][open]) .name-two .first-character::after {
-    content: "L";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="L"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="L"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="L"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="L"][open]) .name-two .fourth-character::after,
@@ -915,10 +805,7 @@
     content: "l";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="M"][open]) .name-two .first-character::after {
-    content: "M";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="M"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="M"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="M"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="M"][open]) .name-two .fourth-character::after,
@@ -931,10 +818,7 @@
     content: "m";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="N"][open]) .name-two .first-character::after {
-    content: "N";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="N"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="N"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="N"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="N"][open]) .name-two .fourth-character::after,
@@ -947,10 +831,7 @@
     content: "n";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="O"][open]) .name-two .first-character::after {
-    content: "O";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="O"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="O"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="O"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="O"][open]) .name-two .fourth-character::after,
@@ -963,10 +844,7 @@
     content: "o";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="P"][open]) .name-two .first-character::after {
-    content: "P";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="P"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="P"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="P"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="P"][open]) .name-two .fourth-character::after,
@@ -979,10 +857,7 @@
     content: "p";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="Q"][open]) .name-two .first-character::after {
-    content: "Q";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="Q"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="Q"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="Q"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="Q"][open]) .name-two .fourth-character::after,
@@ -995,10 +870,7 @@
     content: "q";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="R"][open]) .name-two .first-character::after {
-    content: "R";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="R"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="R"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="R"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="R"][open]) .name-two .fourth-character::after,
@@ -1011,10 +883,7 @@
     content: "r";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="S"][open]) .name-two .first-character::after {
-    content: "S";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="S"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="S"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="S"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="S"][open]) .name-two .fourth-character::after,
@@ -1027,10 +896,7 @@
     content: "s";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="T"][open]) .name-two .first-character::after {
-    content: "T";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="T"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="T"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="T"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="T"][open]) .name-two .fourth-character::after,
@@ -1043,10 +909,7 @@
     content: "t";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="U"][open]) .name-two .first-character::after {
-    content: "U";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="U"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="U"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="U"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="U"][open]) .name-two .fourth-character::after,
@@ -1059,10 +922,7 @@
     content: "u";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="V"][open]) .name-two .first-character::after {
-    content: "V";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="V"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="V"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="V"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="V"][open]) .name-two .fourth-character::after,
@@ -1075,10 +935,7 @@
     content: "v";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="W"][open]) .name-two .first-character::after {
-    content: "W";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="W"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="W"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="W"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="W"][open]) .name-two .fourth-character::after,
@@ -1091,10 +948,7 @@
     content: "w";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="X"][open]) .name-two .first-character::after {
-    content: "X";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="X"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="X"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="X"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="X"][open]) .name-two .fourth-character::after,
@@ -1107,10 +961,7 @@
     content: "x";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="Y"][open]) .name-two .first-character::after {
-    content: "Y";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="Y"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="Y"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="Y"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="Y"][open]) .name-two .fourth-character::after,
@@ -1123,10 +974,7 @@
     content: "y";
 }
 
-#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="Z"][open]) .name-two .first-character::after {
-    content: "Z";
-}
-
+#workskin:has(.user-input-two .confirm[open]):has(.user-input-two .first.keyboard [title="Z"][open]) .name-two .first-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .second.keyboard [title="Z"][open]) .name-two .second-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .third.keyboard [title="Z"][open]) .name-two .third-character::after,
 #workskin:has(.user-input-two .confirm[open]):has(.user-input-two .fourth.keyboard [title="Z"][open]) .name-two .fourth-character::after,
@@ -1139,10 +987,7 @@
     content: "z";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="A"][open]) .name-three .first-character::after {
-    content: "A";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="A"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="A"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="A"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="A"][open]) .name-three .fourth-character::after,
@@ -1155,10 +1000,7 @@
     content: "a";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="B"][open]) .name-three .first-character::after {
-    content: "B";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="B"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="B"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="B"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="B"][open]) .name-three .fourth-character::after,
@@ -1171,10 +1013,7 @@
     content: "b";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="C"][open]) .name-three .first-character::after {
-    content: "C";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="C"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="C"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="C"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="C"][open]) .name-three .fourth-character::after,
@@ -1187,10 +1026,7 @@
     content: "c";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="D"][open]) .name-three .first-character::after {
-    content: "D";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="D"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="D"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="D"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="D"][open]) .name-three .fourth-character::after,
@@ -1203,10 +1039,7 @@
     content: "d";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="E"][open]) .name-three .first-character::after {
-    content: "E";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="E"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="E"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="E"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="E"][open]) .name-three .fourth-character::after,
@@ -1219,10 +1052,7 @@
     content: "e";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="F"][open]) .name-three .first-character::after {
-    content: "F";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="F"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="F"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="F"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="F"][open]) .name-three .fourth-character::after,
@@ -1235,10 +1065,7 @@
     content: "f";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="G"][open]) .name-three .first-character::after {
-    content: "G";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="G"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="G"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="G"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="G"][open]) .name-three .fourth-character::after,
@@ -1251,10 +1078,7 @@
     content: "g";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="H"][open]) .name-three .first-character::after {
-    content: "H";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="H"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="H"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="H"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="H"][open]) .name-three .fourth-character::after,
@@ -1267,10 +1091,7 @@
     content: "h";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="I"][open]) .name-three .first-character::after {
-    content: "I";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="I"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="I"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="I"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="I"][open]) .name-three .fourth-character::after,
@@ -1283,10 +1104,7 @@
     content: "i";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="J"][open]) .name-three .first-character::after {
-    content: "J";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="J"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="J"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="J"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="J"][open]) .name-three .fourth-character::after,
@@ -1299,10 +1117,7 @@
     content: "j";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="K"][open]) .name-three .first-character::after {
-    content: "K";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="K"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="K"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="K"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="K"][open]) .name-three .fourth-character::after,
@@ -1315,10 +1130,7 @@
     content: "k";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="L"][open]) .name-three .first-character::after {
-    content: "L";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="L"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="L"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="L"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="L"][open]) .name-three .fourth-character::after,
@@ -1331,10 +1143,7 @@
     content: "l";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="M"][open]) .name-three .first-character::after {
-    content: "M";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="M"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="M"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="M"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="M"][open]) .name-three .fourth-character::after,
@@ -1347,10 +1156,7 @@
     content: "m";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="N"][open]) .name-three .first-character::after {
-    content: "N";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="N"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="N"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="N"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="N"][open]) .name-three .fourth-character::after,
@@ -1363,10 +1169,7 @@
     content: "n";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="O"][open]) .name-three .first-character::after {
-    content: "O";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="O"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="O"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="O"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="O"][open]) .name-three .fourth-character::after,
@@ -1379,10 +1182,7 @@
     content: "o";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="P"][open]) .name-three .first-character::after {
-    content: "P";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="P"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="P"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="P"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="P"][open]) .name-three .fourth-character::after,
@@ -1395,10 +1195,7 @@
     content: "p";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="Q"][open]) .name-three .first-character::after {
-    content: "Q";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="Q"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="Q"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="Q"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="Q"][open]) .name-three .fourth-character::after,
@@ -1411,10 +1208,7 @@
     content: "q";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="R"][open]) .name-three .first-character::after {
-    content: "R";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="R"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="R"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="R"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="R"][open]) .name-three .fourth-character::after,
@@ -1427,10 +1221,7 @@
     content: "r";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="S"][open]) .name-three .first-character::after {
-    content: "S";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="S"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="S"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="S"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="S"][open]) .name-three .fourth-character::after,
@@ -1443,10 +1234,7 @@
     content: "s";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="T"][open]) .name-three .first-character::after {
-    content: "T";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="T"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="T"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="T"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="T"][open]) .name-three .fourth-character::after,
@@ -1459,10 +1247,7 @@
     content: "t";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="U"][open]) .name-three .first-character::after {
-    content: "U";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="U"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="U"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="U"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="U"][open]) .name-three .fourth-character::after,
@@ -1475,10 +1260,7 @@
     content: "u";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="V"][open]) .name-three .first-character::after {
-    content: "V";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="V"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="V"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="V"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="V"][open]) .name-three .fourth-character::after,
@@ -1491,10 +1273,7 @@
     content: "v";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="W"][open]) .name-three .first-character::after {
-    content: "W";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="W"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="W"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="W"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="W"][open]) .name-three .fourth-character::after,
@@ -1507,10 +1286,7 @@
     content: "w";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="X"][open]) .name-three .first-character::after {
-    content: "X";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="X"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="X"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="X"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="X"][open]) .name-three .fourth-character::after,
@@ -1523,10 +1299,7 @@
     content: "x";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="Y"][open]) .name-three .first-character::after {
-    content: "Y";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="Y"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="Y"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="Y"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="Y"][open]) .name-three .fourth-character::after,
@@ -1539,10 +1312,7 @@
     content: "y";
 }
 
-#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="Z"][open]) .name-three .first-character::after {
-    content: "Z";
-}
-
+#workskin:has(.user-input-three .confirm[open]):has(.user-input-three .first.keyboard [title="Z"][open]) .name-three .first-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .second.keyboard [title="Z"][open]) .name-three .second-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .third.keyboard [title="Z"][open]) .name-three .third-character::after,
 #workskin:has(.user-input-three .confirm[open]):has(.user-input-three .fourth.keyboard [title="Z"][open]) .name-three .fourth-character::after,
