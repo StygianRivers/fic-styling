@@ -19,3 +19,53 @@
 }
   
 to avoid odd gaps with the closed details, though note that this applies to every single details in the .undefined div. If you only want it to apply to details toggled by this method, you'll need to make a separate class for them and select that instead. -->
+
+<!-- more advanced styling: -->
+
+<div class="undefined">
+    <details class="checkbox">
+        <summary class="expand_all">Hide graphic content</summary>
+    </details>
+    <details open="open">
+        <summary class="expand hidden"></summary>
+
+        <p>This is the regular graphic content.</p>
+    </details>
+    <details>
+        <summary class="expand hidden"></summary>
+
+        <p>This is the censored content.</p>
+    </details>
+</div>
+
+#workskin .undefined details {
+margin: 0;
+}
+
+#workskin .checkbox {
+display: flex;
+}
+
+#workskin .checkbox summary {
+cursor: pointer;
+list-style: none;
+position: relative;
+transform: translateX(2em);
+}
+
+#workskin .checkbox summary::before {
+background-color: transparent;
+border: 1.5px solid;
+content: "";
+display: block;
+height: 1em;
+margin: auto 0.5em auto -1.5em;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+width: 1em;
+}
+
+#workskin .checkbox[open] summary::before {
+background-color: #289af7;
+}
