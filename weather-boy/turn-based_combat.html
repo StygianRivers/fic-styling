@@ -1,0 +1,511 @@
+Turn based combat:
+Structured like
+<div class="enemy">
+    <div class="muttering_tiara hidden">You face the tiara.
+        <div class="moveset-1 hidden">
+            <div class="turn-1">This is the enemy's first move.</div>
+            <div class="turn-2">This is the enemy's second move.</div>
+        </div>
+        <div class="moveset-2 hidden">
+            <div class="turn-1">This is the enemy's first move.</div>
+            <div class="turn-2">This is the enemy's second move.</div>
+        </div>
+    </div>
+</div>
+
+The moveset is picked based off the 4-point randomization technique: four movesets per enemy. Regular enemies' movesets
+don't change based on characters in the party. (I still need to figure out how to handle the gimmick shadows.)
+
+The enemy is picked based off 1. the current floor indication, and 2. randomization method #1. Each randomizer token
+will have enemy sequences of five enemies assigned to it, different configurations of the same enemies, with one being
+randomly picked based on the floor.
+
+#workskin:has(.floor2[open]) .battle:is(*:has(meta:last-of-type[content^='9']) *) .config-1 {
+display: block;
+}
+
+#workskin:has(.floor2[open]) .battle:is(*:has(meta:last-of-type[content^='f']) *) .config-2 {
+display: block;
+}
+
+This will be a lot of code for about 200 floors and up to 16 enemies on each. Maybe I can find a way to clean it up. If
+I make the `.config-*` classes show a button-like `details`, then based on the `details` opened...
+
+#workskin:has(.config-1.cstep-1[open]) .muttering-tiara {
+display: inline;
+}
+
+Which then leads to a step 2 details at the end of combat that hides the tiara again, and changes the display status of
+the next enemy in config-1 to be visible. That would mean 5 buttons per config per floor, which is still much better
+than copy-pasting fic content into different divs.
+
+That's randomized enemies and randomized movesets. What about winning the fight?
+
+Options in combat: Attack, Guard, Item, and Persona. Any of these use different in-universe methods to accomplish much
+the same things, which are:
+- `.attack`
+- `.heal`
+- `.defend`
+
+Each Persona `.skill` has an SP cost, but I'll get back to that.
+
+The basic concept is: if enough subsequent `.attack` details are open in one `.battle`, you win that battle.
+
+Selecting 'Persona' brings up your current Persona(based on what you used last, if you didn't refresh the page)'s
+skills, from which you can navigate to the persona submenu, where each Persona is a `details` that can be clicked to
+bring up its skills. You navigate to the submenu by closing the current Persona's `details`, so you can only have one
+Persona `details` open at a time.
+
+Based on the Persona you have active, you'll take more damage from attacks with affinities the Persona is weak to.
+You'll take less damage while guarding.
+You'll recover health (or recover your teammates' health) by healing.
+
+The enemy will take more damage from attacks with affinities they're weak to.
+
+Your teammates attack by themselves: each time you select your action for that turn, it's a `details` with an
+`.expand_all` class, and your teammates' actions are invisible `details` with the `.expand` class, grouped with your
+action. Then, by tracking how many `.attack`s were used this way, you can determine the enemy's health. `.attacks` will
+also have the affinity(or just a more general `.supereffective`) attached, to track if any of the attacks did more
+damage than expected.
+
+I doubt I'll add in critical hits. I definitely won't be adding in RNG for crits or misses. If I do add in critical
+hits, they're predetermined.
+
+This is all fully possible, but I'm struggling to neaten the code. Copy-pasting the visible text might be avoidable, but
+`.expand_all` means I need to nest an `.undefined` class for every single configuration and battle option.
+
+Is there a way to track party actions without grouping them that tightly?
+
+I'll try coding a single battle, on its own, without any state saving or randomization shenanigans going on:
+
+<div class="battle">
+    You're facing an enemy! What will you do?
+    <div class="turn turn-1">
+        <details class="defend">
+            <summary>Guard</summary>
+        </details>
+        <details class="weak attack">
+            <summary>Attack</summary>
+        </details>
+        <details class="personachoice">
+            <summary>Persona</summary>
+            <div class="persona-battle">Skills
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+            </div>
+        </details>
+    </div>
+    <div class="partyreport">
+        <div class="pm2">
+            <p class="attack">
+                <span class="yukari-name">Yukari</span>
+                <span class="junpei-name">Junpei</span>
+                <span class="akihiko-name">Akihiko</span>
+                <span class="mitsuru-name">Mitsuru</span>
+                <span class="aegis-name">Aegis</span>
+                <span class="koromaru-name">Koromaru</span>
+                <span class="ken-name">Ken</span>
+                <span class="shinjiro-name">Shinjiro</span>
+                attacked the enemy!
+            </p>
+            <p class="heal">
+                <span class="yukari-name">Yukari</span>
+                <span class="junpei-name">Junpei</span>
+                <span class="akihiko-name">Akihiko</span>
+                <span class="mitsuru-name">Mitsuru</span>
+                <span class="aegis-name">Aegis</span>
+                <span class="koromaru-name">Koromaru</span>
+                <span class="ken-name">Ken</span>
+                <span class="shinjiro-name">Shinjiro</span>
+                healed
+                <span class="heal-target">
+                    <span class="mc-name">
+                        Makoto
+                    </span>
+                    <span class="pm2">
+                        <span class="yukari-name">Yukari</span>
+                        <span class="junpei-name">Junpei</span>
+                        <span class="akihiko-name">Akihiko</span>
+                        <span class="mitsuru-name">Mitsuru</span>
+                        <span class="aegis-name">Aegis</span>
+                        <span class="koromaru-name">Koromaru</span>
+                        <span class="ken-name">Ken</span>
+                        <span class="shinjiro-name">Shinjiro</span>
+                    </span>
+                    <span class="pm3">
+                        <span class="yukari-name">Yukari</span>
+                        <span class="junpei-name">Junpei</span>
+                        <span class="akihiko-name">Akihiko</span>
+                        <span class="mitsuru-name">Mitsuru</span>
+                        <span class="aegis-name">Aegis</span>
+                        <span class="koromaru-name">Koromaru</span>
+                        <span class="ken-name">Ken</span>
+                        <span class="shinjiro-name">Shinjiro</span>
+                    </span>
+                    <span class="pm4">
+                        <span class="yukari-name">Yukari</span>
+                        <span class="junpei-name">Junpei</span>
+                        <span class="akihiko-name">Akihiko</span>
+                        <span class="mitsuru-name">Mitsuru</span>
+                        <span class="aegis-name">Aegis</span>
+                        <span class="koromaru-name">Koromaru</span>
+                        <span class="ken-name">Ken</span>
+                        <span class="shinjiro-name">Shinjiro</span>
+                    </span>
+                </span>
+                .
+            </p>
+            <p class="ailed">
+                <span class="yukari-name">Yukari</span>
+                <span class="junpei-name">Junpei</span>
+                <span class="akihiko-name">Akihiko</span>
+                <span class="mitsuru-name">Mitsuru</span>
+                <span class="aegis-name">Aegis</span>
+                <span class="koromaru-name">Koromaru</span>
+                <span class="ken-name">Ken</span>
+                <span class="shinjiro-name">Shinjiro</span>
+                inflicted the enemy with
+                <span class="ailment">an ailment!</span>
+            </p>
+        </div>
+    </div>
+    <div class="turn turn-2">
+        <details class="defend">
+            <summary>Guard</summary>
+        </details>
+        <details class="weak attack">
+            <summary>Attack</summary>
+        </details>
+        <details class="personachoice">
+            <summary>Persona</summary>
+            <div class="persona-battle">Skills
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill heal">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill attack">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill buff">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <details class="skill ailment">
+                    <summary></summary>
+                </details>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+                <div class="passive">
+                    <summary></summary>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+
+<div class="personamenu hidden">
+    <div class="bigpersonamenu hidden">Choose your Persona</div>
+    <details class="persona orpheus hidden">
+        <summary>Orpheus</summary>
+    </details>
+    <details class="persona thanatos hidden">
+        <summary>Thanatos</summary>
+    </details>
+</div>
+
+#workskin:has(.personachoice[open]) .personamenu {
+display: block;
+}
+
+#workskin .personachoice[open] > .summary {
+visibility: hidden;
+}
+
+#workskin .personachoice[open] > .summary::after {
+content: "Pick something else";
+position: absolute;
+}
+
+#workskin:has(.orpheus[open]) .personamenu .orpheus {
+display: block;
+}
+
+#workskin:has(.orpheus[open]) .persona-battle:nth-child(1 of .heal)::after {
+content: "Dia"
+}
+
+#workskin:has(.orpheus[open]) .persona-battle:nth-child(2 of .attack)::after {
+content: "Bash"
+}
+
+#workskin:has(.orpheus[open]) .persona-battle:nth-child(3 of .attack)::after {
+content: "Agi"
+}
+
+#workskin .persona[open] > summary {
+opacity: 0;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+#workskin:has(.personachoice[open]):not(:has(.persona[open])) .bigpersonamenu, #workskin:not(:has(.persona[open]))
+.personamenu .persona {
+display: block;
+}
+
+#workskin .persona[open] {
+display: block;
+}
+
+#workskin:has(.personachoice[open]):has(.persona[open]) .persona {
+width: 100%;
+height: auto;
+background: blue;
+font-size: 8em;
+}
+
+#workskin .turn:has(.defend[open]), #workskin .turn:has(.attack[open]), #workskin .turn:has(.skill[open]) {
+display: none;
+}
+
+#workskin .turn:has(.defend[open]) + .partyreport, #workskin .turn:has(.attack[open]) + .partyreport, #workskin
+.turn:has(.skill[open]) + .partyreport {
+display: block;
+}
+
+#workskin .partyreport span {
+display: none;
+}
+
+#workskin .turn-1:has(.defend[open]) ~ .turn-2, #workskin .turn-1:has(.attack[open]) .turn-2, #workskin
+.turn-1:has(.skill[open]) ~ .turn-2 {
+display: block;
+}
+
+#workskin .battle:has(turn .attack[open] ~ turn .attack[open] ~ turn .attack[open]) {
+display: none;
+}
+
+#workskin .battle:has(turn .attack[open] ~ turn .attack[open] ~ turn .attack[open]) > .victory {
+display: block;
+}
