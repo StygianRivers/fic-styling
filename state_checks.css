@@ -1,0 +1,43 @@
+/* ao3 state checks */
+
+/* hides content if workskin is on (display messages for readers without workskin on) */
+#workskin .workskin-off {
+    display: none;
+}
+
+/* displays content only when workskin is turned on */
+#workskin .hidden.workskin-shown {
+    display: block;
+}
+
+/* hides content when reader is reading in entire work mode (display chapter-by-chapter-specific messages) */
+#workskin:has(#chapter-1):has(#chapter-2) .entire_work_check {
+    display: none;
+}
+
+/* displays content when fic has been marked for later */
+#workskin:is(*:has(.mark [action$='mark_as_read']) *) .marked_later_check {
+    display: inline;
+}
+
+/* displays content when fic has been subscribed to */
+#workskin:is(*:has(.subscribe input:last-of-type[value='Unsubscribe']) *) .subscribed_check {
+    display: inline;
+}
+
+/* displays content when the url ends with #fragment */
+#workskin [name="fragment"]:target .hidden.content {
+    display: block;
+}
+
+/* hides content that is replaced by targeted content */
+#workskin [name="fragment"]:target~.default {
+    display: none;
+}
+
+/* target works with specific tags */
+#workskin:is(*:has(.tags [href='/tags/Insert%20Tag%20Here/works']))
+/* target works from specific series */
+#workskin:is(*:has(.series [href='/series/#######']))
+/* target works in specific collections */
+#workskin:is(*:has(.collections [href='/collections/CollectionName']))
