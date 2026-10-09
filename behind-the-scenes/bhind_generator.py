@@ -40,19 +40,17 @@ added_time_seconds = sec_list
 # at any user input, type #s to add a number of seconds to the delay before continuing what you were doing
 
 # chatroom container
-html_intro = f"""<div class="flex">
-        <details class="fadedetails">
-            <summary>{groupchatname}<span class="overlay"></span></summary>
-            <div class="phone">
-                <h3 class="phoneheader">
-                    <span class="hiddeninfo">Group chat: </span>
+html_intro = f"""<details class="fadedetails">
+        <summary>{groupchatname}<span class="overlay"></span></summary>
+        <div class="phone bordoor">
+            <h3 class="phoneheader">
+                <span class="hiddeninfo">Group chat: </span>
                     {groupchatname}
-                </h3> 
+            </h3> 
 """
 html_end = """
             </div>
         </details>
-    </div>
 """
 
 # review manual edit variables
@@ -170,7 +168,7 @@ def typingdots(user, typing_iteration):
         delaylist.append(int(ty_start))
         totaldelay = int(sum(delaylist))
         ty_html = f"""
-<p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><span class="texthide"><strong><small>{user_typing} is typing...</small></strong></span></span></span></p>
+<p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
 """
         ty_css = f"""
 #workskin:has(.fadedetails[open]) .t{typing_iter} {{
@@ -209,7 +207,7 @@ def autoTyping(user_typing, typing_iteration):
     typing_iter = typing_iteration + 1
     totaldelay = sum(delaylist)
     autoty_html = f"""
-    <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><span class="texthide"><strong><small>{user_typing} is typing...</small></strong></span></span></span></p>
+    <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
         """
     autoty_css = f"""#workskin:has(.fadedetails[open]) .t{typing_iter} {{
 visibility: visible;
@@ -237,7 +235,7 @@ def trycss(cclass, cuser, cmessage):
     css_result = f"""
 #workskin:has(.fadedetails[open]) .m{cclass} {{
 visibility: visible;
-transition: all 1s linear {totaldelay}s;
+transition: visibility 0s linear {totaldelay}s;
 }}
 
 #workskin:not(:has(.notextspeak[open])) .text.m{cclass}::after {{
@@ -253,12 +251,12 @@ def tryhtml(hclass, huser):
     # if the username is the same as the previous message, don't add the username for this one as well
     global userpersist 
     if userpersist == huser:
-        return f"""<p class="text visibly m{hclass}"><span class="fallback">{altMessage}</span></p>"""
+        return f"""<p class="text visibly m{hclass}"><span></span><span class="fallback">{altMessage}</span></p>"""
     else:
         userpersist = huser
         return f"""
 <p class="username visibly m{hclass}"><strong>{huser}</strong></p>
-<p class="text visibly m{hclass}"><span class="fallback">{altMessage}</span></p>
+<p class="text visibly m{hclass}"><span></span><span class="fallback">{altMessage}</span></p>
 """
 
 # save and quit
@@ -377,11 +375,11 @@ try:
             else:
                 print(errcolor_start + "Type 'skip' to skip this message, or 'retry' to change the input." + color_end)
     html.append(html_end)
-    try:
-        import audio_generation
-        audio_generation
-    except ImportError:
-        print("Audio generator could not be found.")
+    # try:
+        # import audio_generation
+        # audio_generation
+    # except ImportError:
+        # print("Audio generator could not be found.")
     finalhtml = "\n".join(html)
     finalcss = "\n".join(css)
 except KeyboardInterrupt:
