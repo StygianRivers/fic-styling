@@ -34,20 +34,12 @@ f_state = 0
 html = []
 css = []
 sec_list = []
-for i in range(1, 2400):
+for i in range(2400):
     sec_list.append(str(i) + "s") 
 added_time_seconds = sec_list
-# at any user input, type #s to add a number of seconds to the delay before continuing what you were doing
+# at any user input, you may type #s to add a number of seconds to the delay before continuing what you were doing
 
 # chatroom container
-html_intro = f"""<details class="fadedetails">
-        <summary>{groupchatname}<span class="overlay"></span></summary>
-        <div class="phone bordoor">
-            <h3 class="phoneheader">
-                <span class="hiddeninfo">Group chat: </span>
-                    {groupchatname}
-            </h3> 
-"""
 html_end = """
             </div>
         </details>
@@ -70,6 +62,14 @@ except ImportError:
     delaylist = []
     delay_sound_list = []
     userpersist = "None"
+    html_intro = f"""<details class="fade fadedetails{output_file}">
+        <summary>{groupchatname}<span class="overlay"></span></summary>
+        <div class="phone bordoor">
+            <h3 class="phoneheader">
+                <span class="hiddeninfo">Group chat: </span>
+                    {groupchatname}
+            </h3> 
+"""
     html.append(html_intro)
 
 with open(input_file, "r") as fin:
@@ -173,7 +173,7 @@ def typingdots(user, typing_iteration):
         ty_css = f"""
 #workskin:has(.fadedetails[open]) .t{typing_iter} {{
 visibility: visible;
-transition: all {typing_length}s linear {totaldelay}s;
+transition: visibility {typing_length}s {totaldelay}s;
 }}
 """
         delaylist.append(int(typing_length))
@@ -209,9 +209,9 @@ def autoTyping(user_typing, typing_iteration):
     autoty_html = f"""
     <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
         """
-    autoty_css = f"""#workskin:has(.fadedetails[open]) .t{typing_iter} {{
+    autoty_css = f"""#workskin .fadedetails{output_file}[open] .t{typing_iter} {{
 visibility: visible;
-transition: all {time_spent_typing}s linear {totaldelay}s;
+transition: all {time_spent_typing}s {totaldelay}s;
 }}"""
     delaylist.append(time_spent_typing)
     html.append(autoty_html)
@@ -233,9 +233,9 @@ def trycss(cclass, cuser, cmessage):
     # exact time at which message is sent (to later add notification sounds)
     delay_sound_list.append(totaldelay)
     css_result = f"""
-#workskin:has(.fadedetails[open]) .m{cclass} {{
+#workskin .fadedetails[open] .m{cclass} {{
 visibility: visible;
-transition: visibility 0s linear {totaldelay}s;
+transition: visibility 0s {totaldelay}s;
 }}
 
 #workskin:not(:has(.notextspeak[open])) .text.m{cclass}::after {{
@@ -260,13 +260,13 @@ def tryhtml(hclass, huser):
 """
 
 # save and quit
-def saveProgress(typing_iteration, it):
+def saveProgress(typing_iteration, start):
     save_progress = input(syscolor_start + "'y' to save and quit, or 'skip' to quit without saving\n" + color_end).lower()
     if save_progress in ['y', 'yes', 'ok', 'save', 'quit', 'q', 'exit']:
         if confirmed == True:
-            it += 1
+            start += 1
         with open(f"{path}olddata.py", "w") as old_data:
-            old_data.write("input_file = \"" + input_file + "\"\noutput_file = \"" + output_file + "\"\nstart = " + str(it) + "\ntyping_iteration = " + str(typing_iteration) + "\ndelaylist = " + str(delaylist) + "\nuserpersist = \"" + userpersist + "\"" + "\nfocus = " + str(focus_mult) + "\ndelay_sound_list = " + str(delay_sound_list))
+            old_data.write("input_file = \"" + input_file + "\"\noutput_file = \"" + output_file + "\"\nstart = " + str(start) + "\ntyping_iteration = " + str(typing_iteration) + "\ndelaylist = " + str(delaylist) + "\nuserpersist = \"" + userpersist + "\"" + "\nfocus = " + str(focus_mult) + "\ndelay_sound_list = " + str(delay_sound_list))
         finalhtml = "\n".join(html)
         finalcss = "\n".join(css)
         with open (f"{path}{output_file}.html", "a") as fohtml:
@@ -336,13 +336,13 @@ try:
                     break
         # if no time noted (time returns None)
         except TypeError as error:
-            print(error)
+            print(syscolor_start + "No hesitation time noted" + color_end)
             # show message
             print(textcolor_start + user + ": " + message + color_end)
             for i in message:
                 # time to add to delay before message is sent
                 think_pause = think_time * focus_mult
-                delaylist.append(think_pause)
+                delaylist.append(int(think_pause))
             typing_iteration = autoTyping(user, typing_iteration)
         msg_css = trycss(it, user, message)
         msg_html = tryhtml(it, user)
@@ -368,16 +368,16 @@ try:
                 msg_html = tryhtml(i, user)
                 continue
             elif confirm in added_time_seconds:
-                custom_time = re.match(r"\d{1, 4}", typing_indicator).group()
-                delaylist.append(int(custom_time))
-                print(syscolor_start + "Appended " + custom_time + " seconds to the delay." + color_end)
+                custom_time = re.match(r"\d{1,4}", confirm)
+                delaylist.append(int(custom_time.group()))
+                print(syscolor_start + "Appended " + str(custom_time.group()) + " seconds to the delay." + color_end)
                 continue
             else:
                 print(errcolor_start + "Type 'skip' to skip this message, or 'retry' to change the input." + color_end)
     html.append(html_end)
     # try:
-        # import audio_generation
-        # audio_generation
+        # from audio_generation import *
+        # generate()
     # except ImportError:
         # print("Audio generator could not be found.")
     finalhtml = "\n".join(html)
@@ -385,7 +385,7 @@ try:
 except KeyboardInterrupt:
     saveProgress(typing_iteration, it)
 except Exception as error:
-    print(errcolor_start + "An exception occurred: " + error + color_end)
+    print(errcolor_start + "An exception occurred: " + str(error) + color_end)
     saveProgress(typing_iteration, it)
 
 # append final code to relevant files

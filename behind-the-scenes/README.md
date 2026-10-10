@@ -14,10 +14,8 @@
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
 
 **To do: Python generator**
-- update with latest HTMLCSS
 - fix `it` resetting after saving (despite `start` saving) (just `start += 1` every iteraton, and use `start` instead of `it`?)
-- fix program repeating itself (importing then calling audio_generation.py causes it to repeat)
-- add up think-time and read-time and round to the nearest integer before adding them to delay-list
+- add up think-time and read-time and round to the nearest integer before adding them to delay-list (tried but does it work?)
 - auto split big doc into scenes for input
 - add to generator: iterate `fadedetails` class per section added (can just `fadedetails{output_file}` it)
 

@@ -19,12 +19,20 @@
     text-align: center;
 }
 
-#workskin details.fadedetails {
+#workskin details.fade {
+    display: none;
+}
+
+#workskin details.fade[open] {
     display: flex;
     flex-direction: row;
     justify-content: center;
     position: relative;
     margin-top: 5em;
+}
+
+#workskin details:nth-child(1 of .fade:not([open])) {
+    display: flex;
 }
 
 #workskin .phone {
@@ -33,11 +41,14 @@
     position: relative;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 1em auto;
-    border: 2px ridge;
     padding: .5em 0;
     display: table;
     overflow-wrap: break-word;
     hyphens: auto;
+    outline: 2px ridge;
+    outline-color: inherit;
+    border: 0px;
+    border-color: inherit;
 }
 
 #workskin .phone h3 {
@@ -57,7 +68,7 @@
     hyphens: auto;
 }
 
-#workskin .fadedetails>summary {
+#workskin .fade > summary {
     list-style: none;
     padding: 0.5em;
     cursor: pointer;
@@ -67,12 +78,12 @@
     top: -3em;
 }
 
-#workskin .fadedetails[open]>summary {
+#workskin .fade[open] > summary {
     border: 3px solid;
     box-shadow: 0px 0px 3px;
 }
 
-#workskin .colour details>summary {
+#workskin .colour details > summary {
     list-style: none;
 }
 
@@ -87,12 +98,12 @@
     left: -0.1em;
 }
 
-#workskin:has(.overlay:hover) .fadedetails summary {
+#workskin .fade:has(.overlay:hover) summary {
     background: rgba(0, 0, 0, 0.1);
     border: 3px solid;
 }
 
-#workskin .fadedetails[open] .overlay {
+#workskin .fade[open] .overlay {
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -114,11 +125,11 @@
     height: inherit;
 }
 
-#workskin div.fadedetails p {
+#workskin div.fade p {
     margin: 0;
 }
 
-#workskin div.fadedetails {
+#workskin div.fade {
     margin: 1em auto;
     padding: 0.5em;
     cursor: pointer;
@@ -126,7 +137,7 @@
     border-radius: 0.3em;
 }
 
-#workskin:has(.notif:hover) div.fadedetails {
+#workskin:has(.notif:hover) div.fade {
     background-color: rgba(0, 0, 0, 0.1);
     border: 3px solid red;
 }
@@ -171,15 +182,15 @@
     border-bottom-color: inherit;
 }
 
-#workskin .username>strong {
+#workskin .username > strong {
     font-weight: normal;
 }
 
-#workskin .username+.text {
+#workskin .username + .text {
     border-top-left-radius: 1em;
 }
 
-#workskin .username+.text::before {
+#workskin .username + .text::before {
     content: "";
     position: absolute;
     top: 0;
@@ -298,7 +309,7 @@
     clear: both;
 }
 
-#workskin:has(.fadedetails[open]) .fade-typing {
+#workskin .fade[open] .fade-typing {
     visibility: visible;
     transition: visibility 0s 9999999s;
 }
@@ -316,7 +327,7 @@
     outline: 0;
 }
 
-#workskin .userstuff .namelist>li {
+#workskin .userstuff .namelist > li {
     list-style: none;
 }
 
@@ -464,16 +475,16 @@
 }
 
 #workskin:has(.midnight-revert:active) .bordoor,
-#workskin:has(.midnight-revert:active) .bordoor>div,
+#workskin:has(.midnight-revert:active) .bordoor > div,
 #workskin:has(.starry-revert:active) .bordoor,
-#workskin:has(.starry-revert:active) .bordoor>div {
+#workskin:has(.starry-revert:active) .bordoor > div {
     outline-color: white;
     border-color: white;
     transition: border-color 1s, outline-color 1s;
 }
 
 #workskin:has(.default-revert:active) .bordoor,
-#workskin:has(.default-revert:active) .bordoor>div {
+#workskin:has(.default-revert:active) .bordoor > div {
     outline-color: black;
     border-color: black;
     transition: border-color 1s, outline-color 1s;
@@ -487,7 +498,7 @@
 
 #workskin:has(.reversi-revert:active) .userstuff,
 #workskin:has(.reversi-revert:active) .bordoor,
-#workskin:has(.reversi-revert:active) .bordoor>div {
+#workskin:has(.reversi-revert:active) .bordoor > div {
     color: white;
     background: #333;
     border-color: white;
@@ -496,19 +507,19 @@
 }
 
 #workskin .bordoor,
-#workskin .bordoor>div {
+#workskin .bordoor > div {
     transition: border-color 0s 9999999s, outline-color 0s 9999999s;
 }
 
 #workskin:has(.midnight:active) .bordoor,
-#workskin:has(.midnight:active) .bordoor>div {
+#workskin:has(.midnight:active) .bordoor > div {
     border-color: #1F054D;
     outline-color: #1F054D;
     transition: border-color 3s, outline-color 3s;
 }
 
 #workskin:has(.starry:active) .bordoor,
-#workskin:has(.starry:active) .bordoor>div {
+#workskin:has(.starry:active) .bordoor > div {
     border-color: #05104D;
     outline-color: #05104D;
     transition: border-color 3s, outline-color 3s;
