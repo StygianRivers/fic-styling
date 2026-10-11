@@ -1,0 +1,150 @@
+This generator is created to be used with Chatfic Method 1. Over time, I've come to like Method 2 more, so I'll most likely create a second generator for Method 2 eventually, but <em>this generator</em> specifically is for Method 1, the method using <strong>details</strong> to facilitate transitions. Keep that in mind.
+
+<h2>INITIAL FORMATTING</h2>
+
+The generator is a bit complicated to implement for yourself, specifically because it has to change depending on your original writing style.
+
+For example, I write my chatfics in Markdown like this:
+
+<pre>**Username:** message
+
+**Username:** message</pre>
+
+with several ways to mark time notes, as well. like
+
+<pre>[1min] **Username:** message</pre>
+
+This means that Username took a minute longer than they usually would to type their message (added hesitation time). But when it's not attached to a message:
+
+<pre>**Username:** message
+
+[1min]
+
+**Username:** message</pre>
+
+That means that there is a pause in between messages.
+
+This difference in formatting matters, because it determines how the typing indicator shows up. When there's that pause in between messages, no one is typing, but when there's a message with added hesitation time, the typing indicator should be blinking during that time.
+
+Following so far?
+
+I also occasionally add notes that aren't (just) indicative of a pause. That looks like:
+
+<pre>**Username:** message
+
+[1min where Username tries to think of a way to phrase this joke that wouldn't hit too close to home]
+
+**Username:** joke</pre>
+
+or
+
+<pre>[slow responses from Username]
+
+**Username:** message</pre>
+
+The notes influence the pattern that the typing indicator blinks in and the time it should last for, so when generating the CSS/HTML, I obviously want to take these notes into account.
+
+I assume most people don't make these notes in between chat messages, so I'll be sure to make very clear what part of the generator is for what purpose, so you can remove and edit parts as needed.
+
+<h2>WRITING PYTHON CODE</h2>
+
+I don't believe my tutorial is fit to learn (enough) Python (to edit this generator) from, so I recommend reading up on Python as a language, but I'll do my best to make this very beginner-friendly, since I'm still a beginner myself. I'll admit that I did very little reading studying on Python in order to make this generator. I mostly figured it out as I went, and when I got stuck, I asked for help. It's for this reason that I'm also <strong>100% open to questions in the comments, and I'll help to the best of my ability with any issues you encounter.</strong>
+
+Comments are marked by <strong>#</strong> and can be safely left out of your program.
+
+In Python, unlike in CSS, the order in which you write your code matters <em>a lot</em>. It's very easy to trip up in that area. It's hard to specify in a tutorial, too. In the chapter after this one, I'll post my entire generator code, so you can check if the bits you copied are at least in the correct order. Feel free to ask if it's hard to tell.
+
+To write a Python program you'll want an Integrated Development Program or IDE. I used Visual Studio Code (VSCode), myself. Once you've set that up with file paths and preferences, you'll want to create a file called something like 'generator<strong>.py</strong>'. The <strong>.py</strong> extension is the important part, since that indicates that it's a python program.
+
+<div class="sidenote">
+    <div class="hiddeninfo">
+        <p>Sidenote:</p>
+    </div>
+    <p>In VSCode, specifically, you'll want to install the Pylance extension to help you code in Python. I'm not sure how this works for other IDEs.</p>
+    <div class="hiddeninfo">
+        <p>Sidenote over.</p>
+    </div>
+</div>
+
+To test the program, once you have it, you'll need a terminal. VSCode has an integrated terminal that you can run it in simply by clicking 'Run' in the appropriate file editor, but you can run it in any terminal, integrated or not. Just make sure the <strong>.py</strong> file is 'Executable as Program', and you can run it just by typing the file name (including its path) into the terminal.
+
+<h2>INPUT AND OUTPUT FILES</h2>
+
+First you have to define the input file. The generator will take your already-written chatfic to format it the way you want it to be formatted, so you have to feed it the already-written chatfic.
+
+<p>This, in turn, starts with defining some variables at the top of your file. <strong>These variables will be different for each fic, so you need to change them.<strong> They're the only part of the program you absolutely <em>have</em> to change, in order for the program to work.</p>
+
+<pre>path = "/home/username/path/to/folder/with/input/file/"
+
+groupchatname = "Wild Card Support Group"
+usrone = "Minato"
+usrtwo = "Yu"
+usrthree = "Akira"</pre>
+
+Then, you'll have the program fetch the input file from the folder you specified above:
+
+<pre>input_file = path + input("Which file to generate for?\n")</pre>
+
+When you run the program, this line of code will prompt you to name the input file. You could automate this by writing it into the program directly, but this generator assumes there exists multiple files that you want to generate HTML/CSS for. After all, each input file is one chat 'section'.
+
+When the program prompts you, you might type <strong>example.md</strong>, which would make the input file <strong>home/username/path/to/folder/with/input/file/example.md</strong>.
+
+You can see how this way, you can have every 'scene' you want to put into a <strong>fadedetails</strong> in the same folder, and easily run the generator for each one, separately.
+
+"But, hang on!" I hear you saying. "All of my chatfic is in one file. Do I manually have to portion each scene? I already added linebreaks between scenes, I don't want to waste more effort separating those scenes!"
+
+I don't think anyone is actually asking that. But I solved it anyway! Because I'm the kind of person who puts all of their fic in one file!
+
+As the very first block of code in your program (after defining your variables), you can put:
+
+<pre>def big_file_split():
+    bigconfirm = input("Split big file into scenes?\n")
+    # when user enters 'yes', continue
+    if bigconfirm in ['y', 'yes', 'ok']:
+        big_file = path + input("Which file to split?\n")
+        with open(big_file, "r") as fbig:
+            all_scenes = fbig.read()
+        # divide into individual scenes 
+        scenes = all_scenes.strip().split("\n-\n")
+        for i, scn in enumerate(scenes):
+            with open(f"{path}scene{i}.md", "w") as scene:
+                print(scn, file=scene) 
+        return
+    elif bigconfirm in ['n', 'no']:
+        return
+    else
+        print("Not a valid input.")
+        # repeat prompt
+        big_file_split()
+</pre>
+
+The crucial bit there is <strong>all_scenes.strip().split("\n-\n")</strong>. This is set the way it is because I split my scenes in Markdown with a simple newline, dash, newline combo. If you, for example, use three dashes and no newlines to split your scenes, it should instead be: <strong>all_scenes.strip().split("---")</strong>. If you write in HTML format and use &lt;hr&gt; surrounded by newlines to split your scenes, it should instead be: <strong>all_scenes.strip().split("\n&lt;hr&gt;\n")</strong>.
+
+If done right, this will result in a series of files named scene1, scene2, etc. in the same folder as your defined path leads to. At which point, you can go through them one by one to generate their respective HTML/CSS, using the regular file input.
+
+<p>"Hang on, if I want multiple <strong>fadedetails</strong> in the same fic, shouldn't they be iterated?" Yes, absolutely. This is taken into account in the generator by using <strong>output_file<strong>.</p>
+
+<p>The CSS additions all need to be added into one file, because that file will become your workskin, but the HTML of each scene can be separated into different output files. That way, you can easily copy-and-paste the scenes into the chapters you want them in, or even rearrange their order. For that purpose, you'll need every scene to have its own HTML output file. You define the output_file variable just after you've defined the input_file:</p>
+
+<pre>output_file = re.match(r"(?:.*\/)(.+)\..*", input_file).group(1)</pre>
+
+This is the point where we get into regular expressions(regex). Regex is so useful, and also my arch nemesis. It's very hard to work with as a beginner. Which is unfortunate, because it's also some of the stuff you'll need to edit if your initial formatting is different from mine.
+
+I'll do my best to walk you through it.
+
+What the output_file definition is doing is simply taking the input file, and removing the path and the file extension from it, leaving you with just the file name. So what would simply be 'example' or 'scene1' or whatever you've titled that file. That will be the output file name as well. You might need to edit it slightly if the input file is a <strong>.html</strong> file as well, since otherwise it would overwrite the input file, but I'll go over how to do that when we get to writing the output file.
+
+<h2>SPLITTING A SCENE INTO MESSAGES</h2>
+
+<pre>with open(input_file, "r") as fin:
+    contents = fin.read()
+# divide into individual messages
+messages = contents.strip().split("\n\n")</pre>
+
+Pretty simple, right? Assuming your chat messages are distinguishable from each other by two newlines, as mine are, this will work to get you a list of chat messages.
+
+If you use another method to distinguish messages from each other, such as just <em>one</em> newline, the last line of that block will instead be
+
+<pre>messages = contents.strip().split("\n")</pre>
+
+... or whatever you've split your messages with, instead.

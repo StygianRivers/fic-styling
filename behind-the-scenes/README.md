@@ -6,18 +6,17 @@
 - fancy button to open chat
 - message tails
 - optional toggle for color scheme
+- HTML/CSS generator
 
 **To do:**
 - try to figure out sound effects frfr
-- close-chat button at the end of the chat that then reveals the next open-chat button
 - figure out whether screen readers will read text after transition-delay (if not, warn screen reader users to turn off the workskin)
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
 
 **To do: Python generator**
-- fix `it` resetting after saving (despite `start` saving) (just `start += 1` every iteraton, and use `start` instead of `it`?)
-- add up think-time and read-time and round to the nearest integer before adding them to delay-list (tried but does it work?)
-- auto split big doc into scenes for input
-- add to generator: iterate `fadedetails` class per section added (can just `fadedetails{output_file}` it)
+- always at least 1 second between messages, including short messages
+- t9 user characters should not have more than 160 characters per message. If more than 160 characters, split into 2 messages (but sent simultaneously)
+- test all functions
 
 **To do: Tutorial**
 - explain generator (separate chapter)(when generator is fully functional)
