@@ -7,8 +7,19 @@
     margin: 2em;
 }
 
+#workskin .alert {
+    color: red;
+    font-weight: bold;
+    margin: 0 0.3em;
+    text-shadow: 0 0 1em #000000;
+}
+
 #workskin details {
     margin: initial;
+}
+
+#workskin details.action {
+    padding: 0.25em 0.75em;
 }
 
 #workskin .NOTE_re_checks {
@@ -78,7 +89,7 @@
 
 #workskin .NOTE_re_accessibility {
     content: " /// *
- Classes to mimic visual space, to hide SR-required text from those not using SR, to then show that text to keyboard users who tab over to it (to avoid them tabbing over to an invisible element and getting confused) - change .chapter-readout to the same rule as .screxclusive after the chapter titles have been changed to not-clearly-chapter-titles. * ///";
+ Classes to mimic visual space, to hide SR-required text from those not using SR, to then show that text to keyboard users who tab over to it (to avoid them tabbing over to an invisible element and getting confused) * ///";
 }
 
 #workskin .scrpause {
@@ -100,10 +111,6 @@
     position: static;
     width: auto;
     height: auto;
-}
-
-#workskin .chapter-readout {
-    display: none;
 }
 
 #workskin .NOTE_re_music_linebreaks {
@@ -194,22 +201,6 @@
 #workskin .teeny {
     display: flex;
     flex-direction: row;
-}
-
-#workskin .tainy {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    align-items: left;
-}
-
-#workskin .tainy span {
-    flex-basis: fit-content;
-    flex-flow: row nowrap;
-}
-
-#workskin .tainy .scrpause {
-    flex-shrink: 1;
 }
 
 #workskin .NOTE_re_titles {
@@ -713,7 +704,7 @@
     content: " /// * Give the option to replace graphic specific graphic content. (You need different classes for each warning, they can't overlap.) * ///";
 }
 
-#workskin .grcont>summary {
+#workskin .grcont > summary {
     list-style: none;
 }
 
@@ -845,21 +836,18 @@
 }
 
 #workskin .NOTE_re_fic_showcase {
-    content: " /// * different ficdeets class and accompanying rule is needed for each showcase, or readers reading in full-work mode will open every single showcase with the first button they press. Also should have different   and gradient styling for each showcase. * ///";
+    content: " /// * should each have a unique class to style the backgrounds differently with * ///";
 }
 
-#workskin .ficdeets,
-#workskin .ficdeets2 {
+#workskin .ficdeets {
     margin: 2em;
 }
 
-#workskin:has(.ficdeets[open]) .ficdeets,
-#workskin:has(.ficdeets2[open]) .ficdeets2 {
+#workskin .ficdeets[open] {
     display: none;
 }
 
-#workskin:has(.ficdeets[open]) .ficpitch,
-#workskin:has(.ficdeets2[open]) .ficpitch2 {
+#workskin .ficdeets[open] + .ficpitch {
     display: flex;
     text-align: center;
     width: 750px;
@@ -867,13 +855,22 @@
     flex-direction: column;
 }
 
+#workskin .userstuff .ficpitch blockquote {
+    border-inline-start: 0px solid;
+}
+
+#workskin .ficpitch a {
+    border: 0;
+}
+
 #workskin .letter-front-mini {
     height: auto;
     background: linear-gradient(to bottom, rgba(20, 52, 164, 0), rgba(20, 52, 164, 1));
+    color: white;
 }
 
 #workskin .letter-mid-mini {
-    background: content-box radial-gradient(ellipse closest-side at 50% 35%, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) 70%, transparent), url("https://stygianrivers.github.io/fic-styling/based/Untitled71_20260601192514.png"), rgba(20, 52, 164, 1);
+    background: url("https://stygianrivers.github.io/fic-styling/based/Untitled71_20260601192514.png"), rgba(20, 52, 164, 1);
     background-size: cover;
     background-repeat: repeat;
 }
@@ -908,6 +905,9 @@
 #workskin .showcase {
     font-size: 1.05em;
     text-shadow: 0 0 1em #000000, 0 0 0.3em #000000;
+    background: border-box radial-gradient(ellipse closest-side at 50% 50%, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) 80%, transparent);
+    margin: -1em;
+    padding: 1em;
 }
 
 #workskin .NOTE_re_typewriter_animation {
@@ -927,7 +927,7 @@
     content: " /// * hide-reveal cycle * ///";
 }
 
-#workskin:has(.typeit[open]) .typeit>summary,
+#workskin:has(.typeit[open]) .typeit > summary,
 #workskin .typeit2,
 #workskin .typeit3,
 #workskin .typeit4,

@@ -22,20 +22,10 @@ To do:
 - P3(R) key item-get graphic as linebreak for stuff like bobby pins, epipen, friendship bracelet,
 
 Tested on ao3. Fixes to make:
-- fix gr-content switch paragraph gap
-- fix 'fix textspeak' function
-- get rid of the pointless scroll bar in chapter 3
 - make deskbuttons work again
   - wtf is teeny flexing for
   - rewrite pulley cycle
   - text should vanish when 'closing' file
-- fix the showcase
-  - remove blockquote line
-  - fix button
-  - remove link underline unless hovered
-- add regular link underlines back
-- ao3 deleting `&nbsp;` ???
-- awkward breaks in top notes (hidden text)
 
 Mobile fixes:
 
