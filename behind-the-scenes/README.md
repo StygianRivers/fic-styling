@@ -14,9 +14,12 @@
 - test how long of a text message can be replaced before it starts to get messed up (check on mobile too)
 
 **To do: Python generator**
-- always at least 1 second between messages, including short messages
-- t9 user characters should not have more than 160 characters per message. If more than 160 characters, split into 2 messages (but sent simultaneously)
+- option to make a message appear .1 seconds after the last message (to mimic them being sent almost simultaneously)
 - test all functions
+  - t9 splitting
+  - do all possible inputs handle invalid input smoothly?
+  - don't exit the program completely when encountering a non-message paragraph
+- try to determine the proper read/think times frfr
 
 **To do: Tutorial**
 - explain generator (separate chapter)(when generator is fully functional)
