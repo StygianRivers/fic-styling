@@ -22,6 +22,10 @@
     padding: 0.25em 0.75em;
 }
 
+#workskin .hidden.workskin-shown {
+    display: block;
+}
+
 #workskin .NOTE_re_checks {
     content: " /// * Various checks on the reader current state, to then show text based on that. (This will hide the reminder to turn on the workskin if the workskin is already on, as an example.) * ///";
 }
@@ -88,8 +92,7 @@
 }
 
 #workskin .NOTE_re_accessibility {
-    content: " /// *
- Classes to mimic visual space, to hide SR-required text from those not using SR, to then show that text to keyboard users who tab over to it (to avoid them tabbing over to an invisible element and getting confused) * ///";
+    content: " /// * Classes to mimic visual space, to hide SR-required text from those not using SR, to then show that text to keyboard users who tab over to it (to avoid them tabbing over to an invisible element and getting confused) * ///";
 }
 
 #workskin .scrpause {
@@ -124,8 +127,7 @@
     font-family: monospace;
 }
 
-#workskin p.staticfix,
-#workskin .tainy p {
+#workskin p.staticfix {
     margin: 1.286em 0;
 }
 
@@ -201,16 +203,11 @@
 #workskin .teeny {
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 #workskin .NOTE_re_titles {
     content: " /// * Title (and chapter title) styling. Random 2/64 chance to replace work title * ///";
-}
-
-#workskin .title {
-    font-family: Cambria, Constantia, Palatino, Georgia, serif;
-    font-weight: bold;
-    font-size: 1.8em;
 }
 
 #workskin .preface.group h2.title:is(*:has(meta:last-of-type[content^="a" i]) *) {
@@ -231,6 +228,8 @@
     line-height: 2em;
     font-family: Cambria, Constantia, Palatino, Georgia, serif;
     font-size: 0.5em;
+    font-weight: bold;
+    white-space: nowrap;
     display: block;
 }
 
@@ -555,14 +554,21 @@
 }
 
 #workskin .NOTE_re_namelist {
-    content: " /// *
- Code to replace the protagonist names (and style the input). * ///";
+    content: " /// * Code to replace the protagonist names (and style the input). * ///";
 }
 
 #workskin .namelist,
 #workskin li {
     list-style: none;
     padding-top: 0.3em;
+}
+
+#workskin .namelist li {
+    margin: -0.2em 0;
+}
+
+#workskin .namelist details summary {
+    padding: 0.6em 0.2em;
 }
 
 #workskin li.regular_list {
@@ -735,11 +741,10 @@
     border: solid 0.08em #969696;
     border-radius: 0.15em;
     font-family: "Noto Sans", sans-serif;
-    text-align: center;
-    vertical-align: center;
     cursor: pointer;
     padding: 0.3em 0.5em;
-    position: relative;
+    position: absolute;
+    top: -2em;
 }
 
 #workskin .NOTE_re_green_button {
@@ -748,12 +753,12 @@
 
 #workskin .placeholder {
     margin: 0 0.3em;
+    visibility: hidden;
 }
 
 #workskin .greenbox1 {
     height: 0.93em;
     width: 0.25em;
-    background-color: #8fd350;
     background: radial-gradient(circle at left 0.75em top 3em, #74c20c, #74c20c 80%, #8fd350 0%);
     border: 0.075em solid #659b3c;
     position: absolute;
@@ -764,7 +769,6 @@
 #workskin .greenbox2 {
     height: 0.4375em;
     width: 0.5625em;
-    background-color: #8fd350;
     background: radial-gradient(circle at left 0.9375em top 1.5625em, #74c20c, #74c20c 80%, #8fd350 0%);
     border: 0.075em solid #659b3c;
     border-left-width: 0;
@@ -775,8 +779,6 @@
 }
 
 #workskin .triangle-left {
-    width: 0;
-    height: 0;
     font-size: 1.1875em;
     border-top: 0.4em solid transparent;
     border-right: 0.4em solid #8fd350;
@@ -787,30 +789,28 @@
 }
 
 #workskin .triangle-left2 {
-    width: 0;
-    height: 0;
     font-size: 1.625em;
     border-top: 0.4em solid transparent;
     border-right: 0.4em solid #659b3c;
     border-bottom: 0.4em solid transparent;
     position: absolute;
     bottom: 0.119em;
-    left: 0.258em;
+    left: 0.27em;
 }
 
 #workskin .NOTE_re_orange_button {
     content: " /// * cancel/close button graphic below * ///";
 }
 
-#workskin .deskbutton .close {
+#workskin .typeit[open].deskbutton summary {
     border-radius: 0.3em;
     box-shadow: 0 0 0.25em #d98c75;
 }
 
+
 #workskin .deskbutton .orangebox {
     display: inline flow;
     font-size: 0.9em;
-    width: auto;
     margin: auto 0.3em auto 0.1em;
     padding: 0 0.15em;
     background: radial-gradient(circle at right 0.41em top 2.83em, #ea6710, #ea6710 80%, #f5a269 0%);
@@ -823,7 +823,6 @@
 
 #workskin .xbutton {
     display: inline flex;
-    flex: auto;
     transform: scale(1.8) scaleX(1.1) translateX(0.08em) translateY(-0.1em);
     font-weight: 600;
     padding: 0.1em 0.2em;
@@ -910,66 +909,8 @@
     padding: 1em;
 }
 
-#workskin .NOTE_re_typewriter_animation {
-    content: " /// * typewriter animation - 5 different ones that look the same, for a pulley system that allows an infinite open-close cycle where the first 5 opens will play the animation. * ///";
-}
-
-#workskin .typeit span,
-#workskin .typeit2 span,
-#workskin .typeit3 span,
-#workskin .typeit4 span,
-#workskin .typeit5 span,
-#workskin .close {
-    visibility: hidden;
-}
-
-#workskin .NOTE_re_typeit_buttons {
-    content: " /// * hide-reveal cycle * ///";
-}
-
-#workskin:has(.typeit[open]) .typeit > summary,
-#workskin .typeit2,
-#workskin .typeit3,
-#workskin .typeit4,
-#workskin .typeit5 {
-    display: none;
-}
-
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .close,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .close,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .close,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .close,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .close,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .close,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .desktext,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .close,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .close,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .desktext {
-    position: static;
-    left: auto;
-    width: auto;
-    height: auto;
-}
-
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .typeit2,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .typeit2,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .typeit3,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .typeit3,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .typeit4,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .typeit4,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .typeit5,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .typeit5 {
-    display: block;
-}
-
 #workskin .NOTE_re_loading {
-    content: " /// * these classes are already visible, and certain switch configurations bring them into view. After a transition-delay, .loading and .desktext are then hidden. * ///";
+    content: " /// * some classes are already technically visible, and certain switch configurations bring them into view. After a transition-delay, .loading and .desktext are then hidden. * ///";
 }
 
 #workskin .confirmfile .loading,
@@ -984,27 +925,19 @@
     overflow: hidden;
 }
 
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .desktext,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .desktext,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .desktext,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .desktext {
+#workskin .typeit[open] .desktext {
     visibility: hidden;
     transition-delay: 2s;
 }
 
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .loading,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .loading,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .loading,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .loading,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .loading,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .loading,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .loading,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .loading {
-    position: absolute;
+#workskin .typeit[open] .close,
+#workskin .typeit[open] .desktext {
+    position: static;
+    width: auto;
+    height: auto;
+}
+
+#workskin .confirmfile:has(+ .typeit[open]) .loading {
     left: auto;
     width: auto;
     height: auto;
@@ -1012,37 +945,31 @@
     transition-delay: 2s;
 }
 
-#workskin .NOTE_re_loading {
-    content: " /// * these classes are hidden, and pressing a green button brings them into view after a transition-delay. except for .confirmfile, which while being a container class can be hidden while some of its components are shown because of specificity rules. * ///";
-}
-
 #workskin .loaded,
 #workskin .deskswitch,
-#workskin:has(.typeit[open]) .confirmfile {
+#workskin .confirmfile:has(+ .typeit[open]) {
     visibility: hidden;
 }
 
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .confirmfile .loaded,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .confirmfile .loaded,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .confirmfile .loaded,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .confirmfile .loaded,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .confirmfile .loaded,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .confirmfile .loaded,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .confirmfile .loaded,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .confirmfile .loaded {
+#workskin .typeit[open] .okbutton {
+    display: none;
+}
+
+#workskin .confirmfile {
+    position: relative;
+    margin: -1em 0 7em;
+}
+
+#workskin .load > p {
     position: absolute;
+}
+
+#workskin:has(.typeit[open]) .confirmfile .loaded {
     visibility: visible;
     transition-delay: 2.5s;
 }
 
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .deskswitch,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):not(:has(.typeit3[open])):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .deskswitch,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):not(:has(.typeit4[open])):not(:has(.typeit5[open])) .deskswitch,
-#workskin:has(.typeit[open]):has(.close[open]):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):not(:has(.typeit5[open])) .deskswitch,
-#workskin:has(.typeit[open]):not(:has(.close[open])):has(.typeit2[open]):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .deskswitch,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):has(.typeit3[open]):has(.typeit4[open]):has(.typeit5[open]) .deskswitch,
-#workskin:has(.typeit[open]):not(:has(.close[open])):not(:has(.typeit2[open])):not(:has(.typeit3[open])):has(.typeit4[open]):has(.typeit5[open]) .deskswitch,
-#workskin:has(.typeit[open]):has(.close[open]):not(:has(.typeit2[open])):not(:has(.typeit3[open])):not(:has(.typeit4[open])):has(.typeit5[open]) .deskswitch {
+#workskin .typeit[open] .deskswitch {
     position: absolute;
     top: auto;
     right: auto;
@@ -1053,823 +980,516 @@
     font-size: initial;
 }
 
+
 #workskin .NOTE_re_animation {
     content: " /// * actual body animation * ///";
 }
 
-#workskin .typeit[open] span,
-#workskin .typeit2[open] span,
-#workskin .typeit3[open] span,
-#workskin .typeit4[open] span,
-#workskin .typeit5[open] span {
+#workskin .typeit[open] .visibly :nth-child(1) {
     visibility: visible;
+    transition: visibility 0s 0.04s;
 }
 
-.typeit :nth-child(1),
-.typeit2 :nth-child(1),
-.typeit3 :nth-child(1),
-.typeit4 :nth-child(1),
-.typeit5 :nth-child(1) {
-    transition-delay: 0.03s;
+#workskin .typeit[open] .visibly :nth-child(2) {
+    visibility: visible;
+    transition: visibility 0s 0.08s;
 }
 
-.typeit :nth-child(2),
-.typeit2 :nth-child(2),
-.typeit3 :nth-child(2),
-.typeit4 :nth-child(2),
-.typeit5 :nth-child(2) {
-    transition-delay: 0.06s;
+#workskin .typeit[open] .visibly :nth-child(3) {
+    visibility: visible;
+    transition: visibility 0s 0.12s;
 }
 
-.typeit :nth-child(3),
-.typeit2 :nth-child(3),
-.typeit3 :nth-child(3),
-.typeit4 :nth-child(3),
-.typeit5 :nth-child(3) {
-    transition-delay: 0.09s;
+#workskin .typeit[open] .visibly :nth-child(4) {
+    visibility: visible;
+    transition: visibility 0s 0.16s;
 }
 
-.typeit :nth-child(4),
-.typeit2 :nth-child(4),
-.typeit3 :nth-child(4),
-.typeit4 :nth-child(4),
-.typeit5 :nth-child(4) {
-    transition-delay: 0.12s;
+#workskin .typeit[open] .visibly :nth-child(5) {
+    visibility: visible;
+    transition: visibility 0s 0.2s;
 }
 
-.typeit :nth-child(5),
-.typeit2 :nth-child(5),
-.typeit3 :nth-child(5),
-.typeit4 :nth-child(5),
-.typeit5 :nth-child(5) {
-    transition-delay: 0.15s;
+#workskin .typeit[open] .visibly :nth-child(6) {
+    visibility: visible;
+    transition: visibility 0s 0.24s;
 }
 
-.typeit :nth-child(6),
-.typeit2 :nth-child(6),
-.typeit3 :nth-child(6),
-.typeit4 :nth-child(6),
-.typeit5 :nth-child(6) {
-    transition-delay: 0.18s;
+#workskin .typeit[open] .visibly :nth-child(7) {
+    visibility: visible;
+    transition: visibility 0s 0.28s;
 }
 
-.typeit :nth-child(7),
-.typeit2 :nth-child(7),
-.typeit3 :nth-child(7),
-.typeit4 :nth-child(7),
-.typeit5 :nth-child(7) {
-    transition-delay: 0.21s;
+#workskin .typeit[open] .visibly :nth-child(8) {
+    visibility: visible;
+    transition: visibility 0s 0.32s;
 }
 
-.typeit :nth-child(8),
-.typeit2 :nth-child(8),
-.typeit3 :nth-child(8),
-.typeit4 :nth-child(8),
-.typeit5 :nth-child(8) {
-    transition-delay: 0.24s;
+#workskin .typeit[open] .visibly :nth-child(9) {
+    visibility: visible;
+    transition: visibility 0s 0.36s;
 }
 
-.typeit :nth-child(9),
-.typeit2 :nth-child(9),
-.typeit3 :nth-child(9),
-.typeit4 :nth-child(9),
-.typeit5 :nth-child(9) {
-    transition-delay: 0.27s;
+#workskin .typeit[open] .visibly :nth-child(10) {
+    visibility: visible;
+    transition: visibility 0s 0.4s;
 }
 
-.typeit :nth-child(10),
-.typeit2 :nth-child(10),
-.typeit3 :nth-child(10),
-.typeit4 :nth-child(10),
-.typeit5 :nth-child(10) {
-    transition-delay: 0.3s;
+#workskin .typeit[open] .visibly :nth-child(11) {
+    visibility: visible;
+    transition: visibility 0s 0.44s;
 }
 
-.typeit :nth-child(11),
-.typeit2 :nth-child(11),
-.typeit3 :nth-child(11),
-.typeit4 :nth-child(11),
-.typeit5 :nth-child(11) {
-    transition-delay: 0.33s;
+#workskin .typeit[open] .visibly :nth-child(12) {
+    visibility: visible;
+    transition: visibility 0s 0.48s;
 }
 
-.typeit :nth-child(12),
-.typeit2 :nth-child(12),
-.typeit3 :nth-child(12),
-.typeit4 :nth-child(12),
-.typeit5 :nth-child(12) {
-    transition-delay: 0.36s;
+#workskin .typeit[open] .visibly :nth-child(13) {
+    visibility: visible;
+    transition: visibility 0s 0.52s;
 }
 
-.typeit :nth-child(13),
-.typeit2 :nth-child(13),
-.typeit3 :nth-child(13),
-.typeit4 :nth-child(13),
-.typeit5 :nth-child(13) {
-    transition-delay: 0.39s;
+#workskin .typeit[open] .visibly :nth-child(14) {
+    visibility: visible;
+    transition: visibility 0s 0.56s;
 }
-
-.typeit :nth-child(14),
-.typeit2 :nth-child(14),
-.typeit3 :nth-child(14),
-.typeit4 :nth-child(14),
-.typeit5 :nth-child(14) {
-    transition-delay: 0.42s;
+
+#workskin .typeit[open] .visibly :nth-child(15) {
+    visibility: visible;
+    transition: visibility 0s 0.6s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(16) {
+    visibility: visible;
+    transition: visibility 0s 0.64s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(17) {
+    visibility: visible;
+    transition: visibility 0s 0.68s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(18) {
+    visibility: visible;
+    transition: visibility 0s 0.72s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(19) {
+    visibility: visible;
+    transition: visibility 0s 0.76s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(20) {
+    visibility: visible;
+    transition: visibility 0s 0.8s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(21) {
+    visibility: visible;
+    transition: visibility 0s 0.84s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(22) {
+    visibility: visible;
+    transition: visibility 0s 0.88s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(23) {
+    visibility: visible;
+    transition: visibility 0s 0.92s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(24) {
+    visibility: visible;
+    transition: visibility 0s 0.96s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(25) {
+    visibility: visible;
+    transition: visibility 0s 1s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(26) {
+    visibility: visible;
+    transition: visibility 0s 1.04s;
+}
+
+#workskin .typeit[open] .visibly :nth-child(27) {
+    visibility: visible;
+    transition: visibility 0s 1.08s;
 }
-
-.typeit :nth-child(15),
-.typeit2 :nth-child(15),
-.typeit3 :nth-child(15),
-.typeit4 :nth-child(15),
-.typeit5 :nth-child(15) {
-    transition-delay: 0.45s;
+
+#workskin .typeit[open] .visibly :nth-child(28) {
+    visibility: visible;
+    transition: visibility 0s 1.12s;
 }
-
-.typeit :nth-child(16),
-.typeit2 :nth-child(16),
-.typeit3 :nth-child(16),
-.typeit4 :nth-child(16),
-.typeit5 :nth-child(16) {
-    transition-delay: 0.48s;
+
+#workskin .typeit[open] .visibly :nth-child(29) {
+    visibility: visible;
+    transition: visibility 0s 1.16s;
 }
-
-.typeit :nth-child(17),
-.typeit2 :nth-child(17),
-.typeit3 :nth-child(17),
-.typeit4 :nth-child(17),
-.typeit5 :nth-child(17) {
-    transition-delay: 0.51s;
+
+#workskin .typeit[open] .visibly :nth-child(30) {
+    visibility: visible;
+    transition: visibility 0s 1.2s;
 }
-
-.typeit :nth-child(18),
-.typeit2 :nth-child(18),
-.typeit3 :nth-child(18),
-.typeit4 :nth-child(18),
-.typeit5 :nth-child(18) {
-    transition-delay: 0.54s;
+
+#workskin .typeit[open] .visibly :nth-child(31) {
+    visibility: visible;
+    transition: visibility 0s 1.24s;
 }
-
-.typeit :nth-child(19),
-.typeit2 :nth-child(19),
-.typeit3 :nth-child(19),
-.typeit4 :nth-child(19),
-.typeit5 :nth-child(19) {
-    transition-delay: 0.57s;
+
+#workskin .typeit[open] .visibly :nth-child(32) {
+    visibility: visible;
+    transition: visibility 0s 1.28s;
 }
-
-.typeit :nth-child(20),
-.typeit2 :nth-child(20),
-.typeit3 :nth-child(20),
-.typeit4 :nth-child(20),
-.typeit5 :nth-child(20) {
-    transition-delay: 0.6s;
+
+#workskin .typeit[open] .visibly :nth-child(33) {
+    visibility: visible;
+    transition: visibility 0s 1.32s;
 }
-
-.typeit :nth-child(21),
-.typeit2 :nth-child(21),
-.typeit3 :nth-child(21),
-.typeit4 :nth-child(21),
-.typeit5 :nth-child(21) {
-    transition-delay: 0.63s;
+
+#workskin .typeit[open] .visibly :nth-child(34) {
+    visibility: visible;
+    transition: visibility 0s 1.36s;
 }
-
-.typeit :nth-child(22),
-.typeit2 :nth-child(22),
-.typeit3 :nth-child(22),
-.typeit4 :nth-child(22),
-.typeit5 :nth-child(22) {
-    transition-delay: 0.66s;
+
+#workskin .typeit[open] .visibly :nth-child(35) {
+    visibility: visible;
+    transition: visibility 0s 1.4s;
 }
-
-.typeit :nth-child(23),
-.typeit2 :nth-child(23),
-.typeit3 :nth-child(23),
-.typeit4 :nth-child(23),
-.typeit5 :nth-child(23) {
-    transition-delay: 0.69s;
+
+#workskin .typeit[open] .visibly :nth-child(36) {
+    visibility: visible;
+    transition: visibility 0s 1.44s;
 }
-
-.typeit :nth-child(24),
-.typeit2 :nth-child(24),
-.typeit3 :nth-child(24),
-.typeit4 :nth-child(24),
-.typeit5 :nth-child(24) {
-    transition-delay: 0.72s;
+
+#workskin .typeit[open] .visibly :nth-child(37) {
+    visibility: visible;
+    transition: visibility 0s 1.48s;
 }
-
-.typeit :nth-child(25),
-.typeit2 :nth-child(25),
-.typeit3 :nth-child(25),
-.typeit4 :nth-child(25),
-.typeit5 :nth-child(25) {
-    transition-delay: 0.75s;
+
+#workskin .typeit[open] .visibly :nth-child(38) {
+    visibility: visible;
+    transition: visibility 0s 1.52s;
 }
-
-.typeit :nth-child(26),
-.typeit2 :nth-child(26),
-.typeit3 :nth-child(26),
-.typeit4 :nth-child(26),
-.typeit5 :nth-child(26) {
-    transition-delay: 0.78s;
+
+#workskin .typeit[open] .visibly :nth-child(39) {
+    visibility: visible;
+    transition: visibility 0s 1.56s;
 }
-
-.typeit :nth-child(27),
-.typeit2 :nth-child(27),
-.typeit3 :nth-child(27),
-.typeit4 :nth-child(27),
-.typeit5 :nth-child(27) {
-    transition-delay: 0.81s;
+
+#workskin .typeit[open] .visibly :nth-child(40) {
+    visibility: visible;
+    transition: visibility 0s 1.6s;
 }
-
-.typeit :nth-child(28),
-.typeit2 :nth-child(28),
-.typeit3 :nth-child(28),
-.typeit4 :nth-child(28),
-.typeit5 :nth-child(28) {
-    transition-delay: 0.84s;
+
+#workskin .typeit[open] .visibly :nth-child(41) {
+    visibility: visible;
+    transition: visibility 0s 1.64s;
 }
-
-.typeit :nth-child(29),
-.typeit2 :nth-child(29),
-.typeit3 :nth-child(29),
-.typeit4 :nth-child(29),
-.typeit5 :nth-child(29) {
-    transition-delay: 0.87s;
+
+#workskin .typeit[open] .visibly :nth-child(42) {
+    visibility: visible;
+    transition: visibility 0s 1.68s;
 }
-
-.typeit :nth-child(30),
-.typeit2 :nth-child(30),
-.typeit3 :nth-child(30),
-.typeit4 :nth-child(30),
-.typeit5 :nth-child(30) {
-    transition-delay: 0.9s;
+
+#workskin .typeit[open] .visibly :nth-child(43) {
+    visibility: visible;
+    transition: visibility 0s 1.72s;
 }
-
-.typeit :nth-child(31),
-.typeit2 :nth-child(31),
-.typeit3 :nth-child(31),
-.typeit4 :nth-child(31),
-.typeit5 :nth-child(31) {
-    transition-delay: 0.93s;
+
+#workskin .typeit[open] .visibly :nth-child(44) {
+    visibility: visible;
+    transition: visibility 0s 1.76s;
 }
-
-.typeit :nth-child(32),
-.typeit2 :nth-child(32),
-.typeit3 :nth-child(32),
-.typeit4 :nth-child(32),
-.typeit5 :nth-child(32) {
-    transition-delay: 0.96s;
+
+#workskin .typeit[open] .visibly :nth-child(45) {
+    visibility: visible;
+    transition: visibility 0s 1.8s;
 }
-
-.typeit :nth-child(33),
-.typeit2 :nth-child(33),
-.typeit3 :nth-child(33),
-.typeit4 :nth-child(33),
-.typeit5 :nth-child(33) {
-    transition-delay: 0.99s;
+
+#workskin .typeit[open] .visibly :nth-child(46) {
+    visibility: visible;
+    transition: visibility 0s 1.84s;
 }
-
-.typeit :nth-child(34),
-.typeit2 :nth-child(34),
-.typeit3 :nth-child(34),
-.typeit4 :nth-child(34),
-.typeit5 :nth-child(34) {
-    transition-delay: 1.02s;
+
+#workskin .typeit[open] .visibly :nth-child(47) {
+    visibility: visible;
+    transition: visibility 0s 1.88s;
 }
-
-.typeit :nth-child(35),
-.typeit2 :nth-child(35),
-.typeit3 :nth-child(35),
-.typeit4 :nth-child(35),
-.typeit5 :nth-child(35) {
-    transition-delay: 1.05s;
+
+#workskin .typeit[open] .visibly :nth-child(48) {
+    visibility: visible;
+    transition: visibility 0s 1.92s;
 }
-
-.typeit :nth-child(36),
-.typeit2 :nth-child(36),
-.typeit3 :nth-child(36),
-.typeit4 :nth-child(36),
-.typeit5 :nth-child(36) {
-    transition-delay: 1.08s;
+
+#workskin .typeit[open] .visibly :nth-child(49) {
+    visibility: visible;
+    transition: visibility 0s 1.96s;
 }
-
-.typeit :nth-child(37),
-.typeit2 :nth-child(37),
-.typeit3 :nth-child(37),
-.typeit4 :nth-child(37),
-.typeit5 :nth-child(37) {
-    transition-delay: 1.11s;
+
+#workskin .typeit[open] .visibly :nth-child(50) {
+    visibility: visible;
+    transition: visibility 0s 2s;
 }
-
-.typeit :nth-child(38),
-.typeit2 :nth-child(38),
-.typeit3 :nth-child(38),
-.typeit4 :nth-child(38),
-.typeit5 :nth-child(38) {
-    transition-delay: 1.14s;
+
+#workskin .typeit[open] .visibly :nth-child(51) {
+    visibility: visible;
+    transition: visibility 0s 2.04s;
 }
-
-.typeit :nth-child(39),
-.typeit2 :nth-child(39),
-.typeit3 :nth-child(39),
-.typeit4 :nth-child(39),
-.typeit5 :nth-child(39) {
-    transition-delay: 1.17s;
+
+#workskin .typeit[open] .visibly :nth-child(52) {
+    visibility: visible;
+    transition: visibility 0s 2.08s;
 }
-
-.typeit :nth-child(40),
-.typeit2 :nth-child(40),
-.typeit3 :nth-child(40),
-.typeit4 :nth-child(40),
-.typeit5 :nth-child(40) {
-    transition-delay: 1.2s;
+
+#workskin .typeit[open] .visibly :nth-child(53) {
+    visibility: visible;
+    transition: visibility 0s 2.12s;
 }
-
-.typeit :nth-child(41),
-.typeit2 :nth-child(41),
-.typeit3 :nth-child(41),
-.typeit4 :nth-child(41),
-.typeit5 :nth-child(41) {
-    transition-delay: 1.23s;
+
+#workskin .typeit[open] .visibly :nth-child(54) {
+    visibility: visible;
+    transition: visibility 0s 2.16s;
 }
-
-.typeit :nth-child(42),
-.typeit2 :nth-child(42),
-.typeit3 :nth-child(42),
-.typeit4 :nth-child(42),
-.typeit5 :nth-child(42) {
-    transition-delay: 1.26s;
+
+#workskin .typeit[open] .visibly :nth-child(55) {
+    visibility: visible;
+    transition: visibility 0s 2.2s;
 }
-
-.typeit :nth-child(43),
-.typeit2 :nth-child(43),
-.typeit3 :nth-child(43),
-.typeit4 :nth-child(43),
-.typeit5 :nth-child(43) {
-    transition-delay: 1.29s;
+
+#workskin .typeit[open] .visibly :nth-child(56) {
+    visibility: visible;
+    transition: visibility 0s 2.24s;
 }
-
-.typeit :nth-child(44),
-.typeit2 :nth-child(44),
-.typeit3 :nth-child(44),
-.typeit4 :nth-child(44),
-.typeit5 :nth-child(44) {
-    transition-delay: 1.32s;
+
+#workskin .typeit[open] .visibly :nth-child(57) {
+    visibility: visible;
+    transition: visibility 0s 2.28s;
 }
-
-.typeit :nth-child(45),
-.typeit2 :nth-child(45),
-.typeit3 :nth-child(45),
-.typeit4 :nth-child(45),
-.typeit5 :nth-child(45) {
-    transition-delay: 1.35s;
+
+#workskin .typeit[open] .visibly :nth-child(58) {
+    visibility: visible;
+    transition: visibility 0s 2.32s;
 }
-
-.typeit :nth-child(46),
-.typeit2 :nth-child(46),
-.typeit3 :nth-child(46),
-.typeit4 :nth-child(46),
-.typeit5 :nth-child(46) {
-    transition-delay: 1.38s;
+
+#workskin .typeit[open] .visibly :nth-child(59) {
+    visibility: visible;
+    transition: visibility 0s 2.36s;
 }
-
-.typeit :nth-child(47),
-.typeit2 :nth-child(47),
-.typeit3 :nth-child(47),
-.typeit4 :nth-child(47),
-.typeit5 :nth-child(47) {
-    transition-delay: 1.41s;
+
+#workskin .typeit[open] .visibly :nth-child(60) {
+    visibility: visible;
+    transition: visibility 0s 2.4s;
 }
-
-.typeit :nth-child(48),
-.typeit2 :nth-child(48),
-.typeit3 :nth-child(48),
-.typeit4 :nth-child(48),
-.typeit5 :nth-child(48) {
-    transition-delay: 1.44s;
+
+#workskin .typeit[open] .visibly :nth-child(61) {
+    visibility: visible;
+    transition: visibility 0s 2.44s;
 }
-
-.typeit :nth-child(49),
-.typeit2 :nth-child(49),
-.typeit3 :nth-child(49),
-.typeit4 :nth-child(49),
-.typeit5 :nth-child(49) {
-    transition-delay: 1.47s;
+
+#workskin .typeit[open] .visibly :nth-child(62) {
+    visibility: visible;
+    transition: visibility 0s 2.48s;
 }
-
-.typeit :nth-child(50),
-.typeit2 :nth-child(50),
-.typeit3 :nth-child(50),
-.typeit4 :nth-child(50),
-.typeit5 :nth-child(50) {
-    transition-delay: 1.5s;
+
+#workskin .typeit[open] .visibly :nth-child(63) {
+    visibility: visible;
+    transition: visibility 0s 2.52s;
 }
-
-.typeit :nth-child(51),
-.typeit2 :nth-child(51),
-.typeit3 :nth-child(51),
-.typeit4 :nth-child(51),
-.typeit5 :nth-child(51) {
-    transition-delay: 1.53s;
+
+#workskin .typeit[open] .visibly :nth-child(64) {
+    visibility: visible;
+    transition: visibility 0s 2.56s;
 }
-
-.typeit :nth-child(52),
-.typeit2 :nth-child(52),
-.typeit3 :nth-child(52),
-.typeit4 :nth-child(52),
-.typeit5 :nth-child(52) {
-    transition-delay: 1.56s;
+
+#workskin .typeit[open] .visibly :nth-child(65) {
+    visibility: visible;
+    transition: visibility 0s 2.6s;
 }
-
-.typeit :nth-child(53),
-.typeit2 :nth-child(53),
-.typeit3 :nth-child(53),
-.typeit4 :nth-child(53),
-.typeit5 :nth-child(53) {
-    transition-delay: 1.59s;
+
+#workskin .typeit[open] .visibly :nth-child(66) {
+    visibility: visible;
+    transition: visibility 0s 2.64s;
 }
-
-.typeit :nth-child(54),
-.typeit2 :nth-child(54),
-.typeit3 :nth-child(54),
-.typeit4 :nth-child(54),
-.typeit5 :nth-child(54) {
-    transition-delay: 1.62s;
+
+#workskin .typeit[open] .visibly :nth-child(67) {
+    visibility: visible;
+    transition: visibility 0s 2.68s;
 }
-
-.typeit :nth-child(55),
-.typeit2 :nth-child(55),
-.typeit3 :nth-child(55),
-.typeit4 :nth-child(55),
-.typeit5 :nth-child(55) {
-    transition-delay: 1.65s;
+
+#workskin .typeit[open] .visibly :nth-child(68) {
+    visibility: visible;
+    transition: visibility 0s 2.72s;
 }
-
-.typeit :nth-child(56),
-.typeit2 :nth-child(56),
-.typeit3 :nth-child(56),
-.typeit4 :nth-child(56),
-.typeit5 :nth-child(56) {
-    transition-delay: 1.68s;
+
+#workskin .typeit[open] .visibly :nth-child(69) {
+    visibility: visible;
+    transition: visibility 0s 2.76s;
 }
-
-.typeit :nth-child(57),
-.typeit2 :nth-child(57),
-.typeit3 :nth-child(57),
-.typeit4 :nth-child(57),
-.typeit5 :nth-child(57) {
-    transition-delay: 1.71s;
+
+#workskin .typeit[open] .visibly :nth-child(70) {
+    visibility: visible;
+    transition: visibility 0s 2.8s;
 }
-
-.typeit :nth-child(58),
-.typeit2 :nth-child(58),
-.typeit3 :nth-child(58),
-.typeit4 :nth-child(58),
-.typeit5 :nth-child(58) {
-    transition-delay: 1.74s;
+
+#workskin .typeit[open] .visibly :nth-child(71) {
+    visibility: visible;
+    transition: visibility 0s 2.84s;
 }
-
-.typeit :nth-child(59),
-.typeit2 :nth-child(59),
-.typeit3 :nth-child(59),
-.typeit4 :nth-child(59),
-.typeit5 :nth-child(59) {
-    transition-delay: 1.77s;
+
+#workskin .typeit[open] .visibly :nth-child(72) {
+    visibility: visible;
+    transition: visibility 0s 2.88s;
 }
-
-.typeit :nth-child(60),
-.typeit2 :nth-child(60),
-.typeit3 :nth-child(60),
-.typeit4 :nth-child(60),
-.typeit5 :nth-child(60) {
-    transition-delay: 1.8s;
+
+#workskin .typeit[open] .visibly :nth-child(73) {
+    visibility: visible;
+    transition: visibility 0s 2.92s;
 }
-
-.typeit :nth-child(61),
-.typeit2 :nth-child(61),
-.typeit3 :nth-child(61),
-.typeit4 :nth-child(61),
-.typeit5 :nth-child(61) {
-    transition-delay: 1.83s;
+
+#workskin .typeit[open] .visibly :nth-child(74) {
+    visibility: visible;
+    transition: visibility 0s 2.96s;
 }
-
-.typeit :nth-child(62),
-.typeit2 :nth-child(62),
-.typeit3 :nth-child(62),
-.typeit4 :nth-child(62),
-.typeit5 :nth-child(62) {
-    transition-delay: 1.86s;
+
+#workskin .typeit[open] .visibly :nth-child(75) {
+    visibility: visible;
+    transition: visibility 0s 3s;
 }
-
-.typeit :nth-child(63),
-.typeit2 :nth-child(63),
-.typeit3 :nth-child(63),
-.typeit4 :nth-child(63),
-.typeit5 :nth-child(63) {
-    transition-delay: 1.89s;
+
+#workskin .typeit[open] .visibly :nth-child(76) {
+    visibility: visible;
+    transition: visibility 0s 3.04s;
 }
-
-.typeit :nth-child(64),
-.typeit2 :nth-child(64),
-.typeit3 :nth-child(64),
-.typeit4 :nth-child(64),
-.typeit5 :nth-child(64) {
-    transition-delay: 1.92s;
+
+#workskin .typeit[open] .visibly :nth-child(77) {
+    visibility: visible;
+    transition: visibility 0s 3.08s;
 }
-
-.typeit :nth-child(65),
-.typeit2 :nth-child(65),
-.typeit3 :nth-child(65),
-.typeit4 :nth-child(65),
-.typeit5 :nth-child(65) {
-    transition-delay: 1.95s;
+
+#workskin .typeit[open] .visibly :nth-child(78) {
+    visibility: visible;
+    transition: visibility 0s 3.12s;
 }
-
-.typeit :nth-child(66),
-.typeit2 :nth-child(66),
-.typeit3 :nth-child(66),
-.typeit4 :nth-child(66),
-.typeit5 :nth-child(66) {
-    transition-delay: 1.98s;
+
+#workskin .typeit[open] .visibly :nth-child(79) {
+    visibility: visible;
+    transition: visibility 0s 3.16s;
 }
-
-.typeit :nth-child(67),
-.typeit2 :nth-child(67),
-.typeit3 :nth-child(67),
-.typeit4 :nth-child(67),
-.typeit5 :nth-child(67) {
-    transition-delay: 2.01s;
+
+#workskin .typeit[open] .visibly :nth-child(80) {
+    visibility: visible;
+    transition: visibility 0s 3.2s;
 }
-
-.typeit :nth-child(68),
-.typeit2 :nth-child(68),
-.typeit3 :nth-child(68),
-.typeit4 :nth-child(68),
-.typeit5 :nth-child(68) {
-    transition-delay: 2.04s;
+
+#workskin .typeit[open] .visibly :nth-child(81) {
+    visibility: visible;
+    transition: visibility 0s 3.24s;
 }
-
-.typeit :nth-child(69),
-.typeit2 :nth-child(69),
-.typeit3 :nth-child(69),
-.typeit4 :nth-child(69),
-.typeit5 :nth-child(69) {
-    transition-delay: 2.07s;
+
+#workskin .typeit[open] .visibly :nth-child(82) {
+    visibility: visible;
+    transition: visibility 0s 3.28s;
 }
-
-.typeit :nth-child(70),
-.typeit2 :nth-child(70),
-.typeit3 :nth-child(70),
-.typeit4 :nth-child(70),
-.typeit5 :nth-child(70) {
-    transition-delay: 2.1s;
+
+#workskin .typeit[open] .visibly :nth-child(83) {
+    visibility: visible;
+    transition: visibility 0s 3.32s;
 }
-
-.typeit :nth-child(71),
-.typeit2 :nth-child(71),
-.typeit3 :nth-child(71),
-.typeit4 :nth-child(71),
-.typeit5 :nth-child(71) {
-    transition-delay: 2.13s;
+
+#workskin .typeit[open] .visibly :nth-child(84) {
+    visibility: visible;
+    transition: visibility 0s 3.36s;
 }
-
-.typeit :nth-child(72),
-.typeit2 :nth-child(72),
-.typeit3 :nth-child(72),
-.typeit4 :nth-child(72),
-.typeit5 :nth-child(72) {
-    transition-delay: 2.16s;
+
+#workskin .typeit[open] .visibly :nth-child(85) {
+    visibility: visible;
+    transition: visibility 0s 3.4s;
 }
-
-.typeit :nth-child(73),
-.typeit2 :nth-child(73),
-.typeit3 :nth-child(73),
-.typeit4 :nth-child(73),
-.typeit5 :nth-child(73) {
-    transition-delay: 2.19s;
+
+#workskin .typeit[open] .visibly :nth-child(86) {
+    visibility: visible;
+    transition: visibility 0s 3.44s;
 }
-
-.typeit :nth-child(74),
-.typeit2 :nth-child(74),
-.typeit3 :nth-child(74),
-.typeit4 :nth-child(74),
-.typeit5 :nth-child(74) {
-    transition-delay: 2.22s;
+
+#workskin .typeit[open] .visibly :nth-child(87) {
+    visibility: visible;
+    transition: visibility 0s 3.48s;
 }
-
-.typeit :nth-child(75),
-.typeit2 :nth-child(75),
-.typeit3 :nth-child(75),
-.typeit4 :nth-child(75),
-.typeit5 :nth-child(75) {
-    transition-delay: 2.25s;
+
+#workskin .typeit[open] .visibly :nth-child(88) {
+    visibility: visible;
+    transition: visibility 0s 3.52s;
 }
-
-.typeit :nth-child(76),
-.typeit2 :nth-child(76),
-.typeit3 :nth-child(76),
-.typeit4 :nth-child(76),
-.typeit5 :nth-child(76) {
-    transition-delay: 2.28s;
+
+#workskin .typeit[open] .visibly :nth-child(89) {
+    visibility: visible;
+    transition: visibility 0s 3.56s;
 }
-
-.typeit :nth-child(77),
-.typeit2 :nth-child(77),
-.typeit3 :nth-child(77),
-.typeit4 :nth-child(77),
-.typeit5 :nth-child(77) {
-    transition-delay: 2.31s;
+
+#workskin .typeit[open] .visibly :nth-child(90) {
+    visibility: visible;
+    transition: visibility 0s 3.6s;
 }
-
-.typeit :nth-child(78),
-.typeit2 :nth-child(78),
-.typeit3 :nth-child(78),
-.typeit4 :nth-child(78),
-.typeit5 :nth-child(78) {
-    transition-delay: 2.34s;
+
+#workskin .typeit[open] .visibly :nth-child(91) {
+    visibility: visible;
+    transition: visibility 0s 3.64s;
 }
-
-.typeit :nth-child(79),
-.typeit2 :nth-child(79),
-.typeit3 :nth-child(79),
-.typeit4 :nth-child(79),
-.typeit5 :nth-child(79) {
-    transition-delay: 2.37s;
+
+#workskin .typeit[open] .visibly :nth-child(92) {
+    visibility: visible;
+    transition: visibility 0s 3.68s;
 }
-
-.typeit :nth-child(80),
-.typeit2 :nth-child(80),
-.typeit3 :nth-child(80),
-.typeit4 :nth-child(80),
-.typeit5 :nth-child(80) {
-    transition-delay: 2.4s;
+
+#workskin .typeit[open] .visibly :nth-child(93) {
+    visibility: visible;
+    transition: visibility 0s 3.72s;
 }
-
-.typeit :nth-child(81),
-.typeit2 :nth-child(81),
-.typeit3 :nth-child(81),
-.typeit4 :nth-child(81),
-.typeit5 :nth-child(81) {
-    transition-delay: 2.43s;
+
+#workskin .typeit[open] .visibly :nth-child(94) {
+    visibility: visible;
+    transition: visibility 0s 3.76s;
 }
-
-.typeit :nth-child(82),
-.typeit2 :nth-child(82),
-.typeit3 :nth-child(82),
-.typeit4 :nth-child(82),
-.typeit5 :nth-child(82) {
-    transition-delay: 2.46s;
+
+#workskin .typeit[open] .visibly :nth-child(95) {
+    visibility: visible;
+    transition: visibility 0s 3.8s;
 }
-
-.typeit :nth-child(83),
-.typeit2 :nth-child(83),
-.typeit3 :nth-child(83),
-.typeit4 :nth-child(83),
-.typeit5 :nth-child(83) {
-    transition-delay: 2.49s;
+
+#workskin .typeit[open] .visibly :nth-child(96) {
+    visibility: visible;
+    transition: visibility 0s 3.84s;
 }
-
-.typeit :nth-child(84),
-.typeit2 :nth-child(84),
-.typeit3 :nth-child(84),
-.typeit4 :nth-child(84),
-.typeit5 :nth-child(84) {
-    transition-delay: 2.52s;
+
+#workskin .typeit[open] .visibly :nth-child(97) {
+    visibility: visible;
+    transition: visibility 0s 3.88s;
 }
-
-.typeit :nth-child(85),
-.typeit2 :nth-child(85),
-.typeit3 :nth-child(85),
-.typeit4 :nth-child(85),
-.typeit5 :nth-child(85) {
-    transition-delay: 2.55s;
+
+#workskin .typeit[open] .visibly :nth-child(98) {
+    visibility: visible;
+    transition: visibility 0s 3.92s;
 }
-
-.typeit :nth-child(86),
-.typeit2 :nth-child(86),
-.typeit3 :nth-child(86),
-.typeit4 :nth-child(86),
-.typeit5 :nth-child(86) {
-    transition-delay: 2.58s;
+
+#workskin .typeit[open] .visibly :nth-child(99) {
+    visibility: visible;
+    transition: visibility 0s 3.96s;
 }
-
-.typeit :nth-child(87),
-.typeit2 :nth-child(87),
-.typeit3 :nth-child(87),
-.typeit4 :nth-child(87),
-.typeit5 :nth-child(87) {
-    transition-delay: 2.61s;
+
+#workskin .typeit[open] .visibly :nth-child(100) {
+    visibility: visible;
+    transition: visibility 0s 4s;
 }
-
-.typeit :nth-child(88),
-.typeit2 :nth-child(88),
-.typeit3 :nth-child(88),
-.typeit4 :nth-child(88),
-.typeit5 :nth-child(88) {
-    transition-delay: 2.64s;
+
+#workskin .visibly {
+    visibility: hidden;
 }
-
-.typeit :nth-child(89),
-.typeit2 :nth-child(89),
-.typeit3 :nth-child(89),
-.typeit4 :nth-child(89),
-.typeit5 :nth-child(89) {
-    transition-delay: 2.67s;
-}
-
-.typeit :nth-child(90),
-.typeit2 :nth-child(90),
-.typeit3 :nth-child(90),
-.typeit4 :nth-child(90),
-.typeit5 :nth-child(90) {
-    transition-delay: 2.7s;
-}
-
-.typeit :nth-child(91),
-.typeit2 :nth-child(91),
-.typeit3 :nth-child(91),
-.typeit4 :nth-child(91),
-.typeit5 :nth-child(91) {
-    transition-delay: 2.73s;
-}
-
-.typeit :nth-child(92),
-.typeit2 :nth-child(92),
-.typeit3 :nth-child(92),
-.typeit4 :nth-child(92),
-.typeit5 :nth-child(92) {
-    transition-delay: 2.76s;
-}
-
-.typeit :nth-child(93),
-.typeit2 :nth-child(93),
-.typeit3 :nth-child(93),
-.typeit4 :nth-child(93),
-.typeit5 :nth-child(93) {
-    transition-delay: 2.79s;
-}
-
-.typeit :nth-child(94),
-.typeit2 :nth-child(94),
-.typeit3 :nth-child(94),
-.typeit4 :nth-child(94),
-.typeit5 :nth-child(94) {
-    transition-delay: 2.82s;
-}
-
-.typeit :nth-child(95),
-.typeit2 :nth-child(95),
-.typeit3 :nth-child(95),
-.typeit4 :nth-child(95),
-.typeit5 :nth-child(95) {
-    transition-delay: 2.85s;
-}
-
-.typeit :nth-child(96),
-.typeit2 :nth-child(96),
-.typeit3 :nth-child(96),
-.typeit4 :nth-child(96),
-.typeit5 :nth-child(96) {
-    transition-delay: 2.88s;
-}
-
-.typeit :nth-child(97),
-.typeit2 :nth-child(97),
-.typeit3 :nth-child(97),
-.typeit4 :nth-child(97),
-.typeit5 :nth-child(97) {
-    transition-delay: 2.91s;
-}
-
-.typeit :nth-child(98),
-.typeit2 :nth-child(98),
-.typeit3 :nth-child(98),
-.typeit4 :nth-child(98),
-.typeit5 :nth-child(98) {
-    transition-delay: 2.94s;
-}
-
-.typeit :nth-child(99),
-.typeit2 :nth-child(99),
-.typeit3 :nth-child(99),
-.typeit4 :nth-child(99),
-.typeit5 :nth-child(99) {
-    transition-delay: 2.97s;
-}
-
-.typeit :nth-child(100),
-.typeit2 :nth-child(100),
-.typeit3 :nth-child(100),
-.typeit4 :nth-child(100),
-.typeit5 :nth-child(100) {
-    transition-delay: 3s;
-}
-
-#workskin:has(.typeit[open]) .typeit.deskbutton,
-#workskin:has(.typeit[open]) .typeit2.deskbutton,
-#workskin:has(.typeit[open]) .typeit3.deskbutton,
-#workskin:has(.typeit[open]) .typeit4.deskbutton,
-#workskin:has(.typeit[open]) .typeit5.deskbutton {
+
+#workskin:has(.typeit[open]) .typeit.deskbutton {
     width: 650px;
     max-width: 100%;
 }
@@ -1880,6 +1500,7 @@
 
 #workskin .innerlettercredits li {
     margin: 0 0 0.4em;
+    margin-inline-start: 0;
 }
 
 #workskin .innerlettercredits ul li.hidden {

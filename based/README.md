@@ -9,35 +9,52 @@ Features:
 - Graphic content optional replacement
 - Consideration for whether the reader needs to re-do selections
 - Explanatory comments in the workskin
+- Pretty gradients
+- Old school button graphics
+- Mimic typewriter animation
 
 To do:
-- find someone with ancient screen reading technology to test all the screen reader accommodation
+- find someone with ancient screen reading technology to test the screen reader accommodation
 - upload a total 15 test chapters to test full functionality
-- draw attention to the grcont click-to-reveal
-- make work title replacement chance higher in ch9
-- details button 'increase size' (lower margins) for ux
-- chapter titles just slightly smaller than work title
+- make work title replacement chance higher in ch9 (low priority)
+- chapter titles just slightly smaller than work title (low priority)
 - credits stick around after the chapter they're revealed (use :is() for the long row of chapters)
-- navigator mental link dialogue styling instead of italics (keep html but font-style: normal;? for workskinless readers) (different for fuuka vs mitsuru)
+- navigator mental link dialogue styling instead of italics (keep html but font-style: normal;? to take workskinless readers into account) (different for fuuka vs mitsuru vs chidori)
 - P3(R) key item-get graphic as linebreak for stuff like bobby pins, epipen, friendship bracelet,
+- Aegis name replacement starting ch 4
+  - change detail when mitsuru discussed the name aegis
+- chapter by chapter readers get a button to go to next chapter while retaining chosen names
+- lower contrast while Makoto is unconscious
+- chapter by chapter readers get a button to turn on workskin in the top notes of each chapter (only visibly when reading chapter by chapter and when workskin is off)
+- style Makoto's leaking thoughts
+  - post-eurydice hover to fade out narration and fade in Makoto thoughts (in that one scene only)
+- use `.smaller` text in some cases, at least on sep 15
+- CSS for ch8 onomatopoeia
+- custom background and hr styling per fic showcase (low priority)
+  - plus fic showcases:
+    - la mort en rose by dirtbagtrashcat
+    - a glittering house of cards by dirtbagtrashcat
+    - Take My Place by VampireBadger
+    - bon courage by feralphoenix
+    - Yuuei Survival Guide by LowlyWriter
+    - So You Want To Be A Demonologist by dementor_ssc
+    - scars like wings by honeysoo
+  - reread to decide if showcase:
+    - again and again and again once more by gingerandrust
+    - pretty boy by flower_not_murder
+    - A Shot in the Dark by mewrose
+    - Orbital by neonsign
+    - Remind, Redefine by LittleWinky
+    - All That Remains by LaoraRyn
+    - i know you mean well by tboi
+    - stealing your phone number by sarosficial
+  - plus video showcases:
+    - eurydice's retort (include audio-only version for those who don't want TMA spoilers)
 
-Tested on ao3. Fixes to make:
-- make deskbuttons work again
-  - wtf is teeny flexing for
-  - rewrite pulley cycle
-  - text should vanish when 'closing' file
-
-Mobile fixes:
-
-- the title should have the option to fill most of the screen, not be squished like that 
-- word wrap is still a problem????? Just the one word on the smallest screen I have, but if it's possible, it's an issue. All the rest of the white space positioning is perfect, though? How
+Mobile fixes (low priority): 
+- word wrap is still a problem????? so is scroll bar on that chapter. same problem
 - can I make the ficpitch exceed the notes boundaries...? Or at least fill them? They're readable, but so squished
 - the credits look squished too
-- why is the Close text so tiny?? The Cancel text looks fine??
 
-Workskinless fixes:
-- (action) links once visited should have greyish text, not black text. Put in `.actions` container?
-- hide all the stuff that only works with the workskin on with ao3's `hidden` class, and show with custom css class, so you won't be bothered by it with the workskin off
-
-Default site skin fixes:
+Default site skin fixes (low priority):
 - why fic showcase links black?? those should be white
