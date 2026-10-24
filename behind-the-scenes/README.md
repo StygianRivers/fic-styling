@@ -16,13 +16,16 @@
 
 **To do: Python generator**
 - function to edit original message when shown it
+- try getting manual_var editing to work
+- typing indicators not getting appended in the correct order?
 - paragraph handling
-  - single text messages surrounded by paragraphs aren't wrapped in phone container or transitioned
+  - remove any empty phone container at the top/don't spawn it in the first place
+  - delay should reset per container (message iteration maybe not? feels more immersive not to have the first-message-sent-instantly effect within narration)
+  - each container needs its own unique class modifier
 - test all functions
   - t9 splitting
   - do all possible inputs handle invalid input smoothly?
-  - don't exit the program completely when encountering a non-message paragraph
-- try to determine the proper read/think times frfr
+  - focus multiplier only on user one
 - rewrite it but better
   - if name is main
   - function to append to html list
