@@ -11,7 +11,6 @@ usrtwo = "Yu"
 usrthree = "Akira"
 t9users = [usrone, usrone_alt]
 smartphusers = [usrtwo, usrthree]
-
 path = "/home/drift/custom-scripts/fic/behind-the-scenes/"
 
 # delay lengths in seconds
@@ -48,7 +47,7 @@ html_end = """
 # review manual edit variables
 print(syscolor_start + "Group Chat Name: " + color_end + textcolor_start + groupchatname + color_end + syscolor_start + "\nUser One: " + color_end + textcolor_start + usrone + color_end + syscolor_start + "\nUser One Alternate Username: " + color_end + textcolor_start + usrone_alt + color_end + syscolor_start + "\nUser Two: " + color_end + textcolor_start + usrtwo + color_end + syscolor_start + "\nUser Three: " + color_end + textcolor_start + usrthree + color_end + "\n")
 
-print(syscolor_start + "Instructions:\nWhen asked to Confirm, type #s to add a number of seconds to the delay (after the shown message)\nFocus levels: 3 or 0 is normal focus, 2 is half focus, 1 is bad focus.")
+print(syscolor_start + "Instructions:\nWhen asked to Confirm, type #s to add a number of seconds to the delay (after the shown message)\nFocus levels: 3 or 0 is normal focus, 2 is half focus, 1 is bad focus.\n" + color_end)
 
 def big_file_split():
     bigconfirm = input(syscolor_start + "Split big file into scenes?\n" + color_end)
@@ -91,6 +90,7 @@ except ImportError:
     output_file = re.match(r"(?:.*\/)(.+)\..*", input_file).group(1)
     focus = 0
     start = 0
+    message = "Not defined"
     typing_iteration = 0
     delaylist = []
     userpersist = "None"
@@ -159,9 +159,9 @@ def t9split(message):
     
 # account for focus in typing length
 def typingCalc(user, count):
-    if user in [usrone, usrone_alt]:
+    if user in t9users:
         multiplier = character_typing * focus_mult
-    else:
+    elif user in smartphusers:
         multiplier = word_typing
     base_typing_length = count * multiplier
     return int(base_typing_length)
@@ -200,37 +200,45 @@ def typingdots(user, typing_iteration):
     while True:
         # user input
         ty_start = input(syscolor_start + "How long is the pause before the indicator appears?\n" + color_end)
-        if int(ty_start) not in range(9999):
-            print(errcolor_start + "Not a valid number!" + color_end)
-            continue
-        while True:
-            typing_length = input(syscolor_start + "How long is the indicator visible?\n" + color_end)
-            if int(typing_length) not in range(9999):
+        try:
+            if int(ty_start) not in range(9999):
                 print(errcolor_start + "Not a valid number!" + color_end)
                 continue
+            while True:
+                typing_length = input(syscolor_start + "How long is the indicator visible?\n" + color_end)
+                if int(typing_length) not in range(9999):
+                    print(errcolor_start + "Not a valid number!" + color_end)
+                    continue
+                else:
+                    break
+            delaylist.append(int(ty_start))
+            totaldelay = int(sum(delaylist))
+            ty_html = f"""
+    <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
+    """
+            ty_css = f"""
+    #workskin:has(.fadedetails[open]) .t{typing_iter} {{
+    visibility: visible;
+    transition: visibility {typing_length}s {totaldelay}s;
+    }}
+    """
+            delaylist.append(int(typing_length))
+            css.append(ty_css)
+            html.append(ty_html)
+            more_typing = input(syscolor_start + "Another blink?\n" + color_end).lower()
+            if more_typing in ['y', 'yes', 'ok']:
+                # don't forget to iterate class
+                typing_iter += 1
+                continue
+            elif more_typing in added_time_seconds:
+                custom_time = re.match(r"\d{1,4}", more_typing).group()
+                delaylist.append(int(custom_time))
+                print(syscolor_start + "Appended " + color_end + custom_time + syscolor_start + " second(s) to the delay.\nTotal delay: " + color_end + str(sum(delaylist)))
+                break
             else:
                 break
-        delaylist.append(int(ty_start))
-        totaldelay = int(sum(delaylist))
-        ty_html = f"""
-<p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
-"""
-        ty_css = f"""
-#workskin:has(.fadedetails[open]) .t{typing_iter} {{
-visibility: visible;
-transition: visibility {typing_length}s {totaldelay}s;
-}}
-"""
-        delaylist.append(int(typing_length))
-        css.append(ty_css)
-        html.append(ty_html)
-        more_typing = input(syscolor_start + "Another blink?\n" + color_end).lower()
-        if more_typing in ['y', 'yes', 'ok']:
-            # don't forget to iterate class
-            typing_iter += 1
-            continue
-        else:
-            break
+        except ValueError:
+            print("Please enter only a number (in seconds)")
     # close div
     html.append("</div>")
     return typing_iter
@@ -246,30 +254,30 @@ def autoTyping(user_typing, typing_iteration):
     # advance class iteration
     typing_iter = typing_iteration + 1
     totaldelay = sum(delaylist)
-    autoty_html = f"""
-    <p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
+    autoty_html = f"""<p class="text visibly is-typing"><span class="fade-typing"><span class="t{typing_iter}"><strong><small>{user_typing} is typing...</small></strong></span></span></p>
         """
     autoty_css = f"""#workskin .fadedetails{output_file}[open] .t{typing_iter} {{
 visibility: visible;
 transition: visibility {time_spent_typing}s {totaldelay}s;
 }}"""
-    delaylist.append(time_spent_typing)
-    print(syscolor_start + "Automatic typing indicator calculated\nTime spent typing: " + color_end + str(time_spent_typing))
+    if not beginning_message:
+        delaylist.append(time_spent_typing)
+    print(successcolor_start + "Automatic typing indicator calculated." + syscolor_start + "\nTime spent typing: " + color_end + str(time_spent_typing) + "s")
     return typing_iter, autoty_html, autoty_css
 
 # auto-bold tagged usernames
 def boldtags(boldmessage):
     try:
-        nametag = re.sub(r"(@.*\w)", r"<strong>\1</strong>", boldmessage)
+        nametag = re.sub(r"\b(@.*\w)\b", r"<strong>\1</strong>", boldmessage)
         return nametag
     # if there is no match, return original message
     except TypeError:
         return boldmessage
 
 def trycss(cclass, cuser, cmessage):
-    if cmessage == None:
+    if cmessage is None:
         return
-    totaldelay = int(sum(delaylist))
+    totaldelay = sum(delaylist)
     css_result = f"""
 #workskin .fadedetails{output_file}[open] .m{cclass} {{
 visibility: visible;
@@ -303,6 +311,21 @@ def tryhtml(hclass, huser, hmessage):
 <p class="text visibly m{hclass}"><span></span><span class="fallback">{altMessage}</span></p>
 """
 
+def simult(it, nextuser, nextmess):
+    # send 0.1 seconds after last message
+    delaylist.append(0.1)
+    # iterate class
+    it += 1
+    print(syscolor_start + "Simultaneous message: " + textcolor_start + nextmess + color_end)
+    cssresult = trycss(it, nextuser, nextmess)
+    if cssresult is not None:
+        css.append(cssresult)
+    htmlresult = tryhtml(it, nextuser, nextmess)
+    if htmlresult is not None:
+        html.append(htmlresult)
+    it += 1
+    return it
+
 # save and quit
 def saveProgress(typing_iteration, it_save):
     save_progress = input(syscolor_start + "'y' to save and quit, or 'skip' to quit without saving.\n" + color_end).lower()
@@ -310,7 +333,7 @@ def saveProgress(typing_iteration, it_save):
         if confirmed == True:
             it_save += 1
         with open(f"{path}olddata.py", "w") as old_data:
-            old_data.write("input_file = \"" + input_file + "\"\noutput_file = \"" + output_file + "\"\nstart = " + str(it_save) + "\ntyping_iteration = " + str(typing_iteration) + "\ndelaylist = " + str(delaylist_save) + "\nuserpersist = \"" + userpersist + "\"" + "\nf_state = " + str(f_state) + "\nfocus_mult = " + str(focus_mult) + "\nfocus = " + str(focus))
+            old_data.write("input_file = \"" + input_file + "\"\noutput_file = \"" + output_file + "\"\nstart = " + str(it_save) + "\ntyping_iteration = " + str(typing_iteration) + "\ndelaylist = " + str(delaylist_save) + "\nuserpersist = \"" + userpersist + "\"" + "\nf_state = " + str(f_state) + "\nfocus_mult = " + str(focus_mult) + "\nfocus = " + str(0) + "\nmessage = " + "'" + message + "'")
         finalhtml = "\n".join(html)
         finalcss = "\n".join(css)
         with open (f"{path}{output_file}.html", "a") as fohtml:
@@ -330,24 +353,34 @@ try:
     messages = contents.strip().split("\n\n")
     for it, msg in enumerate(messages[start:]):
         it_save = start + it
+        # check if this is the last message in the container
         try:
             next_message = messages[it_save + 1]
             (nexttime, nextnotes, nextuser, nextmess) = rmbrackets(next_message)
         except IndexError:
             next_message = ""
+        # check if this is the first message in the container
+        try:
+            prev_message = messages[it_save - 1]
+            (prevtime, prevnotes, prevuser, prevmess) = rmbrackets(prev_message)
+            beginning_message = False
+        except IndexError:
+            prev_message = ""
+            beginning_message = True
         # to make the save-and-quit behave as intended, I need to track whether the message has been appended or not
         confirmed = False
         # get the components
         (time, notes, user, message) = rmbrackets(msg)
-        if user in t9users:
-            countCalc(user, message)
         if user in [usrone, usrone_alt] and focus == 0:
             focus = input(syscolor_start + "Focus issues?\n" + color_end).lower()
             if focus in ['y', 'yes']:
                 # ask for user input
                 (focus_mult, f_state) = focus_issues(f_state)
             else:
+                focus = 3
                 focus_mult = 1
+        if user in t9users:
+            countCalc(user, message)
         if user in [usrtwo, usrthree]:
             focus_mult = 1
         think_pause = []
@@ -365,15 +398,18 @@ try:
                     while True:
                         notes_check = input(syscolor_start + "Do anything with this?\n" + color_end).lower()
                         if notes_check in ['y', 'yes']:
-                            notes_check = input(syscolor_start + "Do what? (type, focus)\n" + color_end).lower()
+                            notes_check = input(syscolor_start + "Do what? (type, focus, simul)\n" + color_end).lower()
                         elif notes_check in ['typing', 'typing_indication', 'typing indication', 'type', 'blinking', 'blink', 'typingdots']:
                             typing_iteration = typingdots(user, typing_iteration)
                         elif notes_check in ['focus', 'focus-issues', 'change-focus', 'focus-change']:
                             (focus_mult, f_state) = focus_issues(f_state)
+                        elif notes_check in ['simul', 'simult', 'simultaneous', 'same time']:
+                            it = simult(it, nextuser, nextmess)
+                            break
                         elif notes_check in added_time_seconds:
                             custom_time = re.match(r"\d{1,4}", notes_check).group()
                             delaylist.append(int(custom_time))
-                            print(syscolor_start + "Appended " + color_end + custom_time + syscolor_start + "second(s) to the delay.\nTotal delay: " + color_end + str(sum(delaylist)))
+                            print(syscolor_start + "Appended " + color_end + custom_time + syscolor_start + " second(s) to the delay.\nTotal delay: " + color_end + str(sum(delaylist)))
                         else:
                             break
                     continue
@@ -406,6 +442,8 @@ try:
                 else:
                     for i in message:
                         think_pause.append(think_time * focus_mult)
+                    if beginning_message:
+                        think_pause = [1]
                     delaylist.append(int(sum(think_pause)))
                     (typing_iteration, autoty_html, autoty_css) = autoTyping(user, typing_iteration)
                     break
@@ -424,6 +462,8 @@ try:
             for i in message:
                 # time to add to delay before message is sent
                 think_pause.append(think_time * focus_mult)
+            if beginning_message:
+                think_pause = [1]
             delaylist.append(int(sum(think_pause)))
             (typing_iteration, autoty_html, autoty_css) = autoTyping(user, typing_iteration)
             # show message
@@ -431,10 +471,12 @@ try:
         # time to add to delay before message is sent
         check = input(syscolor_start + "Sent without checking it? " + color_end).lower()
         if check not in ['y', 'yes']:
-            check_pause = []
+            check_pause = [0.5]
             for i in message:
                 check_pause.append(think_time * 2)
-            delaylist.append(int(sum(check_pause)))
+            if beginning_message:
+                check_pause = [0]
+            delaylist.append(sum(check_pause))
         if first_mess != "None":
             msg_css = trycss(it_save, user, first_mess)
             msg_css = trycss(it_save, user, second_mess)
@@ -453,29 +495,43 @@ try:
             for i in message: 
                 read_pause.append(read_time * focus_mult)
             delaylist.append(int(sum(read_pause)))
-            print(syscolor_start + "Time it'll take to read: " + color_end + str(sum(read_pause)))
+            print(syscolor_start + "Time it'll take to read: " + color_end + str(int(sum(read_pause))))
         next_pause = []
         for i in nextmess:
             next_pause.append(think_time * focus_mult)
         if read_pause:
             next_pause.append(sum(read_pause))
         if nexttime:
-            nexttime = nexttime + "min "
+            nexttime = "[" + nexttime + "min] "
         else:
             nexttime = ""
-        print(syscolor_start + "Next message: " + color_end + str(nexttime) + str(nextuser) + ": " + str(nextmess) + syscolor_start + "\nTime before autotyping starts: " + color_end + str(sum(next_pause)))
+        try:
+            it += 1
+            if nextuser is None:
+                print(syscolor_start + "Next message: " + color_end + str(next_message))
+            else:
+                print(syscolor_start + "Next message: " + color_end + str(nexttime) + str(nextuser) + ": " + str(nextmess) + syscolor_start + "\nTime before autotyping starts: " + color_end + str('{0:.3g}'.format(sum(next_pause))))
+            it -= 1
+        except IndexError:
+            print(syscolor_start + "Next message: " + color_end + "None")
         # confirm loop
         while True:
             print(syscolor_start + "Confirm" + color_end)
             confirm = input().lower()
             if confirm == '':
-                if autoty_html != "None":
+                try:
                     html.append(autoty_html)
                     css.append(autoty_css)
-                if msg_html != "None":
+                except NameError:
+                    print(syscolor_start + "No typing indicator was automatically calculated." + color_end)
+                try:
                     html.append(msg_html)
-                if msg_css != "None":
+                except NameError:
+                    print(syscolor_start + "No HTML to append." + color_end)
+                try:
                     css.append(msg_css)
+                except NameError:
+                    print(syscolor_start + "No CSS to append." + color_end)
                 delaylist_save = delaylist
                 confirmed = True
                 print(successcolor_start + "Code generated." + color_end)
@@ -492,8 +548,11 @@ try:
                 continue
             elif confirm in ['typing', 'typing_indication', 'typing indication', 'type', 'blinking', 'blink', 'typingdots']:
                 typing_iteration = typingdots(user, typing_iteration)
+            elif confirm in ['simul', 'simult', 'simultaneous', 'same time']:
+                simult(it, nextuser, nextmess)
+                continue
             else:
-                print(errcolor_start + "Type 'skip' to skip this message, or 'retry' to change the input.\nType '#s' to add seconds to the delay time before the next message.\nType 'typing' to add an extra typing indicator before the next message." + color_end)
+                print(errcolor_start + "Type 'skip' to skip this message, or 'retry' to change the input.\nType '#s' to add seconds to the delay time before the next message.\nType 'typing' to add an extra typing indicator before the next message.\nType 'simul' to send the next message at the same time as this one." + color_end)
     html.append(html_end)
     finalhtml = "\n".join(html)
     finalcss = "\n".join(css)
