@@ -10,10 +10,18 @@
 
 **Minato:** my bad
 
+[sent at the same time]
+
 **Yu:** !!!???????
 
 **Yu:** be so fr with me guys am i haunted forever
 
 [3min]
 
-**Yu:** another message
+**Yu:** can the next messages be sent at the same time
+
+**Akira:** yes
+
+**Minato:** no
+
+**Yu:** this is the last message of the scene
