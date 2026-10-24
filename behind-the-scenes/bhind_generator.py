@@ -18,7 +18,7 @@ character_typing = 0.3
 word_typing = 0.7
 # delay lengths per character
 read_time = 0.04
-think_time = 0.01
+think_time = 0.02
 # focus multiplier
 half_focus = 1.7
 bad_focus = 2.25
@@ -31,6 +31,7 @@ successcolor_start = "\033[32m"
 color_end = "\033[0m"
 f_state = 0
 first_mess = "None"
+it_boost_up = "None"
 html = []
 css = []
 sec_list = []
@@ -199,13 +200,13 @@ def typingdots(user, typing_iteration):
     typing_iter = typing_iteration + 1
     while True:
         # user input
-        ty_start = input(syscolor_start + "How long is the pause before the indicator appears?\n" + color_end)
+        ty_start = input(syscolor_start + "How long is the pause before the indicator appears? " + color_end)
         try:
             if int(ty_start) not in range(9999):
                 print(errcolor_start + "Not a valid number!" + color_end)
                 continue
             while True:
-                typing_length = input(syscolor_start + "How long is the indicator visible?\n" + color_end)
+                typing_length = input(syscolor_start + "How long is the indicator visible? " + color_end)
                 if int(typing_length) not in range(9999):
                     print(errcolor_start + "Not a valid number!" + color_end)
                     continue
@@ -249,7 +250,7 @@ def autoTyping(user_typing, typing_iteration):
     autoty_css = "None"
     time_spent_typing = countCalc(user_typing, message)
     if time_spent_typing == 0:
-        print("No typing indicator")
+        print(syscolor_start + "No typing indicator" + color_end)
         return typing_iteration, autoty_html, autoty_css
     # advance class iteration
     typing_iter = typing_iteration + 1
@@ -268,7 +269,7 @@ transition: visibility {time_spent_typing}s {totaldelay}s;
 # auto-bold tagged usernames
 def boldtags(boldmessage):
     try:
-        nametag = re.sub(r"\b(@.*\w)\b", r"<strong>\1</strong>", boldmessage)
+        nametag = re.sub(r"(@\w+)", r"<strong>\1</strong>", boldmessage)
         return nametag
     # if there is no match, return original message
     except TypeError:
@@ -312,10 +313,12 @@ def tryhtml(hclass, huser, hmessage):
 """
 
 def simult(it, nextuser, nextmess):
-    # send 0.1 seconds after last message
-    delaylist.append(0.1)
+    # send 0.1 seconds after last message, but eliminate standard 'read' time of 1s
+    delaylist.append(0.1 - 1)
     # iterate class
     it += 1
+    global it_boost_up
+    it_boost_up = it
     print(syscolor_start + "Simultaneous message: " + textcolor_start + nextmess + color_end)
     cssresult = trycss(it, nextuser, nextmess)
     if cssresult is not None:
@@ -323,7 +326,7 @@ def simult(it, nextuser, nextmess):
     htmlresult = tryhtml(it, nextuser, nextmess)
     if htmlresult is not None:
         html.append(htmlresult)
-    it += 1
+    print(successcolor_start + "Message sent simultaneously." + color_end)
     return it
 
 # save and quit
@@ -352,6 +355,8 @@ try:
     # divide into individual messages
     messages = contents.strip().split("\n\n")
     for it, msg in enumerate(messages[start:]):
+        if it == it_boost_up:
+            continue
         it_save = start + it
         # check if this is the last message in the container
         try:
@@ -360,13 +365,13 @@ try:
         except IndexError:
             next_message = ""
         # check if this is the first message in the container
-        try:
+        if it == 0:
+            prev_message = ""
+            beginning_message = True
+        else:
             prev_message = messages[it_save - 1]
             (prevtime, prevnotes, prevuser, prevmess) = rmbrackets(prev_message)
             beginning_message = False
-        except IndexError:
-            prev_message = ""
-            beginning_message = True
         # to make the save-and-quit behave as intended, I need to track whether the message has been appended or not
         confirmed = False
         # get the components
@@ -428,7 +433,7 @@ try:
             hesitation = int(time) * 60
             while True:
                 print(textcolor_start + "[" + time + "min] " + user + ": " + message + color_end)
-                typing_indicator = input(syscolor_start + "Hesitation?\n" + color_end).lower()
+                typing_indicator = input(syscolor_start + "Hesitation? " + color_end).lower()
                 if typing_indicator in ['y', 'yes', 'ok']:
                     base_typing_length = countCalc(user, message)
                     print(syscolor_start + "Time it would take to type message: " + color_end + str(base_typing_length) + syscolor_start + "\nSuggested hesitation time: " + color_end + str(hesitation))
@@ -469,7 +474,7 @@ try:
             # show message
             print(textcolor_start + str(user) + ": " + str(message) + color_end)
         # time to add to delay before message is sent
-        check = input(syscolor_start + "Sent without checking it? " + color_end).lower()
+        check = input(syscolor_start + "Sent without user reading it? " + color_end).lower()
         if check not in ['y', 'yes']:
             check_pause = [0.5]
             for i in message:
@@ -498,7 +503,7 @@ try:
             print(syscolor_start + "Time it'll take to read: " + color_end + str(int(sum(read_pause))))
         next_pause = []
         for i in nextmess:
-            next_pause.append(think_time * focus_mult)
+            next_pause.append(think_time)
         if read_pause:
             next_pause.append(sum(read_pause))
         if nexttime:
@@ -520,17 +525,18 @@ try:
             confirm = input().lower()
             if confirm == '':
                 try:
-                    html.append(autoty_html)
-                    css.append(autoty_css)
+                    if autoty_html != "None":
+                        html.append(autoty_html)
+                        css.append(autoty_css)
                 except NameError:
                     print(syscolor_start + "No typing indicator was automatically calculated." + color_end)
-                try:
+                if msg_html != "None":
                     html.append(msg_html)
-                except NameError:
+                else:
                     print(syscolor_start + "No HTML to append." + color_end)
-                try:
+                if msg_css != "None":
                     css.append(msg_css)
-                except NameError:
+                else:
                     print(syscolor_start + "No CSS to append." + color_end)
                 delaylist_save = delaylist
                 confirmed = True
@@ -549,8 +555,25 @@ try:
             elif confirm in ['typing', 'typing_indication', 'typing indication', 'type', 'blinking', 'blink', 'typingdots']:
                 typing_iteration = typingdots(user, typing_iteration)
             elif confirm in ['simul', 'simult', 'simultaneous', 'same time']:
+                try:
+                    if autoty_html is not None:
+                        html.append(autoty_html)
+                        css.append(autoty_css)
+                except NameError:
+                    print(syscolor_start + "No typing indicator was automatically calculated." + color_end)
+                if msg_html is not None:
+                    html.append(msg_html)
+                else:
+                    print(syscolor_start + "No HTML to append." + color_end)
+                if msg_css is not None:
+                    css.append(msg_css)
+                else:
+                    print(syscolor_start + "No CSS to append." + color_end)
                 simult(it, nextuser, nextmess)
-                continue
+                delaylist_save = delaylist
+                confirmed = True
+                print(successcolor_start + "Code generated." + color_end)
+                break
             else:
                 print(errcolor_start + "Type 'skip' to skip this message, or 'retry' to change the input.\nType '#s' to add seconds to the delay time before the next message.\nType 'typing' to add an extra typing indicator before the next message.\nType 'simul' to send the next message at the same time as this one." + color_end)
     html.append(html_end)
